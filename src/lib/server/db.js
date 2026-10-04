@@ -1,4 +1,4 @@
-import { createClient } from '@libsql/client';
+import { building } from '$app/environment';
 import path from 'node:path';
 import { loadCurriculum } from './content.js';
 
@@ -18,13 +18,18 @@ const url =
 	process.env.TURSO_DATABASE_URL ||
 	(process.env.VERCEL ? '' : 'file:' + path.join(DATA_DIR, 'firstlight.db'));
 
-if (!url) {
+if (!url && !building) {
 	throw new Error(
 		'No database configured. Set TURSO_DATABASE_URL and TURSO_AUTH_TOKEN in your Vercel project environment variables.'
 	);
 }
 
-const client = createClient({ url, authToken: process.env.TURSO_AUTH_TOKEN });
+// Hosted databases use the pure-JavaScript client (no native binary needed on Vercel).
+// A local SQLite file needs the full client. While `vite build` analyses the code there is
+// no database to talk to, so an in-memory stand-in is used.
+const remote = /^(libsql|https?|wss?):/.test(url);
+const { createClient } = remote ? await import('@libsql/client/web') : await import('@libsql/client');
+const client = createClient({ url: url || ':memory:', authToken: process.env.TURSO_AUTH_TOKEN });
 
 /** Plain object from a result-set row. */
 function toObject(rs, row) {
@@ -203,8 +208,10 @@ async function init() {
 }
 
 // Share one init across hot reloads and concurrent requests.
-globalThis.__firstlightReady ??= init();
-await globalThis.__firstlightReady;
+if (!building) {
+	globalThis.__firstlightReady ??= init();
+	await globalThis.__firstlightReady;
+}
 
 /** Import/refresh curriculum from markdown. Existing weeks and items are updated by slug. */
 export async function syncContent({ publishFirst = 0 } = {}) {
