@@ -1,0 +1,141 @@
+---
+title: Publishing with GitHub Pages
+kind: lesson
+minutes: 25
+---
+This is the moment many students remember: sending someone a link and seeing your own website open on their phone. GitHub Pages lets you do that for free, straight from a repository.
+
+## What is GitHub Pages?
+
+When you open a website, your browser asks a computer somewhere in the world (a **server**) for the HTML, CSS and image files. For people to see your site, your files need to be on a server that is always switched on and connected to the internet. This is called **hosting**.
+
+GitHub Pages is free hosting for **static websites**: sites made of HTML, CSS, JavaScript and images, exactly what you have been building. GitHub already has your files, so it can serve them to visitors too.
+
+Think of it like this: your GitHub repository is a shop's stockroom. Turning on GitHub Pages opens the shop's front door, so anyone can walk in and look.
+
+## Before you start: check your files
+
+GitHub Pages looks for a file called `index.html` to use as the homepage. Check that:
+
+- Your homepage is called exactly `index.html` (all lowercase).
+- It is in the **top level** of the repository, not inside another folder.
+- Your links to other files are **relative paths**, like `styles.css` or `images/bread.jpg`, not paths on your own computer like `C:/Users/amina/Desktop/styles.css`.
+
+```text
+my-landing-page/
+├── index.html      <- the homepage, at the top level
+├── styles.css
+└── images/
+    ├── hero.jpg
+    └── bread.jpg
+```
+
+> ⚠️ **Watch out:** On your computer, `Hero.jpg` and `hero.jpg` might be treated as the same file. On GitHub Pages they are **different**. If an image works on your laptop but not online, check the capital letters in the file name and in your HTML. Using only lowercase file names avoids this problem.
+
+## Step by step: publish your site
+
+### 1. Make sure your latest work is pushed
+
+In your project folder:
+
+```bash
+git status
+git add .
+git commit -m "Prepare site for publishing"
+git push
+```
+
+Check on GitHub that your newest changes are there.
+
+### 2. Open the Pages settings
+
+1. On GitHub, open your repository.
+2. Click the **Settings** tab (near the top, with a cog icon).
+3. In the left menu, click **Pages**.
+
+### 3. Choose where your site comes from
+
+1. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+2. Under **Branch**, choose `main` and leave the folder as `/ (root)`.
+3. Click **Save**.
+
+### 4. Wait a minute
+
+GitHub now builds your site. This usually takes one or two minutes. You can watch progress in the **Actions** tab of your repository. A green tick means it is done.
+
+### 5. Visit your site
+
+Go back to **Settings → Pages**. At the top you will see "Your site is live at" and an address like this:
+
+```text
+https://your-username.github.io/my-landing-page/
+```
+
+Click it. Your website is on the internet!
+
+> 💡 **Tip:** Copy the live address into the **About** section of your repository (the cog icon next to "About" on the main repository page, then "Website"). That way, anyone who finds your code can find the live site too.
+
+## Updating your live site
+
+You do not need to do anything special to update your site. Every time you push to `main`, GitHub Pages rebuilds it automatically:
+
+```bash
+git add .
+git commit -m "Update opening hours"
+git push
+```
+
+Wait a minute, then refresh your live site.
+
+> 💡 **Tip:** If you do not see your change, your browser might be showing an old copy. Do a hard refresh: `Ctrl + Shift + R` on Windows, `Cmd + Shift + R` on Mac.
+
+## Troubleshooting
+
+| Problem | Likely cause |
+| --- | --- |
+| "404 – File not found" | No `index.html` at the top level, or the name is not all lowercase. Or the site is still building: wait a minute. |
+| Page shows but has no styles | The `<link>` path to `styles.css` is wrong, or has the wrong capitals. |
+| Images are missing | Image paths or capital letters do not match, or the images were never added and committed. Run `git status`. |
+| Changes do not appear | You did not push, the build is still running, or your browser is showing an old copy. |
+
+Your browser's DevTools can help here too. Open the **Console** or **Network** panel and look for red errors about files that could not be found.
+
+## A word about what you publish
+
+Your GitHub Pages site and repository are **public**. Anyone can see them. Do not include personal details you would not put on a poster, like your home address or phone number. For your fictional business, invent the address and phone number.
+
+### Try it
+
+Publish your `git-practice` repository from the last lesson:
+
+1. Make sure it has an `index.html` at the top level and that it is pushed.
+2. Turn on GitHub Pages in **Settings → Pages**, using the `main` branch and `/ (root)`.
+3. Wait for the green tick in the **Actions** tab, then open your live site.
+4. Change the heading in `index.html`, then commit and push. Check that the live site updates.
+5. Send the link to a friend or open it on your phone.
+
+## Check your understanding
+
+1. What kind of websites can GitHub Pages host?
+2. What must your homepage file be called, and where must it be?
+3. Where in GitHub do you turn on Pages?
+4. How do you update your live site after making changes?
+5. Your site works on your laptop, but online the images are missing. Name two things to check.
+
+<details><summary>Show answers</summary>
+
+1. Static websites: HTML, CSS, JavaScript and image files.
+2. `index.html`, in the top level (root) of the repository.
+3. In the repository's **Settings** tab, then **Pages** in the left menu.
+4. Commit and push to the `main` branch. GitHub Pages rebuilds automatically.
+5. That the image paths in your HTML are correct and relative, that the capital letters match exactly, and that the image files were added, committed and pushed.
+
+</details>
+
+## Go deeper
+
+- [GitHub Docs: Creating a GitHub Pages site](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+- [GitHub Docs: Quickstart for GitHub Pages](https://docs.github.com/en/pages/quickstart)
+- [MDN: Publishing your website](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/Publishing_your_website)
+
+_Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._

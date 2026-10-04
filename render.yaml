@@ -1,0 +1,13 @@
+# One-click-ish deploy on Render (https://render.com): New > Blueprint > pick this repo.
+services:
+  - type: web
+    name: firstlight
+    runtime: docker
+    plan: starter # a persistent disk needs a paid plan (about $7/month)
+    disk:
+      name: firstlight-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: ORIGIN
+        sync: false # set to your site URL, e.g. https://firstlight.onrender.com
