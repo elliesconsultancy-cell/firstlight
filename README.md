@@ -122,3 +122,15 @@ server.js             production entry (allows uploads up to 25 MB per request)
 ## Licence
 
 The parts of the curriculum adapted from the [CodeYourFuture curriculum](https://github.com/CodeYourFuture/curriculum) are under **CC BY-NC-SA 4.0**. You can share and adapt them for non-commercial use with attribution, under the same licence. Those files are marked at the bottom. The app's footer credits CodeYourFuture.
+
+
+## Hosting on Vercel
+
+The app runs on Vercel with a hosted SQLite database ([Turso](https://turso.tech)).
+
+1. Import the GitHub repo in Vercel (the SvelteKit preset is detected automatically).
+2. In the project, open **Storage** and add **Turso** from the Marketplace. This sets `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` for you.
+3. Redeploy. The first visit creates the tables and imports `content/weeks`.
+4. Open `/register` straight away: the first account created becomes the admin.
+
+Notes: student uploads are stored in the database and limited to 4 MB per submission (Vercel's request limit). To re-import the markdown after editing `content/weeks`, use Admin > Curriculum > Sync.

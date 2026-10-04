@@ -132,7 +132,7 @@
 								onchange={(e) => (picked = [...e.currentTarget.files].map((f) => f.name))}
 							/>
 							<span>📎 {picked.length ? picked.join(', ') : 'Choose files or drop them here'}</span>
-							<span class="hint">Up to 5 files, 10 MB each. Code, images, PDF or a .zip of your project folder.</span>
+							<span class="hint">Up to 5 files, 4 MB in total. Code, images, PDF or a .zip of your project folder.</span>
 						</label>
 					</div>
 					<div class="row">

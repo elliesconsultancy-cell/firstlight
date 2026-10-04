@@ -18,10 +18,10 @@ export function verifyPassword(password, stored) {
 	return expected.length === candidate.length && crypto.timingSafeEqual(candidate, expected);
 }
 
-export function createSession(cookies, userId, secure) {
+export async function createSession(cookies, userId, secure) {
 	const id = crypto.randomBytes(32).toString('hex');
 	const expires = Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000;
-	db.prepare('INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)').run(id, userId, expires);
+	await db.prepare('INSERT INTO sessions (id, user_id, expires_at) VALUES (?, ?, ?)').run(id, userId, expires);
 	cookies.set(SESSION_COOKIE, id, {
 		path: '/',
 		httpOnly: true,
@@ -31,27 +31,31 @@ export function createSession(cookies, userId, secure) {
 	});
 }
 
-export function getSessionUser(sessionId) {
+export async function getSessionUser(sessionId) {
 	if (!sessionId) return null;
-	const row = db
+	const row = await db
 		.prepare(
-			`SELECT u.id, u.name, u.email, u.role, u.status, u.bio, u.created_at, s.expires_at
+			`SELECT u.id, u.name, u.email, u.role, u.status, u.bio, u.created_at, u.last_seen_at, s.expires_at
 			 FROM sessions s JOIN users u ON u.id = s.user_id WHERE s.id = ?`
 		)
 		.get(sessionId);
 	if (!row) return null;
 	if (row.expires_at < Date.now()) {
-		db.prepare('DELETE FROM sessions WHERE id = ?').run(sessionId);
+		await db.prepare('DELETE FROM sessions WHERE id = ?').run(sessionId);
 		return null;
 	}
-	db.prepare("UPDATE users SET last_seen_at = datetime('now') WHERE id = ?").run(row.id);
-	const { expires_at, ...user } = row;
+	// Only write "last seen" every few minutes, to save a database round trip on every page.
+	const seen = row.last_seen_at ? Date.parse(row.last_seen_at.replace(' ', 'T') + 'Z') : 0;
+	if (!seen || Date.now() - seen > 5 * 60 * 1000) {
+		await db.prepare("UPDATE users SET last_seen_at = datetime('now') WHERE id = ?").run(row.id);
+	}
+	const { expires_at, last_seen_at, ...user } = row;
 	return user;
 }
 
-export function destroySession(cookies) {
+export async function destroySession(cookies) {
 	const id = cookies.get(SESSION_COOKIE);
-	if (id) db.prepare('DELETE FROM sessions WHERE id = ?').run(id);
+	if (id) await db.prepare('DELETE FROM sessions WHERE id = ?').run(id);
 	cookies.delete(SESSION_COOKIE, { path: '/' });
 }
 

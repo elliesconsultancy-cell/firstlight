@@ -1,25 +1,26 @@
 import db from '$lib/server/db.js';
 
-export function load() {
-	const count = (sql, ...a) => db.prepare(sql).get(...a).n;
+export async function load() {
+	const count = async (sql, ...a) => (await db.prepare(sql).get(...a)).n;
 	const latestOnly = `s.id = (SELECT MAX(id) FROM submissions WHERE user_id = s.user_id AND item_id = s.item_id)`;
 
-	const stats = {
-		students: count("SELECT COUNT(*) AS n FROM users WHERE role = 'student' AND status = 'active'"),
-		pendingUsers: count("SELECT COUNT(*) AS n FROM users WHERE role = 'student' AND status = 'pending'"),
-		toReview: count(`SELECT COUNT(*) AS n FROM submissions s WHERE status = 'submitted' AND ${latestOnly}`),
-		approvedWeek: count(
+	const [studentCount, pendingUsersCount, toReview, approvedWeek, published, weekTotal] = await Promise.all([
+		count("SELECT COUNT(*) AS n FROM users WHERE role = 'student' AND status = 'active'"),
+		count("SELECT COUNT(*) AS n FROM users WHERE role = 'student' AND status = 'pending'"),
+		count(`SELECT COUNT(*) AS n FROM submissions s WHERE status = 'submitted' AND ${latestOnly}`),
+		count(
 			"SELECT COUNT(*) AS n FROM submissions WHERE status = 'approved' AND reviewed_at >= datetime('now','-7 days')"
 		),
-		published: count('SELECT COUNT(*) AS n FROM weeks WHERE published = 1'),
-		weeks: count('SELECT COUNT(*) AS n FROM weeks')
-	};
+		count('SELECT COUNT(*) AS n FROM weeks WHERE published = 1'),
+		count('SELECT COUNT(*) AS n FROM weeks')
+	]);
+	const stats = { students: studentCount, pendingUsers: pendingUsersCount, toReview, approvedWeek, published, weeks: weekTotal };
 
-	const pendingUsers = db
+	const pendingUsers = await db
 		.prepare("SELECT id, name, email, created_at FROM users WHERE role = 'student' AND status = 'pending' ORDER BY created_at")
 		.all();
 
-	const queue = db
+	const queue = await db
 		.prepare(
 			`SELECT s.id, s.version, s.created_at, u.name, i.title, w.position AS week
 			 FROM submissions s JOIN users u ON u.id = s.user_id JOIN items i ON i.id = s.item_id JOIN weeks w ON w.id = i.week_id
@@ -29,14 +30,14 @@ export function load() {
 		.all();
 
 	// class progress: % of each published week each active student has finished
-	const weeks = db.prepare('SELECT id, position, title FROM weeks WHERE published = 1 ORDER BY position').all();
-	const students = db
+	const weeks = await db.prepare('SELECT id, position, title FROM weeks WHERE published = 1 ORDER BY position').all();
+	const students = await db
 		.prepare("SELECT id, name, last_seen_at FROM users WHERE role = 'student' AND status = 'active' ORDER BY name")
 		.all();
 	const totals = Object.fromEntries(
-		db.prepare('SELECT week_id, COUNT(*) AS n FROM items GROUP BY week_id').all().map((r) => [r.week_id, r.n])
+		(await db.prepare('SELECT week_id, COUNT(*) AS n FROM items GROUP BY week_id').all()).map((r) => [r.week_id, r.n])
 	);
-	const doneRows = db
+	const doneRows = await db
 		.prepare(
 			`SELECT x.user_id, i.week_id, COUNT(*) AS n FROM (
 				SELECT user_id, item_id FROM progress
@@ -53,7 +54,7 @@ export function load() {
 		})
 	}));
 
-	const activity = db
+	const activity = await db
 		.prepare(
 			`SELECT * FROM (
 				SELECT p.completed_at AS at, u.name, i.title, 'read' AS what FROM progress p JOIN users u ON u.id = p.user_id JOIN items i ON i.id = p.item_id WHERE u.role = 'student'

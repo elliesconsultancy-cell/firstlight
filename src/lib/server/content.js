@@ -1,7 +1,7 @@
-// Reads the markdown curriculum in /content/weeks and turns it into plain objects.
-// Shared by the app (first-run seeding) and scripts/sync-content.js.
-import fs from 'node:fs';
-import path from 'node:path';
+// Turns the markdown curriculum in /content/weeks into plain objects.
+// The files are bundled into the server build (see db.js), so this works on
+// hosts without a persistent filesystem. It receives a map of
+// { 'weeks/<folder>/<file>.md': rawText }.
 
 /** Parse a markdown file with a simple `key: value` frontmatter block. */
 export function parseFrontmatter(raw) {
@@ -20,30 +20,26 @@ export function parseFrontmatter(raw) {
 	return { data, body: text.slice(match[0].length).trim() };
 }
 
-/** Load every week folder (sorted by its numeric prefix). */
-export function loadCurriculum(contentDir) {
-	const weeksDir = path.join(contentDir, 'weeks');
-	if (!fs.existsSync(weeksDir)) return [];
-	const folders = fs
-		.readdirSync(weeksDir, { withFileTypes: true })
-		.filter((d) => d.isDirectory())
-		.map((d) => d.name)
-		.sort();
+/** Build the curriculum (weeks sorted by numeric folder prefix) from a map of file contents. */
+export function loadCurriculum(files) {
+	const folders = new Map();
+	for (const [p, text] of Object.entries(files)) {
+		const m = p.replace(/\\/g, '/').match(/weeks\/([^/]+)\/([^/]+\.md)$/);
+		if (!m) continue;
+		if (!folders.has(m[1])) folders.set(m[1], {});
+		folders.get(m[1])[m[2]] = text;
+	}
 
-	return folders.map((folder, index) => {
-		const dir = path.join(weeksDir, folder);
+	return [...folders.keys()].sort().map((folder, index) => {
+		const dirFiles = folders.get(folder);
 		const slug = folder.replace(/^\d+-/, '');
-		const weekFile = path.join(dir, 'week.md');
-		const week = fs.existsSync(weekFile)
-			? parseFrontmatter(fs.readFileSync(weekFile, 'utf8'))
-			: { data: {}, body: '' };
+		const week = dirFiles['week.md'] ? parseFrontmatter(dirFiles['week.md']) : { data: {}, body: '' };
 
-		const items = fs
-			.readdirSync(dir)
-			.filter((f) => f.endsWith('.md') && f !== 'week.md')
+		const items = Object.keys(dirFiles)
+			.filter((f) => f !== 'week.md')
 			.sort()
 			.map((file, i) => {
-				const { data, body } = parseFrontmatter(fs.readFileSync(path.join(dir, file), 'utf8'));
+				const { data, body } = parseFrontmatter(dirFiles[file]);
 				const kind = data.kind === 'assignment' ? 'assignment' : 'lesson';
 				const itemSlug = file
 					.replace(/\.md$/, '')

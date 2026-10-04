@@ -3,8 +3,8 @@ import db from '$lib/server/db.js';
 import { renderMarkdown, renderPlain } from '$lib/server/markdown.js';
 import { filesFor } from '$lib/server/queries.js';
 
-export function load({ params }) {
-	const sub = db
+export async function load({ params }) {
+	const sub = await db
 		.prepare(
 			`SELECT s.*, u.name, u.email, i.title, i.body_md, i.slug AS item_slug, w.slug AS week_slug, w.position AS week, w.title AS week_title
 			 FROM submissions s JOIN users u ON u.id = s.user_id JOIN items i ON i.id = s.item_id JOIN weeks w ON w.id = i.week_id
@@ -13,13 +13,13 @@ export function load({ params }) {
 		.get(params.id);
 	if (!sub) throw error(404, 'Submission not found');
 
-	const versions = db
+	const versions = await db
 		.prepare(
 			`SELECT s.*, r.name AS reviewer_name FROM submissions s LEFT JOIN users r ON r.id = s.reviewer_id
 			 WHERE s.user_id = ? AND s.item_id = ? ORDER BY s.id DESC`
 		)
 		.all(sub.user_id, sub.item_id);
-	const files = filesFor(versions.map((v) => v.id));
+	const files = await filesFor(versions.map((v) => v.id));
 
 	return {
 		sub: { ...sub, body_md: undefined, instructionsHtml: renderMarkdown(sub.body_md) },
@@ -41,12 +41,12 @@ export const actions = {
 		if (decision === 'changes_requested' && !feedback) {
 			return fail(400, { error: 'Please explain what needs changing so the student knows what to do.', feedback });
 		}
-		db.prepare(
+		await db.prepare(
 			`UPDATE submissions SET status = ?, feedback = ?, reviewer_id = ?, reviewed_at = datetime('now') WHERE id = ?`
 		).run(decision, feedback, locals.user.id, params.id);
 
 		if (form.get('next')) {
-			const next = db
+			const next = await db
 				.prepare(
 					`SELECT s.id FROM submissions s WHERE s.status = 'submitted'
 					 AND s.id = (SELECT MAX(id) FROM submissions WHERE user_id = s.user_id AND item_id = s.item_id)

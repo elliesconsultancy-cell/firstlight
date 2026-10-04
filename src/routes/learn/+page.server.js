@@ -1,9 +1,9 @@
 import db, { getSettings } from '$lib/server/db.js';
 import { weeksWithProgress } from '$lib/server/queries.js';
 
-export function load({ locals }) {
+export async function load({ locals }) {
 	const user = locals.user;
-	const weeks = weeksWithProgress(user.id, false);
+	const weeks = await weeksWithProgress(user.id, false);
 	const total = weeks.reduce((n, w) => n + w.total, 0);
 	const done = weeks.reduce((n, w) => n + w.done, 0);
 
@@ -16,7 +16,7 @@ export function load({ locals }) {
 		}
 	}
 
-	const feedback = db
+	const feedback = await db
 		.prepare(
 			`SELECT s.id, s.status, s.feedback, s.reviewed_at, i.title, i.slug AS item_slug, w.slug AS week_slug
 			 FROM submissions s JOIN items i ON i.id = s.item_id JOIN weeks w ON w.id = i.week_id
@@ -25,14 +25,14 @@ export function load({ locals }) {
 		)
 		.all(user.id);
 
-	const awaiting = db
+	const awaiting = (await db
 		.prepare(
 			`SELECT COUNT(*) AS n FROM submissions s WHERE s.user_id = ? AND s.status = 'submitted'
 			 AND s.id = (SELECT MAX(id) FROM submissions WHERE user_id = s.user_id AND item_id = s.item_id)`
 		)
-		.get(user.id).n;
+		.get(user.id)).n;
 
-	const totalWeeks = db.prepare('SELECT COUNT(*) AS n FROM weeks').get().n;
+	const totalWeeks = (await db.prepare('SELECT COUNT(*) AS n FROM weeks').get()).n;
 
 	return {
 		weeks: weeks.map(({ items, ...w }) => w),
@@ -48,6 +48,6 @@ export function load({ locals }) {
 		feedback,
 		awaiting,
 		lockedWeeks: totalWeeks - weeks.length,
-		welcome: getSettings().welcome_message
+		welcome: (await getSettings()).welcome_message
 	};
 }

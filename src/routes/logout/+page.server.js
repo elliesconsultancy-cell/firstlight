@@ -6,8 +6,8 @@ export function load() {
 }
 
 export const actions = {
-	default({ cookies }) {
-		destroySession(cookies);
+	async default({ cookies }) {
+		await destroySession(cookies);
 		throw redirect(303, '/login');
 	}
 };

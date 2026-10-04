@@ -1,9 +1,10 @@
 import crypto from 'node:crypto';
-import fs from 'node:fs';
 import path from 'node:path';
-import db, { UPLOAD_DIR } from './db.js';
+import db from './db.js';
 
-export const MAX_FILE_SIZE = 10 * 1024 * 1024;
+// Vercel rejects request bodies over 4.5 MB, so keep the total under that.
+export const MAX_FILE_SIZE = 4 * 1024 * 1024;
+export const MAX_TOTAL_SIZE = 4 * 1024 * 1024;
 export const MAX_FILES = 5;
 export const ALLOWED_EXT = [
 	'.html', '.htm', '.css', '.js', '.json', '.md', '.txt',
@@ -34,25 +35,22 @@ export function validateFiles(files) {
 	for (const f of files) {
 		const ext = path.extname(f.name).toLowerCase();
 		if (!ALLOWED_EXT.includes(ext)) return `“${f.name}” isn’t a supported file type.`;
-		if (f.size > MAX_FILE_SIZE) return `“${f.name}” is bigger than 10 MB.`;
+		if (f.size > MAX_FILE_SIZE) return `“${f.name}” is bigger than 4 MB.`;
 	}
+	if (files.reduce((n, f) => n + f.size, 0) > MAX_TOTAL_SIZE) return 'Your files add up to more than 4 MB. Upload fewer or smaller files.';
 	return null;
 }
 
+/** Files are stored in the database so they survive on hosts with no persistent disk. */
 export async function saveFiles(submissionId, files) {
 	const insert = db.prepare(
-		'INSERT INTO files (id, submission_id, original_name, stored_name, mime, size) VALUES (?, ?, ?, ?, ?, ?)'
+		'INSERT INTO files (id, submission_id, original_name, stored_name, mime, size, data) VALUES (?, ?, ?, ?, ?, ?, ?)'
 	);
 	for (const f of files) {
 		const id = crypto.randomBytes(16).toString('hex');
 		const ext = path.extname(f.name).toLowerCase();
-		const stored = id + ext;
-		fs.writeFileSync(path.join(UPLOAD_DIR, stored), Buffer.from(await f.arrayBuffer()));
 		const name = path.basename(f.name).slice(0, 180);
-		insert.run(id, submissionId, name, stored, MIME[ext] || 'application/octet-stream', f.size);
+		const data = new Uint8Array(await f.arrayBuffer());
+		await insert.run(id, submissionId, name, id + ext, MIME[ext] || 'application/octet-stream', f.size, data);
 	}
-}
-
-export function readStoredFile(stored) {
-	return fs.readFileSync(path.join(UPLOAD_DIR, path.basename(stored)));
 }

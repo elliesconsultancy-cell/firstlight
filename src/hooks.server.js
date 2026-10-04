@@ -3,7 +3,7 @@ import { SESSION_COOKIE, getSessionUser } from '$lib/server/auth.js';
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
-	event.locals.user = getSessionUser(event.cookies.get(SESSION_COOKIE));
+	event.locals.user = await getSessionUser(event.cookies.get(SESSION_COOKIE));
 	const { pathname } = event.url;
 	const user = event.locals.user;
 
