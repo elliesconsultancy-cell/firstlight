@@ -67,7 +67,7 @@
 	.weeks { display: grid; gap: 10px; margin-top: 18px; }
 	.weeks li { display: flex; align-items: center; gap: 18px; padding: 14px 18px; flex-wrap: wrap; }
 	.weeks li.draft { background: var(--paper-2); box-shadow: none; border-style: dashed; }
-	.num { font-family: var(--font-display); font-size: 1.6rem; color: var(--sun); min-width: 40px; }
+	.num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--ink-3); min-width: 40px; }
 	.draft .num { color: var(--ink-3); }
 	.body { flex: 1; display: flex; flex-direction: column; min-width: 200px; }
 	.body a { color: var(--ink); text-decoration: none; font-size: 1.05rem; }

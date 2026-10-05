@@ -4,6 +4,17 @@ import { renderMarkdown, renderPlain } from '$lib/server/markdown.js';
 import { filesFor } from '$lib/server/queries.js';
 import { saveFiles, validateFiles } from '$lib/server/uploads.js';
 
+// The source credit at the bottom of adapted lessons (and links to that source) is shown to instructors only.
+function forViewer(markdown, user) {
+	if (user?.role === 'admin') return markdown;
+	return markdown
+		.split('\n')
+		.filter((line) => !/code ?your ?future/i.test(line))
+		.join('\n')
+		.replace(/\n{3,}/g, '\n\n')
+		.replace(/\n+---\s*$/, '\n');
+}
+
 async function getItem(weekId, slug) {
 	const item = await db.prepare('SELECT * FROM items WHERE week_id = ? AND slug = ?').get(weekId, slug);
 	if (!item) throw error(404, 'We couldn’t find that page.');
@@ -44,7 +55,7 @@ export async function load({ params, parent, locals }) {
 			title: item.title,
 			minutes: item.minutes,
 			submission_type: item.submission_type,
-			html: renderMarkdown(item.body_md)
+			html: renderMarkdown(forViewer(item.body_md, locals.user))
 		},
 		completed: !!progress,
 		submissions,

@@ -3,7 +3,7 @@
 
 	const STARTER = {
 		html: '<h1>Hello, Firstlight!</h1>\n<p>Edit the HTML, CSS and JavaScript — the preview updates as you type.</p>\n<button id="btn">Click me</button>',
-		css: 'body {\n  font-family: system-ui, sans-serif;\n  padding: 24px;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #e8582a;\n}\n\nbutton {\n  padding: 8px 16px;\n  border-radius: 999px;\n  border: 0;\n  background: #1c1a2e;\n  color: white;\n  cursor: pointer;\n}',
+		css: 'body {\n  font-family: system-ui, sans-serif;\n  padding: 24px;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #2458d8;\n}\n\nbutton {\n  padding: 8px 16px;\n  border-radius: 8px;\n  border: 0;\n  background: #2458d8;\n  color: white;\n  cursor: pointer;\n}',
 		js: 'const button = document.querySelector("#btn");\nlet clicks = 0;\n\nbutton.addEventListener("click", () => {\n  clicks = clicks + 1;\n  console.log("You clicked", clicks, "times");\n});\n\nconsole.log("Hello from JavaScript!");'
 	};
 
@@ -216,11 +216,11 @@
 		background: var(--code-bg);
 		min-height: 0;
 	}
-	.etabs { display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+	.etabs { display: flex; border-bottom: 1px solid var(--line); background: var(--paper-2); }
 	.etabs button {
 		background: none;
 		border: 0;
-		color: #a9a3c2;
+		color: var(--ink-3);
 		font: 700 0.85rem var(--font-body);
 		padding: 12px 18px;
 		cursor: pointer;
@@ -229,8 +229,8 @@
 		gap: 6px;
 		align-items: center;
 	}
-	.etabs button.active { color: #fff; border-bottom-color: var(--gold); }
-	.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+	.etabs button.active { color: var(--ink); border-bottom-color: var(--sky); background: var(--code-bg); }
+	.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sun); }
 	.code {
 		flex: 1;
 		width: 100%;
@@ -257,10 +257,9 @@
 	.preview-wrap { position: relative; background: #fff; min-height: 0; }
 	iframe { width: 100%; height: 100%; border: 0; display: block; background: #fff; }
 	.lbl {
-		font-family: var(--font-mono);
-		font-size: 0.68rem;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
+		font-family: var(--font-body);
+		font-weight: 700;
+		font-size: 0.78rem;
 		color: var(--ink-3);
 	}
 	.preview-wrap .lbl {
@@ -270,7 +269,7 @@
 		background: rgba(255, 255, 255, 0.85);
 		padding: 1px 6px;
 		border-radius: 4px;
-		color: #77728c;
+		color: #57606a;
 	}
 	.console {
 		border-top: 1px solid var(--line);

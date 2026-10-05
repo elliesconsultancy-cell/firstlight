@@ -8,11 +8,11 @@
 	<svg width={size} height={size} viewBox="0 0 {size} {size}" role="img" aria-label="{percent}% {label}">
 		<defs>
 			<linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
-				<stop offset="0%" stop-color="#f5b841" />
-				<stop offset="100%" stop-color="#e8582a" />
+				<stop offset="0%" stop-color="#58a6ff" />
+				<stop offset="100%" stop-color="#3fb950" />
 			</linearGradient>
 		</defs>
-		<circle cx={size / 2} cy={size / 2} {r} fill="none" stroke="var(--paper-2)" stroke-width={stroke} />
+		<circle cx={size / 2} cy={size / 2} {r} fill="none" stroke="var(--track)" stroke-width={stroke} />
 		<circle
 			cx={size / 2}
 			cy={size / 2}
@@ -40,6 +40,6 @@
 		align-items: center;
 		justify-content: center;
 	}
-	b { font-family: var(--font-display); font-size: 1.7rem; line-height: 1; }
+	b { font-family: var(--font-display); font-size: 1.6rem; line-height: 1; font-weight: 700; }
 	span { font-size: 0.72rem; color: var(--ink-3); margin-top: 2px; }
 </style>

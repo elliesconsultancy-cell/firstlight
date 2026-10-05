@@ -121,7 +121,7 @@ server.js             production entry (allows uploads up to 25 MB per request)
 
 ## Licence
 
-The parts of the curriculum adapted from the [CodeYourFuture curriculum](https://github.com/CodeYourFuture/curriculum) are under **CC BY-NC-SA 4.0**. You can share and adapt them for non-commercial use with attribution, under the same licence. Those files are marked at the bottom. The app's footer credits CodeYourFuture.
+The parts of the curriculum adapted from the [CodeYourFuture curriculum](https://github.com/CodeYourFuture/curriculum) are under **CC BY-NC-SA 4.0**. You can share and adapt them for non-commercial use with attribution, under the same licence. Those files are marked at the bottom. Inside the app, the credit is shown to instructors (admin accounts) only.
 
 
 ## Hosting on Vercel

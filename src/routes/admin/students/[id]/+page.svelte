@@ -75,6 +75,6 @@
 	.items li:last-child { border: 0; }
 	.t { flex: 1; min-width: 180px; }
 	.mk { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--line-2); font-size: 0.7rem; color: var(--ink-3); flex: none; }
-	.mk.ok { background: var(--sage); border-color: var(--sage); color: #fff; }
+	.mk.ok { background: var(--sage-bg); border-color: var(--sage-bg); color: #fff; }
 	.items a { text-decoration: none; }
 </style>

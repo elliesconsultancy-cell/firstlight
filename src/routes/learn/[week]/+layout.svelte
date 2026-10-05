@@ -82,7 +82,7 @@
 		font-size: 0.7rem; font-weight: 700; color: var(--ink-3);
 		margin-top: 1px;
 	}
-	.mark.done { background: var(--sage); border-color: var(--sage); color: #fff; }
+	.mark.done { background: var(--sage-bg); border-color: var(--sage-bg); color: #fff; }
 	.mark.waiting { border-color: var(--sky); color: var(--sky); }
 	.mark.changes { border-color: var(--plum); color: var(--plum); }
 	.content { min-width: 0; }

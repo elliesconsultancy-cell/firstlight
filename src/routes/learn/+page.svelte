@@ -29,7 +29,7 @@
 	{#if data.next}
 		<a class="continue" href="/learn/{data.next.weekSlug}/{data.next.item.slug}">
 			<div>
-				<span class="eyebrow" style="color: var(--gold)">Up next · Week {data.next.weekNumber}</span>
+				<span class="eyebrow" style="color: inherit; opacity: 0.85">Up next: week {data.next.weekNumber}</span>
 				<strong>{data.next.item.title}</strong>
 				<span class="small">
 					{data.next.item.kind === 'lesson' ? `📖 Lesson · about ${data.next.item.minutes} min` : '🛠️ Assignment'}
@@ -112,17 +112,16 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 16px;
-		background: var(--ink);
-		color: var(--paper);
+		background: var(--sun);
+		color: var(--on-accent);
 		padding: 20px 24px;
 		border-radius: var(--radius);
 		text-decoration: none;
 		margin-bottom: 32px;
-		background-image: radial-gradient(circle at 100% 120%, rgba(232, 88, 42, 0.45), transparent 50%);
 	}
 	.continue div { display: flex; flex-direction: column; }
-	.continue strong { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; }
-	.continue:hover { color: var(--paper); }
+	.continue strong { font-size: 1.3rem; font-weight: 700; }
+	.continue:hover { color: var(--on-accent); filter: brightness(1.1); }
 	.go { font-weight: 700; white-space: nowrap; }
 	.layout {
 		display: grid;
@@ -142,12 +141,13 @@
 		color: var(--ink);
 		transition: border-color 0.15s, transform 0.15s;
 	}
-	.week:hover { border-color: var(--sun); transform: translateY(-1px); color: var(--ink); }
+	.week:hover { border-color: var(--sky); transform: translateY(-1px); color: var(--ink); }
 	.wnum {
 		font-family: var(--font-display);
 		font-size: 2rem;
+		font-weight: 700;
 		line-height: 1;
-		color: var(--sun);
+		color: var(--ink-3);
 		min-width: 44px;
 	}
 	.week.complete .wnum { color: var(--sage); }
@@ -155,7 +155,7 @@
 	.wbody strong { font-size: 1.1rem; }
 	.tick {
 		width: 30px; height: 30px; border-radius: 50%;
-		background: var(--sage); color: #fff; display: grid; place-items: center; font-weight: 700;
+		background: var(--sage-bg); color: #fff; display: grid; place-items: center; font-weight: 700;
 	}
 	.locked { padding: 16px 20px; color: var(--ink-3); border: 1.5px dashed var(--line-2); border-radius: var(--radius); }
 	.fb { display: block; text-decoration: none; color: var(--ink); padding: 16px; }

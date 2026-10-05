@@ -1,31 +1,31 @@
 <script>
 	let { data } = $props();
 	const phases = [
-		{ name: 'Foundations', range: [0, 2], color: 'var(--gold)' },
-		{ name: 'Styling & layout', range: [3, 5], color: 'var(--sun)' },
-		{ name: 'JavaScript', range: [6, 9], color: 'var(--plum)' },
-		{ name: 'Building real things', range: [10, 99], color: 'var(--sage)' }
+		{ range: [0, 2], color: 'var(--sky)' },
+		{ range: [3, 5], color: 'var(--violet)' },
+		{ range: [6, 9], color: 'var(--gold)' },
+		{ range: [10, 99], color: 'var(--sage)' }
 	];
 	const phaseFor = (i) => phases.find((p) => i >= p.range[0] && i <= p.range[1]) ?? phases[3];
 </script>
 
 <svelte:head>
-	<title>{data.course.name} — learn to code, free</title>
+	<title>{data.course.name}: learn to code, free</title>
 </svelte:head>
 
 <section class="hero">
 	<div class="container hero-grid">
 		<div>
-			<span class="eyebrow">Free · Volunteer-led · Beginner friendly</span>
-			<h1>Your first light<br />into <em>code</em>.</h1>
+			<h1>Learn to build websites. Free.</h1>
 			<p class="lead">{data.course.tagline}</p>
-			<p class="muted">
-				A {data.weeks.length}-week guided course. Each week you read short lessons, try things in the
-				built-in playground, and hand in a small project. Your instructor reviews your work and helps you grow.
+			<p class="muted copy">
+				A {data.weeks.length}-week guided course for complete beginners. Read short lessons, try the code
+				in your browser, and hand in a small project each week. Your instructor reviews your work and
+				gives you feedback.
 			</p>
-			<div class="row" style="margin-top: 24px">
-				<a class="btn btn-sun" href="/register">Join the course</a>
-				<a class="btn btn-ghost" href="/login">I already have an account</a>
+			<div class="row cta">
+				<a class="btn big" href="/register">Sign up for free</a>
+				<a class="btn btn-ghost big" href="/login">Log in</a>
 			</div>
 			{#if !data.hasAdmin}
 				<p class="alert alert-info small" style="margin-top: 20px">
@@ -33,41 +33,45 @@
 				</p>
 			{/if}
 		</div>
-		<div class="sunrise" aria-hidden="true">
-			<div class="sun"></div>
-			<div class="horizon"></div>
-			<div class="ray r1"></div>
-			<div class="ray r2"></div>
-			<div class="ray r3"></div>
-			<pre class="snippet"><span class="t">&lt;h1&gt;</span>Hello, world<span class="t">&lt;/h1&gt;</span>
-<span class="k">const</span> me = <span class="s">"a developer"</span>;</pre>
+
+		<div class="window" aria-hidden="true">
+			<div class="chrome">
+				<span></span><span></span><span></span>
+				<em>my-first-page.html</em>
+			</div>
+			<pre class="code"><span class="tg">&lt;h1&gt;</span>Hello, world!<span class="tg">&lt;/h1&gt;</span>
+<span class="tg">&lt;button&gt;</span>Say hi<span class="tg">&lt;/button&gt;</span></pre>
+			<div class="result">
+				<small>Preview</small>
+				<strong>Hello, world!</strong>
+				<span class="fake-btn">Say hi</span>
+			</div>
 		</div>
 	</div>
 </section>
 
 <section class="container how">
 	<div class="grid grid-3">
-		<div class="step">
+		<div>
 			<span class="num">1</span>
-			<h3>Read & try</h3>
+			<h3>Read and try</h3>
 			<p>Short, friendly lessons with code you can run in one click.</p>
 		</div>
-		<div class="step">
+		<div>
 			<span class="num">2</span>
-			<h3>Build & submit</h3>
+			<h3>Build and submit</h3>
 			<p>Every week ends with a small project. Upload files or share a link.</p>
 		</div>
-		<div class="step">
+		<div>
 			<span class="num">3</span>
 			<h3>Get feedback</h3>
-			<p>Your instructor reviews each piece of work, approves it or suggests changes.</p>
+			<p>Your instructor reviews your work and approves it or suggests changes.</p>
 		</div>
 	</div>
 </section>
 
 <section class="container map">
-	<span class="eyebrow">The journey</span>
-	<h2>From blank page to working app</h2>
+	<h2>The course, week by week</h2>
 	<ol class="path">
 		{#each data.weeks as week, i}
 			<li style="--c: {phaseFor(i).color}">
@@ -83,113 +87,124 @@
 
 <style>
 	.hero {
-		padding: 56px 0 40px;
-		overflow: hidden;
+		padding: 64px 0 56px;
+		border-bottom: 1px solid var(--line);
 	}
 	.hero-grid {
 		display: grid;
-		grid-template-columns: 1.15fr 1fr;
+		grid-template-columns: 1.1fr 1fr;
 		gap: 48px;
 		align-items: center;
 	}
 	h1 {
-		font-size: clamp(2.6rem, 6vw, 4.4rem);
-		line-height: 1.02;
+		font-size: clamp(2.2rem, 5vw, 3.4rem);
+		line-height: 1.1;
 		letter-spacing: -0.03em;
-	}
-	h1 em {
-		font-style: italic;
-		color: var(--sun);
+		max-width: 14ch;
 	}
 	.lead {
-		font-size: 1.25rem;
+		font-size: 1.2rem;
 		color: var(--ink-2);
+		max-width: 38ch;
 	}
-	.sunrise {
-		position: relative;
-		aspect-ratio: 1 / 0.9;
-		border-radius: 28px;
-		background: linear-gradient(180deg, #2a2445 0%, #5b3a5e 45%, #e8582a 85%, #f5b841 100%);
+	.copy {
+		max-width: 54ch;
+	}
+	.cta {
+		margin-top: 24px;
+	}
+	.big {
+		padding: 11px 22px;
+		font-size: 1rem;
+	}
+
+	.window {
+		background: var(--card);
+		border: 1px solid var(--line-2);
+		border-radius: var(--radius);
+		box-shadow: 0 16px 40px -20px rgba(1, 4, 9, 0.6);
 		overflow: hidden;
-		box-shadow: var(--shadow);
 	}
-	.sun {
-		position: absolute;
-		left: 50%;
-		bottom: 18%;
-		width: 46%;
-		aspect-ratio: 1;
-		transform: translate(-50%, 50%);
+	.chrome {
+		display: flex;
+		align-items: center;
+		gap: 7px;
+		padding: 11px 16px;
+		background: var(--paper-2);
+		border-bottom: 1px solid var(--line);
+	}
+	.chrome span {
+		width: 11px;
+		height: 11px;
 		border-radius: 50%;
-		background: radial-gradient(circle at 50% 40%, #ffe3a1, #f5b841 55%, #e8582a);
-		box-shadow: 0 0 80px 20px rgba(245, 184, 65, 0.5);
-		z-index: 1;
-		animation: rise 2.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+		background: var(--line-2);
 	}
-	.horizon {
-		position: absolute;
-		z-index: 2;
-		inset: auto 0 0 0;
-		height: 18%;
-		background: #1c1a2e;
-	}
-	.ray {
-		position: absolute;
-		left: 50%;
-		bottom: 18%;
-		width: 3px;
-		height: 60%;
-		background: linear-gradient(to top, rgba(255, 227, 161, 0.7), transparent);
-		transform-origin: bottom center;
-		opacity: 0.6;
-	}
-	.r1 { transform: rotate(-35deg); }
-	.r2 { transform: rotate(0deg); }
-	.r3 { transform: rotate(35deg); }
-	.snippet {
-		position: absolute;
-		z-index: 3;
-		left: 6%;
-		right: 6%;
-		bottom: 4%;
-		margin: 0;
+	.chrome em {
+		margin-left: 10px;
+		font-style: normal;
 		font-family: var(--font-mono);
-		font-size: clamp(0.7rem, 1.4vw, 0.9rem);
-		color: #ece7f5;
+		font-size: 0.8rem;
+		color: var(--ink-3);
+	}
+	.code {
+		margin: 0;
+		padding: 18px 20px;
+		font-family: var(--font-mono);
+		font-size: clamp(0.8rem, 1.5vw, 0.92rem);
+		line-height: 1.7;
+		color: var(--code-ink);
+		background: var(--code-bg);
 		white-space: pre-wrap;
 	}
-	.t { color: #ff9d74; }
-	.k { color: #9cc4ff; }
-	.s { color: #a8e6c4; }
-	@keyframes rise {
-		from { transform: translate(-50%, 110%); }
-		to { transform: translate(-50%, 50%); }
+	.tg { color: var(--tok-tag); }
+	.result {
+		padding: 18px 20px 24px;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 10px;
+		border-top: 1px solid var(--line);
 	}
-	@media (prefers-reduced-motion: reduce) {
-		.sun { animation: none; }
+	.result small {
+		color: var(--ink-3);
+		font-weight: 600;
 	}
+	.result strong {
+		font-size: 1.8rem;
+		font-weight: 700;
+		letter-spacing: -0.02em;
+	}
+	.fake-btn {
+		background: var(--sun);
+		color: var(--on-accent);
+		font-weight: 600;
+		font-size: 0.9rem;
+		padding: 6px 16px;
+		border-radius: 8px;
+	}
+
 	.how {
-		padding: 24px 20px 40px;
-	}
-	.step {
-		padding: 22px;
-		border-top: 3px solid var(--ink);
+		padding: 56px 20px 16px;
 	}
 	.num {
-		font-family: var(--font-display);
-		font-size: 2.4rem;
-		color: var(--sun);
-		line-height: 1;
+		display: inline-grid;
+		place-items: center;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: var(--sun-soft);
+		color: var(--sun-ink);
+		font-weight: 700;
+		margin-bottom: 12px;
 	}
-	.step h3 { margin-top: 10px; }
-	.step p { color: var(--ink-2); margin: 0; }
+	.how p { color: var(--ink-2); margin: 0; max-width: 32ch; }
 	.map {
 		padding: 40px 20px 80px;
 	}
 	.path {
 		list-style: none;
 		padding: 0;
-		margin: 24px 0 0;
+		margin: 20px 0 0;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 		gap: 12px;
@@ -200,23 +215,21 @@
 		align-items: flex-start;
 		background: var(--card);
 		border: 1px solid var(--line);
-		border-left: 5px solid var(--c);
+		border-left: 4px solid var(--c);
 		border-radius: var(--radius-sm);
 		padding: 14px 16px;
 	}
 	.path li div { display: flex; flex-direction: column; }
 	.wk {
-		font-family: var(--font-mono);
-		font-size: 0.72rem;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
+		font-weight: 600;
+		font-size: 0.85rem;
 		color: var(--ink-3);
 		white-space: nowrap;
-		padding-top: 3px;
-		min-width: 58px;
+		padding-top: 2px;
+		min-width: 56px;
 	}
 	@media (max-width: 820px) {
 		.hero-grid { grid-template-columns: 1fr; }
-		.sunrise { max-width: 420px; }
+		.window { max-width: 460px; }
 	}
 </style>
