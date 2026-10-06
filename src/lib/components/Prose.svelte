@@ -1,6 +1,4 @@
 <script>
-	import { goto } from '$app/navigation';
-
 	/** html: trusted rendered markdown. storageKey: where to remember ticked checklists. */
 	let { html, storageKey = '' } = $props();
 	let root;
@@ -23,8 +21,11 @@
 		if (!block) return;
 		if (btn.hasAttribute('data-copy')) {
 			navigator.clipboard?.writeText(codeOf(block));
-			btn.textContent = 'Copied ✓';
-			setTimeout(() => (btn.textContent = 'Copy'), 1400);
+			const label = btn.querySelector('span');
+			if (label) {
+				label.textContent = 'Copied';
+				setTimeout(() => (label.textContent = 'Copy'), 1400);
+			}
 		}
 		if (btn.hasAttribute('data-try')) {
 			const lang = block.dataset.lang;
@@ -43,10 +44,20 @@
 				const cssBlock = previousOfLang(block, 'css');
 				if (cssBlock) payload.css = codeOf(cssBlock);
 			}
+			// Open the playground in a new tab so the lesson stays where it is.
+			const id = Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 			try {
-				sessionStorage.setItem('fl-playground-load', JSON.stringify(payload));
+				// tidy up snippets that were never opened (the id starts with the time, in base 36)
+				for (const key of Object.keys(localStorage)) {
+					if (key.startsWith('fl-load:') && Date.now() - parseInt(key.slice(8, 16), 36) > 3_600_000) localStorage.removeItem(key);
+				}
+				localStorage.setItem('fl-load:' + id, JSON.stringify(payload));
 			} catch {}
-			goto('/playground?from=lesson');
+			const link = document.createElement('a');
+			link.href = '/playground?load=' + id;
+			link.target = '_blank';
+			link.rel = 'noopener';
+			link.click();
 		}
 	}
 

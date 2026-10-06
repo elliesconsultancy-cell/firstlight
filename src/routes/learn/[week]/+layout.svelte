@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { page } from '$app/state';
 	let { data, children } = $props();
 	let open = $state(false);
@@ -7,9 +8,9 @@
 
 <div class="container wk-layout">
 	<aside class="side" class:open>
-		<a class="back small" href="/learn">← All weeks</a>
+		<a class="back small" href="/learn"><Icon name="arrow-left" size={14} /> All weeks</a>
 		<a class="wk-head" href="/learn/{data.week.slug}">
-			<span class="eyebrow">Week {data.week.number}{data.week.published ? '' : ' · draft'}</span>
+			<span class="eyebrow">{data.week.courseTitle ? data.week.courseTitle + ': ' : ''}Week {data.week.number}{data.week.published ? '' : ' · draft'}</span>
 			<strong>{data.week.title}</strong>
 		</a>
 		<div class="progress"><span style="width: {data.items.length ? (done / data.items.length) * 100 : 0}%"></span></div>
@@ -23,7 +24,7 @@
 				<li>
 					<a href="/learn/{data.week.slug}/{item.slug}" aria-current={active ? 'page' : undefined} onclick={() => (open = false)}>
 						<span class="mark" class:done={item.done} class:waiting={item.status === 'submitted'} class:changes={item.status === 'changes_requested'}>
-							{#if item.done}✓{:else if item.kind === 'assignment'}★{/if}
+							{#if item.done}<Icon name="check" size={13} />{:else if item.kind === 'assignment'}<Icon name="star" size={12} />{/if}
 						</span>
 						<span class="lbl">
 							{item.title}

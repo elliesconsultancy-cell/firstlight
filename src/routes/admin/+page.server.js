@@ -30,7 +30,12 @@ export async function load() {
 		.all();
 
 	// class progress: % of each published week each active student has finished
-	const weeks = await db.prepare('SELECT id, position, title FROM weeks WHERE published = 1 ORDER BY position').all();
+	const weeks = await db
+		.prepare(
+			`SELECT w.id, w.position, w.title, c.title AS course_title FROM weeks w JOIN courses c ON c.id = w.course_id
+			 WHERE w.published = 1 ORDER BY c.position, c.id, w.position`
+		)
+		.all();
 	const students = await db
 		.prepare("SELECT id, name, last_seen_at FROM users WHERE role = 'student' AND status = 'active' ORDER BY name")
 		.all();
@@ -64,5 +69,13 @@ export async function load() {
 		)
 		.all();
 
-	return { stats, pendingUsers, queue, weeks, grid, activity };
+	const initials = (t) => t.split(/\s+/).map((x) => x[0]).join('').toUpperCase();
+	return {
+		stats,
+		pendingUsers,
+		queue,
+		weeks: weeks.map((w) => ({ ...w, label: `${initials(w.course_title)}${w.position}` })),
+		grid,
+		activity
+	};
 }

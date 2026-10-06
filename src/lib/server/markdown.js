@@ -1,5 +1,6 @@
 import { Marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
+import { icons } from '../icons.js';
 
 const LABELS = {
 	html: 'HTML',
@@ -11,6 +12,7 @@ const LABELS = {
 	bash: 'Terminal',
 	sh: 'Terminal',
 	shell: 'Terminal',
+	node: 'Node.js',
 	text: 'Text',
 	plaintext: 'Text'
 };
@@ -37,7 +39,7 @@ const marked = new Marked({
 	renderer: {
 		code({ text, lang }) {
 			const language = (lang || '').trim().split(/\s+/)[0].toLowerCase();
-			const hlLang = language === 'js' ? 'javascript' : language === 'html' ? 'xml' : language;
+			const hlLang = language === 'js' || language === 'node' ? 'javascript' : language === 'html' ? 'xml' : language;
 			let highlighted;
 			try {
 				highlighted =
@@ -50,8 +52,8 @@ const marked = new Marked({
 			const runnable = RUNNABLE.has(language);
 			const kind = language === 'javascript' ? 'js' : language;
 			return `<figure class="code-block" data-lang="${escapeHtml(kind)}">
-<figcaption><span class="code-lang">${escapeHtml(LABELS[language] || language || 'Code')}</span><span class="code-actions"><button type="button" class="code-btn" data-copy>Copy</button>${
-				runnable ? '<button type="button" class="code-btn code-try" data-try>Try it ▸</button>' : ''
+<figcaption><span class="code-lang">${escapeHtml(LABELS[language] || language || 'Code')}</span><span class="code-actions"><button type="button" class="code-btn" data-copy>${icons.copy}<span>Copy</span></button>${
+				runnable ? `<button type="button" class="code-btn code-try" data-try>${icons.play}<span>Try it</span></button>` : ''
 			}</span></figcaption>
 <pre><code class="hljs">${highlighted}</code></pre>
 <textarea class="code-src" hidden aria-hidden="true" tabindex="-1">${escapeHtml(text)}</textarea>
@@ -66,10 +68,13 @@ const marked = new Marked({
 			const inner = this.parser.parse(tokens);
 			const plain = inner.replace(/<[^>]+>/g, '').trim();
 			let variant = 'note';
-			if (plain.startsWith('💡')) variant = 'tip';
-			else if (plain.startsWith('⚠️') || plain.startsWith('⚠')) variant = 'warn';
-			else if (plain.startsWith('🧠')) variant = 'remember';
-			return `<aside class="callout callout-${variant}">${inner}</aside>\n`;
+			let icon = icons['book-open'];
+			if (plain.startsWith('💡')) (variant = 'tip'), (icon = icons.lightbulb);
+			else if (plain.startsWith('⚠️') || plain.startsWith('⚠')) (variant = 'warn'), (icon = icons['triangle-alert']);
+			else if (plain.startsWith('🧠')) (variant = 'remember'), (icon = icons.brain);
+			// The emoji in the Markdown is only a marker: show a proper icon instead.
+			const body = inner.replace(/(💡|⚠️|⚠|🧠)\uFE0F?\s*/, '');
+			return `<aside class="callout callout-${variant}"><span class="callout-icon" aria-hidden="true">${icon}</span><div class="callout-body">${body}</div></aside>\n`;
 		},
 		link({ href, title, tokens }) {
 			const text = this.parser.parseInline(tokens);

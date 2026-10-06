@@ -566,14 +566,44 @@ tr:last-child td {
 	border-radius: var(--radius-sm);
 }
 .callout {
+	display: flex;
+	gap: 12px;
 	border-radius: var(--radius-sm);
-	padding: 12px 18px;
+	padding: 12px 18px 12px 14px;
 	margin: 1.4em 0;
 	border-left: 4px solid var(--line-2);
 	background: var(--paper-2);
 }
+.callout-icon {
+	flex: none;
+	width: 20px;
+	height: 20px;
+	margin-top: 3px;
+	color: var(--ink-3);
+}
+.callout-icon :is(svg) {
+	width: 100%;
+	height: 100%;
+}
+.callout-body {
+	min-width: 0;
+	flex: 1;
+}
+.callout-body > :first-child {
+	margin-top: 0;
+}
+.callout-body > :last-child,
 .callout p:last-child {
 	margin-bottom: 0;
+}
+.callout-tip .callout-icon {
+	color: var(--gold);
+}
+.callout-warn .callout-icon {
+	color: var(--plum);
+}
+.callout-remember .callout-icon {
+	color: var(--sky);
 }
 .callout-tip {
 	border-color: var(--gold);
@@ -614,6 +644,9 @@ tr:last-child td {
 	gap: 6px;
 }
 .code-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
 	font: 600 0.78rem var(--font-body);
 	color: var(--ink);
 	background: var(--card);
@@ -621,6 +654,10 @@ tr:last-child td {
 	border-radius: 6px;
 	padding: 3px 10px;
 	cursor: pointer;
+}
+.code-btn svg {
+	width: 13px;
+	height: 13px;
 }
 .code-btn:hover {
 	border-color: var(--sky);

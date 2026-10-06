@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { enhance } from '$app/forms';
 	let { data, form } = $props();
 	let confirmDelete = $state(false);
@@ -7,7 +8,7 @@
 <svelte:head><title>Edit: {data.week.title}</title></svelte:head>
 
 <div class="container page">
-	<a class="small" href="/admin/curriculum">← Curriculum</a>
+	<a class="small" href="/admin/curriculum"><Icon name="arrow-left" size={13} /> Curriculum</a>
 	<div class="spread" style="margin: 10px 0 20px">
 		<h1 style="margin: 0">Week {data.week.position}: {data.week.title}</h1>
 		<a class="btn btn-sm btn-ghost" href="/learn/{data.week.slug}">Preview as student</a>
@@ -36,7 +37,7 @@
 				<textarea id="intro_md" name="intro_md" class="mono" rows="12">{data.week.intro_md}</textarea>
 			</div>
 			<div class="field">
-				<label for="instructor_notes">🔒 Instructor notes (only instructors see these)</label>
+				<label for="instructor_notes"><Icon name="lock" size={14} /> Instructor notes (only instructors see these)</label>
 				<textarea id="instructor_notes" name="instructor_notes" class="mono" rows="6" placeholder="Session plan, things to emphasise, links to slides, reminders…">{data.week.instructor_notes}</textarea>
 			</div>
 			<label class="check" style="margin-bottom: 18px"><input type="checkbox" name="published" checked={!!data.week.published} /> Published (students can see this week)</label>
@@ -49,13 +50,13 @@
 				<ol class="list-plain items">
 					{#each data.items as item, idx}
 						<li>
-							<span class="kind {item.kind}">{item.kind === 'lesson' ? '📖' : '🛠️'}</span>
+							<span class="kind {item.kind}">{#if item.kind === 'lesson'}<Icon name="book-open" size={16} />{:else}<Icon name="hammer" size={16} />{/if}</span>
 							<a href="/admin/curriculum/item/{item.id}">{item.title}</a>
 							{#if item.submissions}<span class="small muted">{item.submissions} subs</span>{/if}
 							<form method="POST" action="?/moveItem" use:enhance class="mv">
 								<input type="hidden" name="id" value={item.id} />
-								<button name="dir" value="up" disabled={idx === 0} aria-label="Move up">↑</button>
-								<button name="dir" value="down" disabled={idx === data.items.length - 1} aria-label="Move down">↓</button>
+								<button name="dir" value="up" disabled={idx === 0} aria-label="Move up"><Icon name="arrow-up" size={14} /></button>
+								<button name="dir" value="down" disabled={idx === data.items.length - 1} aria-label="Move down"><Icon name="arrow-down" size={14} /></button>
 							</form>
 						</li>
 					{:else}

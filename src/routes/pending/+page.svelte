@@ -1,11 +1,12 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	let { data } = $props();
 </script>
 
 <svelte:head><title>Almost there</title></svelte:head>
 
 <div class="container narrow page" style="text-align: center">
-	<div style="font-size: 3.5rem">🌅</div>
+	<div style="color: var(--sun-ink)"><Icon name="sunrise" size={56} /></div>
 	{#if data.status === 'suspended'}
 		<h1>Your account is paused</h1>
 		<p class="muted">Please get in touch with your instructor if you think this is a mistake.</p>

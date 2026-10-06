@@ -21,7 +21,7 @@
 	</nav>
 
 	{#if data.rows.length === 0}
-		<p class="empty">{data.status === 'submitted' ? 'Nothing waiting for review. ☕' : 'Nothing here yet.'}</p>
+		<p class="empty">{data.status === 'submitted' ? 'Nothing waiting for review.' : 'Nothing here yet.'}</p>
 	{:else}
 		<div class="card" style="padding: 4px 8px">
 			<div class="table-wrap" style="margin: 0">

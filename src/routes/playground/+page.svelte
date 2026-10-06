@@ -1,8 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	const STARTER = {
-		html: '<h1>Hello, Firstlight!</h1>\n<p>Edit the HTML, CSS and JavaScript — the preview updates as you type.</p>\n<button id="btn">Click me</button>',
+		html: '<h1>Hello, Firstlight!</h1>\n<p>Edit the HTML, CSS and JavaScript. The preview updates as you type.</p>\n<button id="btn">Click me</button>',
 		css: 'body {\n  font-family: system-ui, sans-serif;\n  padding: 24px;\n  line-height: 1.5;\n}\n\nh1 {\n  color: #2458d8;\n}\n\nbutton {\n  padding: 8px 16px;\n  border-radius: 8px;\n  border: 0;\n  background: #2458d8;\n  color: white;\n  cursor: pointer;\n}',
 		js: 'const button = document.querySelector("#btn");\nlet clicks = 0;\n\nbutton.addEventListener("click", () => {\n  clicks = clicks + 1;\n  console.log("You clicked", clicks, "times");\n});\n\nconsole.log("Hello from JavaScript!");'
 	};
@@ -10,11 +11,16 @@
 	let code = $state({ ...STARTER });
 	let tab = $state('html');
 	let srcdoc = $state('');
+	let blobUrl = $state('');
+	let frameKey = $state(0); // a new number means a brand new preview frame
+	let previewFailed = $state(false);
 	let logs = $state([]);
 	let auto = $state(true);
-	let fromLesson = $state(false);
 	let timer;
+	let readyTimer;
+	let ready = false;
 	let runId = 0;
+	let fromLesson = false;
 
 	const consoleShim = (id) => `<script>
 (function(){
@@ -28,6 +34,7 @@
       return String(a);
     } catch (e) { return String(a); }
   }) }, '*');
+  send('__ready', []);
   ['log','info','warn','error','table'].forEach(k => {
     const orig = console[k];
     console[k] = (...args) => { send(k, args); orig && orig.apply(console, args); };
@@ -38,11 +45,30 @@
 })();
 <\/script>`;
 
+	/** Show the code in a fresh preview frame. */
 	function build() {
 		runId++;
 		logs = [];
+		ready = false;
+		previewFailed = false;
+		clearTimeout(readyTimer);
+		if (blobUrl) {
+			URL.revokeObjectURL(blobUrl);
+			blobUrl = '';
+		}
 		const safeJs = code.js.replace(/<\/script/gi, '<\\/script');
 		srcdoc = `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${consoleShim(runId)}<style>${code.css}</style></head><body>${code.html}<script>try{\n${safeJs}\n}catch(e){console.error(e)}<\/script></body></html>`;
+		frameKey++;
+
+		// If the frame has not said hello after a moment, try again another way (a blob address).
+		readyTimer = setTimeout(() => {
+			if (ready) return;
+			blobUrl = URL.createObjectURL(new Blob([srcdoc], { type: 'text/html' }));
+			frameKey++;
+			readyTimer = setTimeout(() => {
+				if (!ready) previewFailed = true;
+			}, 1500);
+		}, 1500);
 	}
 
 	function scheduleRun() {
@@ -54,7 +80,9 @@
 
 	function save() {
 		try {
-			localStorage.setItem('fl-playground', JSON.stringify(code));
+			// Each tab remembers its own work. Only the normal playground is shared between visits.
+			sessionStorage.setItem('fl-playground-tab', JSON.stringify(code));
+			if (!fromLesson) localStorage.setItem('fl-playground', JSON.stringify(code));
 		} catch {}
 	}
 
@@ -97,25 +125,44 @@
 
 	onMount(() => {
 		try {
-			const incoming = sessionStorage.getItem('fl-playground-load');
-			if (incoming) {
-				sessionStorage.removeItem('fl-playground-load');
-				const p = JSON.parse(incoming);
+			const params = new URLSearchParams(location.search);
+			const loadId = params.get('load');
+			const raw = loadId ? localStorage.getItem('fl-load:' + loadId) : null;
+			const tabSaved = sessionStorage.getItem('fl-playground-tab');
+			if (raw) {
+				// A snippet sent from a lesson ("Try it"). Use it once, then remember it for this tab only.
+				localStorage.removeItem('fl-load:' + loadId);
+				const p = JSON.parse(raw);
 				code = { html: p.html || '', css: p.css || '', js: p.js || '' };
 				tab = p.js ? 'js' : p.css ? 'css' : 'html';
 				fromLesson = true;
+				sessionStorage.setItem('fl-playground-tab', JSON.stringify(code));
+				sessionStorage.setItem('fl-playground-from-lesson', '1');
+				history.replaceState(null, '', '/playground');
+			} else if (tabSaved) {
+				code = { ...STARTER, ...JSON.parse(tabSaved) };
+				fromLesson = sessionStorage.getItem('fl-playground-from-lesson') === '1';
 			} else {
 				const saved = JSON.parse(localStorage.getItem('fl-playground') || 'null');
-				if (saved) code = saved;
+				if (saved) code = { ...STARTER, ...saved };
 			}
 		} catch {}
 		build();
 		const onMessage = (e) => {
 			if (!e.data || e.data.__fl !== runId) return;
+			if (e.data.type === '__ready') {
+				ready = true;
+				clearTimeout(readyTimer);
+				return;
+			}
 			logs = [...logs, { type: e.data.type, text: e.data.args.join(' ') }].slice(-200);
 		};
 		window.addEventListener('message', onMessage);
-		return () => window.removeEventListener('message', onMessage);
+		return () => {
+			window.removeEventListener('message', onMessage);
+			clearTimeout(timer);
+			clearTimeout(readyTimer);
+		};
 	});
 
 	const tabs = [
@@ -130,15 +177,12 @@
 <div class="pg">
 	<div class="toolbar">
 		<div class="row">
-			<strong class="title">🧪 Playground</strong>
-			{#if fromLesson}
-				<button class="link-btn small" onclick={() => history.back()}>← Back to lesson</button>
-			{/if}
+			<strong class="title"><Icon name="flask" size={20} /> Playground</strong>
 		</div>
 		<div class="row">
 			<label class="check small"><input type="checkbox" bind:checked={auto} /> Auto-run</label>
-			<button class="btn btn-sm btn-sun" onclick={build} title="Ctrl/Cmd + Enter">▶ Run</button>
-			<button class="btn btn-sm btn-ghost" onclick={download}>Download .html</button>
+			<button class="btn btn-sm btn-sun" onclick={build} title="Ctrl/Cmd + Enter"><Icon name="play" size={14} /> Run</button>
+			<button class="btn btn-sm btn-ghost" onclick={download}><Icon name="download" size={14} /> Download .html</button>
 			<button class="btn btn-sm btn-ghost" onclick={reset}>{confirmReset ? 'Click again to reset' : 'Reset'}</button>
 		</div>
 	</div>
@@ -169,7 +213,19 @@
 		<section class="output">
 			<div class="preview-wrap">
 				<span class="lbl">Preview</span>
-				<iframe title="Preview" sandbox="allow-scripts allow-modals allow-forms" {srcdoc}></iframe>
+				{#key frameKey}
+					{#if blobUrl}
+						<iframe title="Preview" sandbox="allow-scripts allow-modals allow-forms" src={blobUrl}></iframe>
+					{:else}
+						<iframe title="Preview" sandbox="allow-scripts allow-modals allow-forms" {srcdoc}></iframe>
+					{/if}
+				{/key}
+				{#if previewFailed}
+					<div class="failed">
+						<p><strong>The preview could not start.</strong></p>
+						<p class="small">Press <strong>Run</strong> to try again. If it still fails, reload the page. Browser extensions that change web pages can sometimes block the preview, so try turning them off for this site.</p>
+					</div>
+				{/if}
 			</div>
 			<div class="console">
 				<div class="spread lbl-row">
@@ -296,6 +352,16 @@
 	}
 	.logs li.error { color: var(--plum); background: var(--plum-soft); }
 	.logs li.warn { background: var(--gold-soft); }
+	.failed {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-content: center;
+		text-align: center;
+		background: #fff;
+		color: #1f2328;
+		padding: 24px;
+	}
 	.hint-line { color: var(--ink-3); border: 0 !important; }
 	@media (max-width: 860px) {
 		.pg { height: auto; }

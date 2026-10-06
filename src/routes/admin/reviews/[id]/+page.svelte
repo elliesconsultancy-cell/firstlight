@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { enhance } from '$app/forms';
 	import Prose from '$lib/components/Prose.svelte';
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
@@ -12,7 +13,7 @@
 	});
 
 	const quick = [
-		'Great work — this meets all the requirements. 🎉',
+		'Great work. This meets all the requirements.',
 		'Nice job! One small thing to try next time: ',
 		'You’re close! Please fix the following and resubmit:\n- '
 	];
@@ -23,7 +24,7 @@
 <svelte:head><title>Review: {data.sub.title}</title></svelte:head>
 
 <div class="container page">
-	<a class="small" href="/admin/reviews">← All reviews</a>
+	<a class="small" href="/admin/reviews"><Icon name="arrow-left" size={13} /> All reviews</a>
 	<div class="spread head">
 		<div>
 			<span class="eyebrow">Week {data.sub.week} · {data.sub.week_title}</span>
@@ -44,14 +45,14 @@
 			<section class="card work">
 				<h2>Their work</h2>
 				{#if data.sub.link}
-					<p>🔗 <a href={data.sub.link} target="_blank" rel="noopener noreferrer">{data.sub.link}</a></p>
+					<p><Icon name="link" size={14} /> <a href={data.sub.link} target="_blank" rel="noopener noreferrer">{data.sub.link}</a></p>
 				{/if}
 				{#if data.sub.answer}
 					<div class="answer">{@html data.versions.find((v) => v.id === data.sub.id)?.answerHtml}</div>
 				{/if}
 				{#each data.versions.find((v) => v.id === data.sub.id)?.files ?? [] as f}
 					<div class="file">
-						<a href="/files/{f.id}" target="_blank">📄 {f.original_name}</a>
+						<a href="/files/{f.id}" target="_blank"><Icon name="file-text" size={14} /> {f.original_name}</a>
 						<span class="small muted">{fmtSize(f.size)}</span>
 						{#if isImage(f)}<img src="/files/{f.id}" alt={f.original_name} loading="lazy" />{/if}
 					</div>
@@ -104,7 +105,7 @@
 				</div>
 				<label class="check small" style="margin-bottom: 14px"><input type="checkbox" name="next" value="1" checked /> Go to the next submission after saving</label>
 				<div class="row">
-					<button class="btn btn-sage" name="decision" value="approved">✓ Approve</button>
+					<button class="btn btn-sage" name="decision" value="approved"><Icon name="check" size={16} /> Approve</button>
 					<button class="btn btn-plum" name="decision" value="changes_requested">Request changes</button>
 				</div>
 			</form>

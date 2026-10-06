@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { enhance } from '$app/forms';
 	import Ring from '$lib/components/Ring.svelte';
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
@@ -12,7 +13,7 @@
 <svelte:head><title>{data.student.name}</title></svelte:head>
 
 <div class="container page">
-	<a class="small" href="/admin/students">← All students</a>
+	<a class="small" href="/admin/students"><Icon name="arrow-left" size={13} /> All students</a>
 	<div class="profile">
 		<div>
 			<h1 style="margin: 10px 0 4px">{data.student.name}</h1>
@@ -42,14 +43,14 @@
 		{#each data.weeks as w}
 			<section class="card wk" class:draft={!w.published}>
 				<div class="spread">
-					<h3 style="margin: 0">Week {w.number}: {w.title} {#if !w.published}<span class="badge badge-draft">Not published</span>{/if}</h3>
+					<h3 style="margin: 0">{w.course_title}, week {w.number}: {w.title} {#if !w.published}<span class="badge badge-draft">Not published</span>{/if}</h3>
 					<span class="small muted">{w.percent}%</span>
 				</div>
 				<ul class="list-plain items">
 					{#each w.items as i}
 						{@const sub = data.latestByItem[i.id]}
 						<li>
-							<span class="mk" class:ok={i.done}>{i.done ? '✓' : i.kind === 'assignment' ? '★' : '·'}</span>
+							<span class="mk" class:ok={i.done}>{#if i.done}<Icon name="check" size={12} />{:else if i.kind === 'assignment'}<Icon name="star" size={11} />{:else}·{/if}</span>
 							<span class="t">{i.title}</span>
 							{#if i.kind === 'lesson'}
 								<span class="small muted">{i.completed_at ? 'read ' + ago(i.completed_at) : 'not read'}</span>

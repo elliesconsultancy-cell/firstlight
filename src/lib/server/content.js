@@ -1,4 +1,4 @@
-// Turns the markdown curriculum in /content/weeks into plain objects.
+// Turns the markdown curriculum in /content/courses into plain objects.
 // The files are bundled into the server build (see db.js), so this works on
 // hosts without a persistent filesystem. It receives a map of
 // { 'weeks/<folder>/<file>.md': rawText }.
@@ -20,18 +20,46 @@ export function parseFrontmatter(raw) {
 	return { data, body: text.slice(match[0].length).trim() };
 }
 
-/** Build the curriculum (weeks sorted by numeric folder prefix) from a map of file contents. */
-export function loadCurriculum(files) {
-	const folders = new Map();
-	for (const [p, text] of Object.entries(files)) {
-		const m = p.replace(/\\/g, '/').match(/weeks\/([^/]+)\/([^/]+\.md)$/);
+/**
+ * Build every course from a map of file contents.
+ * Expected paths: courses/<course>/course.md and courses/<course>/weeks/<NN-week>/<file>.md
+ */
+export function loadCourses(files) {
+	const courses = new Map();
+	const get = (slug) => {
+		if (!courses.has(slug)) courses.set(slug, { slug, meta: {}, folders: new Map() });
+		return courses.get(slug);
+	};
+	for (const [path, text] of Object.entries(files)) {
+		const p = path.replace(/\\/g, '/');
+		let m = p.match(/courses\/([^/]+)\/course\.md$/);
+		if (m) {
+			get(m[1]).meta = parseFrontmatter(text).data;
+			continue;
+		}
+		m = p.match(/courses\/([^/]+)\/weeks\/([^/]+)\/([^/]+\.md)$/);
 		if (!m) continue;
-		if (!folders.has(m[1])) folders.set(m[1], {});
-		folders.get(m[1])[m[2]] = text;
+		const c = get(m[1]);
+		if (!c.folders.has(m[2])) c.folders.set(m[2], {});
+		c.folders.get(m[2])[m[3]] = text;
 	}
 
-	return [...folders.keys()].sort().map((folder, index) => {
-		const dirFiles = folders.get(folder);
+	return [...courses.values()]
+		.map((c) => ({
+			slug: c.slug,
+			title: c.meta.title || c.slug,
+			summary: c.meta.summary || '',
+			level: c.meta.level || '',
+			order: Number(c.meta.order) || 99,
+			weeks: buildWeeks(c.folders)
+		}))
+		.filter((c) => c.weeks.length > 0)
+		.sort((a, b) => a.order - b.order);
+}
+
+function buildWeeks(folderMap) {
+	return [...folderMap.keys()].sort().map((folder, index) => {
+		const dirFiles = folderMap.get(folder);
 		const slug = folder.replace(/^\d+-/, '');
 		const week = dirFiles['week.md'] ? parseFrontmatter(dirFiles['week.md']) : { data: {}, body: '' };
 

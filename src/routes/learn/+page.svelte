@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import Ring from '$lib/components/Ring.svelte';
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
 	let { data } = $props();
@@ -12,7 +13,7 @@
 	<section class="welcome">
 		<div>
 			<span class="eyebrow">{greeting}</span>
-			<h1>Hi {data.user.name.split(' ')[0]} 👋</h1>
+			<h1>Hi {data.user.name.split(' ')[0]}</h1>
 			<p class="muted" style="max-width: 60ch">{data.welcome}</p>
 		</div>
 		<div class="card overall">
@@ -29,46 +30,60 @@
 	{#if data.next}
 		<a class="continue" href="/learn/{data.next.weekSlug}/{data.next.item.slug}">
 			<div>
-				<span class="eyebrow" style="color: inherit; opacity: 0.85">Up next: week {data.next.weekNumber}</span>
+				<span class="eyebrow" style="color: inherit; opacity: 0.85">Up next{data.courses.length > 1 ? ` in ${data.next.courseTitle}` : ''}: week {data.next.weekNumber}</span>
 				<strong>{data.next.item.title}</strong>
 				<span class="small">
-					{data.next.item.kind === 'lesson' ? `📖 Lesson · about ${data.next.item.minutes} min` : '🛠️ Assignment'}
+					{#if data.next.item.kind === 'lesson'}<Icon name="book-open" size={14} /> Lesson · about {data.next.item.minutes} min{:else}<Icon name="hammer" size={14} /> Assignment{/if}
 					{#if data.next.item.status === 'changes_requested'} · changes requested{/if}
 				</span>
 			</div>
-			<span class="go">Continue →</span>
+			<span class="go">Continue <Icon name="arrow-right" size={16} /></span>
 		</a>
 	{:else if data.total > 0}
-		<div class="alert alert-ok">🎉 You’re all caught up! New weeks will appear here when your instructor releases them.</div>
+		<div class="alert alert-ok"><Icon name="party-popper" size={16} /> You’re all caught up! New weeks will appear here when your instructor releases them.</div>
 	{/if}
 
 	<div class="layout">
 		<section>
-			<h2>Your weeks</h2>
-			{#if data.weeks.length === 0}
-				<p class="empty">No weeks have been released yet. Check back soon!</p>
-			{/if}
-			<ol class="weeks list-plain">
-				{#each data.weeks as week}
-					<li>
-						<a class="week" href="/learn/{week.slug}" class:complete={week.percent === 100}>
-							<span class="wnum">{String(week.number).padStart(2, '0')}</span>
-							<div class="wbody">
-								<strong>{week.title}</strong>
-								<span class="muted small">{week.summary}</span>
-								<div class="progress" style="margin-top: 10px"><span style="width: {week.percent}%"></span></div>
-								<span class="small muted">
-									{week.lessonsDone}/{week.lessons} lessons · {week.assignmentsApproved}/{week.assignments} assignments approved
-								</span>
+			{#each data.courses as course}
+				<div class="course">
+					{#if data.courses.length > 1}
+						<div class="course-head">
+							<div>
+								<h2>{course.title}</h2>
+								{#if course.summary}<p class="muted small">{course.summary}</p>{/if}
 							</div>
-							{#if week.percent === 100}<span class="tick" aria-label="Complete">✓</span>{/if}
-						</a>
-					</li>
-				{/each}
-				{#if data.lockedWeeks > 0}
-					<li class="locked">🔒 {data.lockedWeeks} more {data.lockedWeeks === 1 ? 'week' : 'weeks'} coming soon</li>
-				{/if}
-			</ol>
+							<span class="small muted" style="white-space: nowrap">{course.done}/{course.total} steps</span>
+						</div>
+					{:else}
+						<h2>Your weeks</h2>
+					{/if}
+					{#if course.weeks.length === 0}
+						<p class="empty">No weeks have been released yet. Check back soon!</p>
+					{/if}
+					<ol class="weeks list-plain">
+						{#each course.weeks as week}
+							<li>
+								<a class="week" href="/learn/{week.slug}" class:complete={week.percent === 100}>
+									<span class="wnum">{String(week.number).padStart(2, '0')}</span>
+									<div class="wbody">
+										<strong>{week.title}</strong>
+										<span class="muted small">{week.summary}</span>
+										<div class="progress" style="margin-top: 10px"><span style="width: {week.percent}%"></span></div>
+										<span class="small muted">
+											{week.lessonsDone}/{week.lessons} lessons · {week.assignmentsApproved}/{week.assignments} assignments approved
+										</span>
+									</div>
+									{#if week.percent === 100}<span class="tick" aria-label="Complete"><Icon name="check" size={16} /></span>{/if}
+								</a>
+							</li>
+						{/each}
+						{#if course.lockedWeeks > 0}
+							<li class="locked"><Icon name="lock" size={14} /> {course.lockedWeeks} more {course.lockedWeeks === 1 ? 'week' : 'weeks'} coming soon</li>
+						{/if}
+					</ol>
+				</div>
+			{/each}
 		</section>
 
 		<aside>
@@ -86,7 +101,7 @@
 				</div>
 			{/if}
 			<div class="card-flat" style="margin-top: 18px">
-				<strong>🧪 Playground</strong>
+				<strong><Icon name="flask" size={16} /> Playground</strong>
 				<p class="small muted" style="margin: 6px 0 10px">Experiment with HTML, CSS and JavaScript right in your browser.</p>
 				<a class="btn btn-sm btn-ghost" href="/playground">Open playground</a>
 			</div>
@@ -128,6 +143,9 @@
 		grid-template-columns: 1fr 320px;
 		gap: 32px;
 	}
+	.course + .course { margin-top: 36px; }
+	.course-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 4px; }
+	.course-head h2 { margin-bottom: 2px; }
 	.weeks { display: grid; gap: 12px; }
 	.week {
 		display: flex;

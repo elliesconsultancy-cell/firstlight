@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { enhance } from '$app/forms';
 	import { marked } from 'marked';
 	let { data, form } = $props();
@@ -12,7 +13,7 @@
 <svelte:head><title>Edit: {data.item.title}</title></svelte:head>
 
 <div class="container page wide">
-	<a class="small" href="/admin/curriculum/{data.item.week_id}">← Week {data.item.week_pos}: {data.item.week_title}</a>
+	<a class="small" href="/admin/curriculum/{data.item.week_id}"><Icon name="arrow-left" size={13} /> Week {data.item.week_pos}: {data.item.week_title}</a>
 	<form method="POST" action="?/save" use:enhance={() => ({ update }) => update({ reset: false })}>
 		<div class="spread" style="margin: 10px 0 18px">
 			<h1 style="margin: 0">{data.item.title}</h1>
@@ -30,7 +31,7 @@
 			<div class="field">
 				<label for="week_id">Week</label>
 				<select id="week_id" name="week_id">
-					{#each data.weeks as w}<option value={w.id} selected={w.id === data.item.week_id}>Week {w.position}: {w.title}</option>{/each}
+					{#each data.weeks as w}<option value={w.id} selected={w.id === data.item.week_id}>{w.course_title}: Week {w.position}: {w.title}</option>{/each}
 				</select>
 			</div>
 			<div class="field">

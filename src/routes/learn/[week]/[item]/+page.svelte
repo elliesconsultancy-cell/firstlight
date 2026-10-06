@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { enhance } from '$app/forms';
 	import Prose from '$lib/components/Prose.svelte';
 	import StatusBadge from '$lib/components/StatusBadge.svelte';
@@ -62,18 +63,18 @@
 			{#if data.completed}
 				<input type="hidden" name="undo" value="1" />
 				<div>
-					<strong>✓ You’ve finished this lesson.</strong>
+					<strong><Icon name="circle-check" size={16} /> You’ve finished this lesson.</strong>
 					<button class="link-btn small" type="submit" disabled={busy}>Mark as not done</button>
 				</div>
 				{#if data.next}
-					<a class="btn" href="/learn/{data.week.slug}/{data.next.slug}">Next: {data.next.title} →</a>
+					<a class="btn" href="/learn/{data.week.slug}/{data.next.slug}">Next: {data.next.title} <Icon name="arrow-right" size={16} /></a>
 				{/if}
 			{:else}
 				<div>
 					<strong>Finished reading?</strong>
 					<span class="small muted">Tick it off so you and your instructor can see your progress.</span>
 				</div>
-				<button class="btn btn-sun" type="submit" disabled={busy}>Mark as done ✓</button>
+				<button class="btn btn-sun" type="submit" disabled={busy}>Mark as done <Icon name="check" size={16} /></button>
 			{/if}
 		</form>
 	{:else}
@@ -81,13 +82,13 @@
 			<h2>Your work</h2>
 
 			{#if form?.submitted}
-				<p class="alert alert-ok" role="status">🎉 Submitted! Your instructor will review it and leave feedback.</p>
+				<p class="alert alert-ok" role="status"><Icon name="party-popper" size={16} /> Submitted! Your instructor will review it and leave feedback.</p>
 			{/if}
 
 			{#if latest?.status === 'approved'}
-				<p class="alert alert-ok">✅ Approved — great work! You can still send an updated version if you like.</p>
+				<p class="alert alert-ok"><Icon name="circle-check" size={16} /> Approved — great work! You can still send an updated version if you like.</p>
 			{:else if latest?.status === 'changes_requested'}
-				<p class="alert alert-error">✏️ Your instructor asked for some changes. Read the feedback below, then send a new version.</p>
+				<p class="alert alert-error"><Icon name="pencil" size={16} /> Your instructor asked for some changes. Read the feedback below, then send a new version.</p>
 			{:else if latest?.status === 'submitted' && !form?.submitted}
 				<p class="alert alert-info">⏳ Submitted and waiting for review.</p>
 			{/if}
@@ -131,7 +132,7 @@
 								accept=".html,.htm,.css,.js,.json,.md,.txt,.pdf,.png,.jpg,.jpeg,.gif,.webp,.svg,.zip"
 								onchange={(e) => (picked = [...e.currentTarget.files].map((f) => f.name))}
 							/>
-							<span>📎 {picked.length ? picked.join(', ') : 'Choose files or drop them here'}</span>
+							<span><Icon name="paperclip" size={16} /> {picked.length ? picked.join(', ') : 'Choose files or drop them here'}</span>
 							<span class="hint">Up to 5 files, 4 MB in total. Code, images, PDF or a .zip of your project folder.</span>
 						</label>
 					</div>
@@ -158,11 +159,11 @@
 								<span class="row small muted">{fmtDate(s.created_at)} <StatusBadge status={s.status} /></span>
 							</div>
 							{#if s.answer}<div class="answer">{@html s.answerHtml}</div>{/if}
-							{#if s.link}<p class="small">🔗 <a href={s.link} target="_blank" rel="noopener noreferrer">{s.link}</a></p>{/if}
+							{#if s.link}<p class="small"><Icon name="link" size={14} /> <a href={s.link} target="_blank" rel="noopener noreferrer">{s.link}</a></p>{/if}
 							{#if s.files.length}
 								<ul class="files list-plain">
 									{#each s.files as f}
-										<li><a href="/files/{f.id}">📄 {f.original_name}</a> <span class="muted small">{fmtSize(f.size)}</span></li>
+										<li><a href="/files/{f.id}"><Icon name="file-text" size={14} /> {f.original_name}</a> <span class="muted small">{fmtSize(f.size)}</span></li>
 									{/each}
 								</ul>
 							{/if}
@@ -181,14 +182,14 @@
 
 	<nav class="pager" aria-label="Lesson navigation">
 		{#if data.prev}
-			<a href="/learn/{data.week.slug}/{data.prev.slug}"><span class="small muted">← Previous</span>{data.prev.title}</a>
+			<a href="/learn/{data.week.slug}/{data.prev.slug}"><span class="small muted"><Icon name="arrow-left" size={13} /> Previous</span>{data.prev.title}</a>
 		{:else}
-			<a href="/learn/{data.week.slug}"><span class="small muted">← Back to</span>Week overview</a>
+			<a href="/learn/{data.week.slug}"><span class="small muted"><Icon name="arrow-left" size={13} /> Back to</span>Week overview</a>
 		{/if}
 		{#if data.next}
-			<a class="right" href="/learn/{data.week.slug}/{data.next.slug}"><span class="small muted">Next →</span>{data.next.title}</a>
+			<a class="right" href="/learn/{data.week.slug}/{data.next.slug}"><span class="small muted">Next <Icon name="arrow-right" size={13} /></span>{data.next.title}</a>
 		{:else if data.nextWeek}
-			<a class="right" href="/learn/{data.nextWeek.slug}"><span class="small muted">Next week →</span>{data.nextWeek.title}</a>
+			<a class="right" href="/learn/{data.nextWeek.slug}"><span class="small muted">Next week <Icon name="arrow-right" size={13} /></span>{data.nextWeek.title}</a>
 		{/if}
 	</nav>
 </article>

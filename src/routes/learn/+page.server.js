@@ -1,20 +1,40 @@
 import db, { getSettings } from '$lib/server/db.js';
-import { weeksWithProgress } from '$lib/server/queries.js';
+import { getCourses, weeksWithProgress } from '$lib/server/queries.js';
 
 export async function load({ locals }) {
 	const user = locals.user;
-	const weeks = await weeksWithProgress(user.id, false);
-	const total = weeks.reduce((n, w) => n + w.total, 0);
-	const done = weeks.reduce((n, w) => n + w.done, 0);
+	const [weeks, allCourses, weekTotals] = await Promise.all([
+		weeksWithProgress(user.id, false),
+		getCourses(),
+		db.prepare('SELECT course_id, COUNT(*) AS n FROM weeks GROUP BY course_id').all()
+	]);
+	const weeksInCourse = Object.fromEntries(weekTotals.map((r) => [r.course_id, r.n]));
 
-	let next = null;
-	for (const w of weeks) {
-		const item = w.items.find((i) => !i.done && !(i.kind === 'assignment' && i.status === 'submitted'));
-		if (item) {
-			next = { week: w, item };
-			break;
-		}
-	}
+	// One block per course, with its own progress.
+	const courses = allCourses.map((c) => {
+		const own = weeks.filter((w) => w.course_id === c.id);
+		const total = own.reduce((n, w) => n + w.total, 0);
+		const done = own.reduce((n, w) => n + w.done, 0);
+		return {
+			...c,
+			weeks: own.map(({ items, ...w }) => w),
+			items: own.flatMap((w) => w.items.map((i) => ({ ...i, week: w }))),
+			total,
+			done,
+			percent: total ? Math.round((done / total) * 100) : 0,
+			lockedWeeks: (weeksInCourse[c.id] ?? 0) - own.length
+		};
+	});
+
+	const total = courses.reduce((n, c) => n + c.total, 0);
+	const done = courses.reduce((n, c) => n + c.done, 0);
+
+	// "Up next": carry on with a course you have started, otherwise the first one with work to do.
+	const nextIn = (c) => c.items.find((i) => !i.done && !(i.kind === 'assignment' && i.status === 'submitted'));
+	const candidates = courses.filter((c) => nextIn(c));
+	const started = candidates.find((c) => c.done > 0);
+	const pick = started ?? candidates[0];
+	const nextItem = pick && nextIn(pick);
 
 	const feedback = await db
 		.prepare(
@@ -25,29 +45,29 @@ export async function load({ locals }) {
 		)
 		.all(user.id);
 
-	const awaiting = (await db
-		.prepare(
-			`SELECT COUNT(*) AS n FROM submissions s WHERE s.user_id = ? AND s.status = 'submitted'
-			 AND s.id = (SELECT MAX(id) FROM submissions WHERE user_id = s.user_id AND item_id = s.item_id)`
-		)
-		.get(user.id)).n;
-
-	const totalWeeks = (await db.prepare('SELECT COUNT(*) AS n FROM weeks').get()).n;
+	const awaiting = (
+		await db
+			.prepare(
+				`SELECT COUNT(*) AS n FROM submissions s WHERE s.user_id = ? AND s.status = 'submitted'
+				 AND s.id = (SELECT MAX(id) FROM submissions WHERE user_id = s.user_id AND item_id = s.item_id)`
+			)
+			.get(user.id)
+	).n;
 
 	return {
-		weeks: weeks.map(({ items, ...w }) => w),
+		courses: courses.map(({ items, ...c }) => c),
 		total,
 		done,
 		percent: total ? Math.round((done / total) * 100) : 0,
-		next: next && {
-			weekSlug: next.week.slug,
-			weekNumber: next.week.number,
-			weekTitle: next.week.title,
-			item: next.item
+		next: nextItem && {
+			courseTitle: pick.title,
+			weekSlug: nextItem.week.slug,
+			weekNumber: nextItem.week.number,
+			weekTitle: nextItem.week.title,
+			item: nextItem
 		},
 		feedback,
 		awaiting,
-		lockedWeeks: totalWeeks - weeks.length,
 		welcome: (await getSettings()).welcome_message
 	};
 }

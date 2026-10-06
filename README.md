@@ -24,7 +24,11 @@ Built with **SvelteKit 2 + Svelte 5** and **SQLite**. There are no external serv
 - **Curriculum:** publish or unpublish weeks, reorder them, and add or edit weeks, lessons and assignments in a Markdown editor with live preview. Each week also has private **instructor notes** for session plans and reminders.
 - **Settings:** course name, tagline, welcome message, invite code, and whether new students need approval.
 
-**The course (13 weeks, in `content/weeks`)**
+**Courses (in `content/courses`)**
+
+There are two courses. Students see both on their Learn page, with separate progress for each.
+
+**1. Web development** (13 weeks)
 
 | Week | Topic |
 |---|---|
@@ -42,7 +46,9 @@ Built with **SvelteKit 2 + Svelte 5** and **SQLite**. There are no external serv
 | 11 | JSON, fetch & APIs |
 | 12 | Final project & showcase |
 
-The course has 51 lessons and 15 assignments, written for beginners and people learning in English as a second language. Parts are adapted from the CodeYourFuture curriculum (see Licence below).
+**2. Build with AI** (9 weeks): what AI is and how it works in plain words, tokens, context and prompts, calling an AI from code, building a chatbot, giving it your own information, tools and agents, safety, cost and testing, and putting an AI product online. Students build one project, BakeBuddy, step by step, then ship their own idea.
+
+Both courses are written for beginners and people learning in English as a second language, in a plain "Head First" style: a real-life picture first, short sentences, and things to try. Parts of the web course are adapted from the CodeYourFuture curriculum (see Licence below).
 
 ---
 
@@ -104,14 +110,17 @@ Keep it running with `pm2` or systemd, and put Caddy or Nginx in front for HTTPS
 ## Editing the course
 
 - **In the app (easiest):** go to Instructor → Curriculum, open a week, then click a lesson. You get Markdown on the left and a live preview on the right.
-- **In files:** edit the Markdown in `content/weeks/NN-topic/`, then click **Sync from content folder** on the Curriculum page (or run `npm run content:sync`). Syncing updates lessons by name and never touches student work.
+- **In files:** edit the Markdown in `content/courses/<course>/weeks/NN-topic/`, then click **Sync from content folder** on the Curriculum page (or run `npm run content:sync`). Syncing updates lessons by name and never touches student work.
 
-Markdown tips: code blocks tagged `html`, `css` or `js` get **Copy** and **Try it** buttons. Quotes starting with 💡, ⚠️ or 🧠 become coloured tip, warning and remember callouts. `- [ ]` lists become tickable checklists.
+Markdown tips: code blocks tagged `html`, `css` or `js` get **Copy** and **Try it** buttons (Try it opens the playground in a new tab). Use `node` for server-side JavaScript, which is highlighted but not runnable. Quotes starting with 💡, ⚠️ or 🧠 become coloured tip, warning and remember callouts with proper icons. `- [ ]` lists become tickable checklists.
+
+**Adding a course:** create `content/courses/<name>/course.md` (title, summary, order) and a `weeks/` folder next to it, following the existing courses. Restart the app and the new course is imported with its first two weeks published. Run `npm run content:check` to catch formatting mistakes. `docs/writing-guide.md` explains the writing style.
 
 ## Project structure
 
 ```
-content/weeks/        the curriculum in Markdown (week.md + lessons + assignments)
+content/courses/      one folder per course: course.md + weeks/NN-topic/ (week.md + lessons + assignments)
+docs/                 writing guide and the plan for the AI course
 src/lib/server/       database, auth, Markdown rendering, uploads
 src/routes/learn/     student area
 src/routes/admin/     instructor area
@@ -130,7 +139,7 @@ The app runs on Vercel with a hosted SQLite database ([Turso](https://turso.tech
 
 1. Import the GitHub repo in Vercel (the SvelteKit preset is detected automatically).
 2. In the project, open **Storage** and add **Turso** from the Marketplace. This sets `TURSO_DATABASE_URL` and `TURSO_AUTH_TOKEN` for you.
-3. Redeploy. The first visit creates the tables and imports `content/weeks`.
+3. Redeploy. The first visit creates the tables and imports `content/courses`.
 4. Open `/register` straight away: the first account created becomes the admin.
 
-Notes: student uploads are stored in the database and limited to 4 MB per submission (Vercel's request limit). To re-import the markdown after editing `content/weeks`, use Admin > Curriculum > Sync.
+Notes: student uploads are stored in the database and limited to 4 MB per submission (Vercel's request limit). To re-import the markdown after editing `content/courses`, use Admin > Curriculum > Sync.

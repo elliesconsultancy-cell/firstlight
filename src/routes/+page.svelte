@@ -1,27 +1,22 @@
 <script>
 	let { data } = $props();
-	const phases = [
-		{ range: [0, 2], color: 'var(--sky)' },
-		{ range: [3, 5], color: 'var(--violet)' },
-		{ range: [6, 9], color: 'var(--gold)' },
-		{ range: [10, 99], color: 'var(--sage)' }
-	];
-	const phaseFor = (i) => phases.find((p) => i >= p.range[0] && i <= p.range[1]) ?? phases[3];
+	const colours = ['var(--sky)', 'var(--violet)', 'var(--gold)', 'var(--sage)'];
+	// Colour a week by how far through its course it is, so each course shows four coloured stages.
+	const colourFor = (i, total) => colours[Math.min(3, Math.floor((i / Math.max(total, 1)) * 4))];
 </script>
 
 <svelte:head>
-	<title>{data.course.name}: learn to code, free</title>
+	<title>{data.course.name}: learn web development and AI, free</title>
 </svelte:head>
 
 <section class="hero">
 	<div class="container hero-grid">
 		<div>
-			<h1>Learn to build websites. Free.</h1>
+			<h1>Learn to build websites and AI apps.</h1>
 			<p class="lead">{data.course.tagline}</p>
 			<p class="muted copy">
-				A {data.weeks.length}-week guided course for complete beginners. Read short lessons, try the code
-				in your browser, and hand in a small project each week. Your instructor reviews your work and
-				gives you feedback.
+				Guided courses for complete beginners. Read short lessons, try the code in your browser, and
+				hand in a small project each week. Your instructor reviews your work and gives you feedback.
 			</p>
 			<div class="row cta">
 				<a class="btn big" href="/register">Sign up for free</a>
@@ -71,18 +66,24 @@
 </section>
 
 <section class="container map">
-	<h2>The course, week by week</h2>
-	<ol class="path">
-		{#each data.weeks as week, i}
-			<li style="--c: {phaseFor(i).color}">
-				<span class="wk">Week {i}</span>
-				<div>
-					<strong>{week.title}</strong>
-					<span class="muted small">{week.summary}</span>
-				</div>
-			</li>
-		{/each}
-	</ol>
+	<h2>Our courses</h2>
+	{#each data.courses as course}
+		<div class="course">
+			<h3>{course.title}</h3>
+			{#if course.summary}<p class="muted">{course.summary}</p>{/if}
+			<ol class="path">
+				{#each course.weeks as week, i}
+					<li style="--c: {colourFor(i, course.weeks.length)}">
+						<span class="wk">Week {week.position}</span>
+						<div>
+							<strong>{week.title}</strong>
+							<span class="muted small">{week.summary}</span>
+						</div>
+					</li>
+				{/each}
+			</ol>
+		</div>
+	{/each}
 </section>
 
 <style>
@@ -100,7 +101,7 @@
 		font-size: clamp(2.2rem, 5vw, 3.4rem);
 		line-height: 1.1;
 		letter-spacing: -0.03em;
-		max-width: 14ch;
+		max-width: 16ch;
 	}
 	.lead {
 		font-size: 1.2rem;
@@ -201,6 +202,8 @@
 	.map {
 		padding: 40px 20px 80px;
 	}
+	.course { margin-top: 32px; }
+	.course h3 { font-size: 1.25rem; margin-bottom: 4px; }
 	.path {
 		list-style: none;
 		padding: 0;

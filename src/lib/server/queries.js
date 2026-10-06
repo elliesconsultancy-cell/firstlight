@@ -1,12 +1,19 @@
 import db from './db.js';
 
 /** Weeks visible to this user with per-user progress numbers. */
+/** All courses in display order. */
+export async function getCourses() {
+	return db.prepare('SELECT id, slug, position, title, summary, level FROM courses ORDER BY position, id').all();
+}
+
 export async function weeksWithProgress(userId, includeDrafts = false) {
 	const weeks = await db
 		.prepare(
-			`SELECT w.id, w.slug, w.position, w.title, w.summary, w.published
-			 FROM weeks w ${includeDrafts ? '' : 'WHERE w.published = 1'}
-			 ORDER BY w.position, w.id`
+			`SELECT w.id, w.slug, w.position, w.title, w.summary, w.published, w.course_id,
+				c.title AS course_title, c.slug AS course_slug
+			 FROM weeks w JOIN courses c ON c.id = w.course_id
+			 ${includeDrafts ? '' : 'WHERE w.published = 1'}
+			 ORDER BY c.position, c.id, w.position, w.id`
 		)
 		.all();
 	const items = await itemsWithStatus(userId);

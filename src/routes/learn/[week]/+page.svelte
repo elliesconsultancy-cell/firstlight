@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import Prose from '$lib/components/Prose.svelte';
 	let { data } = $props();
 	const lessons = $derived(data.items.filter((i) => i.kind === 'lesson'));
@@ -14,19 +15,19 @@
 	<h1>{data.week.title}</h1>
 	<p class="lead">{data.week.summary}</p>
 	<div class="row meta">
-		<span>📖 {lessons.length} lessons · ~{minutes} min reading</span>
-		<span>🛠️ {assignments.length} {assignments.length === 1 ? 'assignment' : 'assignments'}</span>
+		<span><Icon name="book-open" size={15} /> {lessons.length} lessons · ~{minutes} min reading</span>
+		<span><Icon name="hammer" size={15} /> {assignments.length} {assignments.length === 1 ? 'assignment' : 'assignments'}</span>
 	</div>
 	{#if first}
 		<a class="btn btn-sun" href="/learn/{data.week.slug}/{first.slug}">
-			{data.items.some((i) => i.done) ? 'Continue' : 'Start the week'} →
+			{data.items.some((i) => i.done) ? 'Continue' : 'Start the week'} <Icon name="arrow-right" size={16} />
 		</a>
 	{/if}
 </header>
 
 {#if data.notesHtml}
 	<aside class="notes">
-		<strong>🔒 Instructor notes</strong> <span class="small muted">(only you can see this)</span>
+		<strong><Icon name="lock" size={15} /> Instructor notes</strong> <span class="small muted">(only you can see this)</span>
 		<Prose html={data.notesHtml} />
 	</aside>
 {/if}
@@ -34,8 +35,8 @@
 <Prose html={data.introHtml} />
 
 <div class="row" style="margin-top: 40px; justify-content: space-between">
-	{#if data.prevWeek}<a href="/learn/{data.prevWeek.slug}">← Week {data.prevWeek.position}: {data.prevWeek.title}</a>{:else}<span></span>{/if}
-	{#if data.nextWeek}<a href="/learn/{data.nextWeek.slug}">Week {data.nextWeek.position}: {data.nextWeek.title} →</a>{/if}
+	{#if data.prevWeek}<a href="/learn/{data.prevWeek.slug}"><Icon name="arrow-left" size={14} /> Week {data.prevWeek.position}: {data.prevWeek.title}</a>{:else}<span></span>{/if}
+	{#if data.nextWeek}<a href="/learn/{data.nextWeek.slug}">Week {data.nextWeek.position}: {data.nextWeek.title} <Icon name="arrow-right" size={14} /></a>{/if}
 </div>
 
 <style>

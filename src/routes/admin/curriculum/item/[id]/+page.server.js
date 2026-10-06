@@ -12,7 +12,11 @@ async function getItem(id) {
 
 export async function load({ params }) {
 	const item = await getItem(params.id);
-	const weeks = await db.prepare('SELECT id, title, position FROM weeks ORDER BY position').all();
+	const weeks = await db
+		.prepare(
+			'SELECT w.id, w.title, w.position, c.title AS course_title FROM weeks w JOIN courses c ON c.id = w.course_id ORDER BY c.position, c.id, w.position'
+		)
+		.all();
 	return { item, weeks };
 }
 

@@ -1,4 +1,5 @@
 <script>
+	import Icon from '$lib/components/Icon.svelte';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/state';
 	import { ago } from '$lib/time.js';
@@ -15,7 +16,7 @@
 <div class="container page">
 	{#if welcome}
 		<div class="card welcome">
-			<h2>🌅 Welcome, instructor!</h2>
+			<h2><Icon name="sunrise" size={22} /> Welcome, instructor!</h2>
 			<p>Your course is ready with {data.stats.weeks} weeks of lessons. Here’s how to get going:</p>
 			<ol>
 				<li><a href="/admin/curriculum">Review the curriculum</a> and publish the weeks you want students to see (weeks 0 and 1 are already published).</li>
@@ -40,7 +41,7 @@
 						navigator.clipboard?.writeText(signup);
 						copied = true;
 						setTimeout(() => (copied = false), 1500);
-					}}>{copied ? 'Copied ✓' : 'Copy'}</button
+					}}>{copied ? 'Copied' : 'Copy'}</button
 				>
 			</div>
 		</div>
@@ -91,7 +92,7 @@
 							<thead>
 								<tr>
 									<th>Student</th>
-									{#each data.weeks as w}<th title={w.title} class="c">W{w.position}</th>{/each}
+									{#each data.weeks as w}<th title="{w.course_title}: {w.title}" class="c">{w.label}</th>{/each}
 								</tr>
 							</thead>
 							<tbody>
@@ -112,9 +113,9 @@
 		</section>
 
 		<aside>
-			<div class="spread"><h2>To review</h2><a class="small" href="/admin/reviews">See all →</a></div>
+			<div class="spread"><h2>To review</h2><a class="small" href="/admin/reviews">See all <Icon name="arrow-right" size={13} /></a></div>
 			{#if data.queue.length === 0}
-				<p class="empty small">Nothing waiting. Nice! ☕</p>
+				<p class="empty small">Nothing waiting. Nice!</p>
 			{:else}
 				<div class="stack">
 					{#each data.queue as q}
@@ -130,7 +131,7 @@
 			<ul class="list-plain activity">
 				{#each data.activity as a}
 					<li>
-						<span>{a.what === 'read' ? '📖' : '📤'}</span>
+						<span>{#if a.what === 'read'}<Icon name="book-open" size={15} />{:else}<Icon name="upload" size={15} />{/if}</span>
 						<span><strong>{a.name}</strong> {a.what === 'read' ? 'finished' : 'submitted'} <em>{a.title}</em><br /><span class="small muted">{ago(a.at)}</span></span>
 					</li>
 				{:else}

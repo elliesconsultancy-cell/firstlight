@@ -1,28 +1,30 @@
 {
-  "name": "firstlight",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Firstlight — a free, beginner-friendly web development training platform",
-  "type": "module",
-  "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "node server.js",
-    "content:sync": "node scripts/sync-content.js"
-  },
-  "devDependencies": {
-    "@sveltejs/adapter-node": "^5.2.0",
-    "@sveltejs/adapter-vercel": "^6.3.4",
-    "@sveltejs/kit": "^2.20.0",
-    "@sveltejs/vite-plugin-svelte": "^5.0.0",
-    "svelte": "^5.25.0",
-    "vite": "^6.2.0"
-  },
-  "dependencies": {
-    "@libsql/client": "^0.18.0",
-    "highlight.js": "^11.11.0",
-    "marked": "^15.0.0",
-    "marked-highlight": "^2.2.0"
-  }
+	"name": "firstlight",
+	"version": "1.0.0",
+	"private": true,
+	"description": "Firstlight \u2014 a free, beginner-friendly web development training platform",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"start": "node server.js",
+		"content:sync": "node scripts/sync-content.js",
+		"content:check": "node scripts/check-content.js"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-node": "^5.2.0",
+		"@sveltejs/adapter-vercel": "^6.3.4",
+		"@sveltejs/kit": "^2.20.0",
+		"@sveltejs/vite-plugin-svelte": "^5.0.0",
+		"svelte": "^5.25.0",
+		"vite": "^6.2.0"
+	},
+	"dependencies": {
+		"@libsql/client": "^0.18.0",
+		"highlight.js": "^11.11.0",
+		"lucide-static": "^1.52.0",
+		"marked": "^15.0.0",
+		"marked-highlight": "^2.2.0"
+	}
 }
