@@ -164,3 +164,29 @@ You should see `Hello from Node!` in the terminal.
 - [MDN: What is JavaScript?](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 - [javascript.info: An Introduction to JavaScript](https://javascript.info/intro)
 - [MDN: console.log()](https://developer.mozilla.org/en-US/docs/Web/API/console/log_static)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can say what JavaScript does compared with HTML and CSS.
+- Learners can open the Chrome console and run `2 + 3`.
+- Learners can use `console.log` and write a `//` comment.
+
+### Purpose
+Every later lesson depends on seeing output. If learners can open the console and use `console.log`, they can check their own work from now on.
+
+### Things to teach
+1. **Skeleton, clothes, muscles.** Use the HTML, CSS and JavaScript table. Ask what each one would do on a shop's "Add to basket" button.
+2. **Open the console.** Do it live: right-click, Inspect, Console tab, type `2 + 3`. Show the Windows and Mac shortcuts. Mention the "allow pasting" warning and why it exists.
+3. **console.log.** Run the "My name is Ada" example. Ask what `7 * 52` will print before you run it. Point out that text needs quotes and numbers do not.
+4. **Where code runs.** Show the `<script>` example in an HTML page and where the message appears (the console, not the page). Node.js is optional, so do not spend long on it.
+
+### Check understanding
+- Ask: "Why does `console.log(Hello)` fail but `console.log("Hello")` works?" A good answer: without quotes JavaScript looks for a name it does not know. Quotes mean text.
+- Ask: "Name two places JavaScript can run." A good answer: the browser and Node.js.
+- Ask: "What does a line starting with `//` do?" A good answer: it is a comment and the computer ignores it.
+
+### Watch for
+- Learners mixing up Java and JavaScript. Say they are different languages.
+- Typos such as `console.Log` or a missing quote. Tell them to read the red error message together with you.

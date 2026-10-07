@@ -235,3 +235,30 @@ In the JS pane:
 - [Fetching data from the server (MDN)](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Network_requests)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can show loading, success and error states for a request.
+- Learners can use `try`, `catch` and `finally`.
+- Learners can render an array of fetched results using state and `render()`.
+
+### Purpose
+A blank page when something is slow or broken makes an app feel broken. Handling the unhappy paths is what separates a demo from an app people can use.
+
+### Things to teach
+1. **Three states.** Loading, success, error. Use the parcel tracking comparison.
+2. **The reusable pattern.** Walk through the country search. Show "Loading...", disable the button, throw friendly errors for 404 and other failures, then use `finally` to switch the button back on.
+3. **Friendly messages.** Compare "Error: 404" with "We couldn't find a country called Wakanda". Try Japan, Wakanda and an empty box.
+4. **See loading for real.** Open DevTools, go to the Network tab and choose Slow 4G. Also try Offline.
+5. **State and render again.** Use the `guinea` search. The fetch code sets the `countries` array and `render()` draws it.
+
+### Check understanding
+- Ask: "What does `finally` do?" A good answer: it runs at the end whether the request worked or not, so it is good for switching the button back on.
+- Ask: "Why disable the button while loading?" A good answer: it stops impatient users sending many requests.
+- Ask: "Where does the fetched array live?" A good answer: in the `countries` state variable, and `render()` draws it.
+
+### Watch for
+- Error messages that show raw codes or technical text. Ask "what would a stranger understand?"
+- A loading message that is never cleared after an error. Check that every path ends in a clear page state.

@@ -123,3 +123,32 @@ Please include a link **or** a file, plus the written reflection.
 - Make a "receipt" for Exercise 2 that lines up nicely using the `padEnd` string method.
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can solve eight small problems with variables, operators and strings.
+- Learners can choose `const` or `let` and use clear camelCase names.
+- Learners can write a short reflection on what they found hard.
+
+### Purpose
+This is practice of the whole week in small steps. It shows who can run code and read an error on their own.
+
+### Things to do
+1. **Launch it.** Make sure everyone has a place to run code: the playground, CodePen, or VS Code with Node. Copy the starter code into `warm-ups.js` or the editor.
+2. **Demonstrate one exercise.** Do Exercise 1 live with a template literal. Show that the values live in variables, not typed inside `console.log`.
+3. **Model getting unstuck.** Add a `console.log` after each line of Exercise 2 to see what is really in each variable. This is "playing computer".
+4. **Remind them about submitting.** They need a link or a file, plus the written reflection.
+
+### What good work looks like
+- All 8 exercises are in one file, in order, each with a comment like `// Exercise 1: Greeting`.
+- Values are in variables, with `const` by default and `let` only for Exercise 8.
+- Names are camelCase and describe what they hold.
+- At least three exercises use backtick template literals.
+- The file runs top to bottom with no errors, and the reflection is about 100 to 200 words.
+
+### Watch for
+- Money showing too many decimals. Remind them of `.toFixed(2)`.
+- Exercise 3 and 5 wrong capitals or spaces. Suggest fixing one name at a time.
+- Typing numbers straight into `console.log` instead of using variables.

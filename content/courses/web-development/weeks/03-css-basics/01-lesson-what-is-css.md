@@ -203,3 +203,30 @@ Then experiment:
 - [MDN: The link element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can name the selector, property and value in a CSS rule.
+- Learners can link `styles.css` to an HTML page with `<link>` inside `<head>`.
+- Learners can say why an external stylesheet beats inline styles and `<style>`.
+
+### Purpose
+Every site they build from now on needs a stylesheet. Getting the link right is the first hurdle, and many learners get stuck on it.
+
+### Things to teach
+1. **HTML is what, CSS is how it looks.** Use the cake and icing idea. Show that changing only `styles.css` changes the whole look.
+2. **The parts of a rule.** Write the `h1 { color: darkgreen; font-size: 40px; }` rule on screen. Point to selector, property, value and the semicolon.
+3. **Three ways to add CSS.** Show inline, `<style>` and the external file. Say clearly that we use the external file.
+4. **Linking the file.** Build the `about-me` folder with `index.html` and `styles.css`. Show the `href` path.
+5. **When nothing changes.** Spoil the CSS on purpose in the Bolton Community Garden example (remove a semicolon). Show that the browser gives no error.
+
+### Check understanding
+- Ask: "In `p { color: red; }` which part is the property?" A good answer: `color`. `p` is the selector and `red` is the value.
+- Ask: "You wrote `colour: blue;` and nothing happened. Why?" A good answer: CSS uses American spelling, and the browser silently ignores what it does not know.
+- Ask: "Where does the `<link>` go?" A good answer: inside `<head>`.
+
+### Watch for
+- Wrong file name or path in `href`, or forgetting to save both files. Ask them to check the name letter by letter.
+- Missing `}` or `;`, which quietly stops the rules after it working. Read the CSS aloud with them.

@@ -2,6 +2,7 @@ import { error, fail, redirect } from '@sveltejs/kit';
 import db from '$lib/server/db.js';
 import { renderMarkdown, renderPlain } from '$lib/server/markdown.js';
 import { filesFor } from '$lib/server/queries.js';
+import { splitInstructor } from '$lib/instructor.js';
 
 export async function load({ params }) {
 	const sub = await db
@@ -22,7 +23,7 @@ export async function load({ params }) {
 	const files = await filesFor(versions.map((v) => v.id));
 
 	return {
-		sub: { ...sub, body_md: undefined, instructionsHtml: renderMarkdown(sub.body_md) },
+		sub: { ...sub, body_md: undefined, instructionsHtml: renderMarkdown(splitInstructor(sub.body_md).student) },
 		versions: versions.map((v) => ({
 			...v,
 			answerHtml: renderPlain(v.answer),

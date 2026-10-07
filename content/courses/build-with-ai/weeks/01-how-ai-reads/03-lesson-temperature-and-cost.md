@@ -139,3 +139,30 @@ The output part grows four times bigger. Because output tokens are priced higher
 
 - [Claude docs: Messages API reference](https://docs.claude.com/en/api/messages)
 - [Anthropic: Pricing](https://www.anthropic.com/pricing)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain temperature with the ice-cream picture and choose low or high for a task.
+- Name the two parts of the bill and what makes a request dearer.
+- Use the cost calculator with made-up prices.
+
+### Purpose
+Temperature changes how reliable answers feel, and cost decides if a product is worth running. Both are decisions a builder must make.
+
+### Things to teach
+1. **Vanilla or adventure.** Low temperature nearly always picks the most likely word, so answers are steady. High is more willing to pick surprising words. Use bread, cake and tyres from the lesson.
+2. **Pick the setting.** Low for facts and answering from a price list. Higher for naming ideas and stories. Even low may not give identical replies.
+3. **Run the toy picker.** Run it a few times. At 0.2 you see almost only bread. At 3 you see cake and sometimes tyres. Say it is a toy, not how a real model is built.
+4. **Why AI costs money.** Providers charge by tokens, input and output, and output usually costs more per token. Prices change, so check the pricing page.
+5. **What makes it dearer.** Long instructions or documents, long chat history, long answers, bigger models. Remind about setting a spending limit.
+
+### Check understanding
+- Ask: "What does low temperature do, and high?" A good answer: low gives steady, similar replies; high gives more varied, surprising ones.
+- Ask: "Which setting for answering opening hours?" A good answer: low, because we want steady facts.
+- Ask: "Why should you not trust a price in a lesson?" A good answer: prices change, only the pricing page is reliable.
+
+### Watch for
+- Learners think low temperature means the same answer every time. Say: more steady, not guaranteed identical.
+- Learners treat the example prices (1 and 5) as real. Say clearly they are made up.

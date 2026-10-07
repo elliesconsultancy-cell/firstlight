@@ -136,3 +136,30 @@ BASE_URL=https://your-project.vercel.app node taste-test.js
 - [Vercel docs: Express on Vercel](https://vercel.com/docs/frameworks/backend/express)
 - [Vercel docs: Environment variables](https://vercel.com/docs/environment-variables)
 - [GitHub docs: Create a repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Push a project to GitHub without `.env`.
+- Deploy to Vercel and set `ANTHROPIC_API_KEY` as an environment variable.
+- Check a live site like a customer.
+
+### Purpose
+A product only counts when other people can use it. Deploying safely is a skill employers can see.
+
+### Things to teach
+1. **Shop on the street.** GitHub is the cupboard for the recipe, Vercel is the shop. Hosting means a computer that is always on.
+2. **The key never goes on GitHub.** Show `.gitignore` with `.env`, and run `git status` before the commit. If a key was pushed, deleting the file is not enough. Delete the key and make a new one.
+3. **Getting ready for Vercel.** Page files go in `public/`, the app is exported with `export default app`, and `fetch` uses `/api/chat`, not localhost.
+4. **Import, variable, deploy.** Add the variable before the first deploy. If added later, redeploy.
+5. **Check the live site.** View page source and search for `sk-` and `ANTHROPIC`. Check the Vercel Logs. Show the "If something fails" list.
+
+### Check understanding
+- Ask: "Where may the key live?" A good answer: local `.env` and Vercel settings.
+- Ask: "You added the variable after deploying and it still fails." A good answer: redeploy.
+- Ask: "How do you check the key is not in the page?" A good answer: view page source and search.
+
+### Watch for
+- `.env` pushed to GitHub. Stop and fix it before going on.
+- Page files left outside `public/`, giving a 404. Missing data files such as `menu.txt` not committed.

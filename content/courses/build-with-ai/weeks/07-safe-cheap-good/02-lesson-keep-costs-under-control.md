@@ -153,3 +153,29 @@ The server answers with status 429 and the message "Too many messages. Please wa
 - [Claude docs: Rate limits](https://platform.claude.com/docs/en/api/rate-limits)
 - [Claude docs: Pricing](https://platform.claude.com/docs/en/about-claude/pricing)
 - [Express docs: Writing middleware](https://expressjs.com/en/guide/writing-middleware.html)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Name the five limits and say which is the hard wall.
+- Explain why a long chat costs more with each message.
+- Add `rateLimit` to the chat route.
+
+### Purpose
+A public AI product with no limits is an open tap. One script can cost real money before anyone notices.
+
+### Things to teach
+1. **The open tap.** Use Amina's sink. Tokens in and out cost money, and `usage.input_tokens` and `usage.output_tokens` show both. Never quote a price from memory, send learners to the pricing page.
+2. **The spending limit first.** It is the emergency brake, set in the provider account. Ask learners to set it during the session if they have not.
+3. **Small things add up.** Small `max_tokens`, a short history with `trimHistory`, and the 500-character `validateMessage`. The AI forgets, so the whole notebook is resent every time.
+4. **Rate limit and daily cap.** Show `limits.js`, `rateLimit` and `dailyCap`. Then the catch: on Vercel, in-memory counters are only a soft fence.
+
+### Check understanding
+- Ask: "Which limit is the hard wall?" A good answer: the spending limit in the account.
+- Ask: "Why does a long chat cost more?" A good answer: the whole history is resent each time.
+- Ask: "Why is the rate limit only a soft fence?" A good answer: many copies of the app, each with its own memory, which reset.
+
+### Watch for
+- Skipping the account spending limit because the code limits "feel enough".
+- A chat page that breaks on a 429 error. It should show the friendly `error` text.

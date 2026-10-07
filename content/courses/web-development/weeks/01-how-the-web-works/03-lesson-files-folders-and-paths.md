@@ -169,3 +169,31 @@ Do you see a broken image icon? Go through the "common path mistakes" list. Fixi
 - [MDN: Dealing with files](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files)
 - [MDN: Creating hyperlinks (see the section on URLs and paths)](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks)
 - [web.dev: Learn HTML – Links](https://web.dev/learn/html/links)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can read the folder tree of a small website
+- write relative paths for the same folder, a subfolder, and one level up
+- say when to use a relative path and when a full URL
+- use the common path mistakes list to fix a broken image
+
+### Purpose
+Broken images and links are the top beginner bug, and the cause is almost always the path. This lesson gives learners a method to fix it themselves.
+
+### Things to teach
+1. **The folder tree.** Draw the `my-website` tree from the lesson on a board: `index.html`, `about.html`, `images/cat.jpg`, `recipes/jollof.html`. Point out the root. Explain why the home page is called `index.html`.
+2. **Paths start from the file you are editing.** A path is directions from where you stand. Show `about.html`, `images/cat.jpg` and `../images/cat.jpg`. `..` means up one folder.
+3. **Relative or full.** Own files use relative paths. Other sites use full URLs. Say never use `C:\Users\...` paths, because they only work on your own computer.
+4. **The mistakes checklist.** Spelling, capitals, extension, spaces, wrong starting point. Show hidden file extensions: `cat.jpg.png` is a real problem.
+5. **Live fix.** Do the lesson's Try it with `week-01/index.html` and `images/photo.jpg`. Spoil the path on purpose and fix it using the list.
+
+### Check understanding
+- Ask: "You are in `recipes/jollof.html`. How do you link to `index.html`?" A good answer: `../index.html`.
+- Ask: "What does `..` mean?" A good answer: go up one folder.
+- Ask: "Why not use `C:\Users\...` in HTML?" A good answer: it only exists on your computer.
+
+### Watch for
+- Capital letters and spaces in file names, such as `Cat.JPG`. Teach lowercase and dashes.
+- Learners who write the path from the wrong folder. Ask: which folder is the HTML file in?

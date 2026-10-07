@@ -131,3 +131,33 @@ file:///C:/Users/ada/Documents/firstlight/week-01/index.html
 - [MDN: An overview of HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview)
 - [MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - [MDN: What is a domain name?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_domain_name)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can split a URL into protocol, domain and path
+- explain what DNS does in one sentence
+- describe the steps from typing a URL to seeing a page
+- say what 200, 301, 404 and 500 mean
+- see requests in the DevTools Network tab
+
+### Purpose
+Reading URLs and status codes is the first step in debugging. A learner who knows what a 404 means can fix a broken link instead of guessing.
+
+### Things to teach
+1. **Anatomy of a URL.** Use `https://www.example.com/recipes/jollof-rice.html`. Protocol is the rules, domain is the building, path is the room. Do the two Try it URLs (MDN and BBC) together.
+2. **DNS is the contacts app.** Computers use IP numbers. DNS turns `example.com` into a number, like tapping Mum in your phone.
+3. **One visit, step by step.** Walk the six steps: type, DNS lookup, request, server looks for the file, response with a status code, browser draws the page. Say one page is many requests.
+4. **Status codes.** Teach 200, 301, 404, 500 with the restaurant table. A 404 means the server is there but has no file at that path.
+5. **Watch it in DevTools.** Open `https://developer.mozilla.org`, open the Network tab, refresh with DevTools open, and click the first row to find Request URL, Method and Status Code.
+
+### Check understanding
+- Ask: "Split `https://www.example.com/about.html` into parts." A good answer: protocol `https://`, domain `www.example.com`, path `/about.html`.
+- Ask: "What does a 404 mean?" A good answer: the server has no file at that path.
+- Ask: "Why can one page make many requests?" A good answer: images, CSS and JavaScript are separate files, each asked for on its own.
+
+### Watch for
+- An empty Network list. DevTools must be open before the refresh.
+- Learners who confuse the domain with the path. Point to the slash that starts the path.
+- Confusion about `file://` addresses. Say that opening a file from disk uses no server yet.

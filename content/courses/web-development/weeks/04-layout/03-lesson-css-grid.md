@@ -227,3 +227,30 @@ The pictures come from picsum.photos, a free service for random placeholder phot
 - [MDN: Basic concepts of grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can say when to use Grid and when to use Flexbox.
+- Learners can write `grid-template-columns` using `fr` and `repeat()`, with `gap`.
+- Learners can build a card gallery that adapts to screen width.
+
+### Purpose
+Galleries and page sections need rows and columns that line up. Grid is the tool for that, and the assignment uses it for the services section.
+
+### Things to teach
+1. **One line or two dimensions.** Flexbox is a queue, Grid is a muffin tray. Say that one page often uses both.
+2. **The fr unit.** Start with `.tray` and three 200px columns, then change to `1fr 1fr 1fr`. Show `2fr 1fr` as a main area and sidebar.
+3. **repeat() and gap.** Show `repeat(4, 1fr)` and the two-value `gap` (rows first, then columns).
+4. **The auto-fit rule.** Write `repeat(auto-fit, minmax(220px, 1fr))` and read it in plain English. Resize the bakery gallery and count the columns.
+5. **Grid overlay.** Click the grid badge in DevTools to show the lines.
+
+### Check understanding
+- Ask: "What is the main difference between Flexbox and Grid?" A good answer: Flexbox is one direction, Grid is rows and columns together.
+- Ask: "Do you have to say how many rows?" A good answer: no, Grid adds rows as needed.
+- Ask: "What does `repeat(4, 1fr)` mean?" A good answer: four equal columns.
+
+### Watch for
+- Putting `display: grid` on the cards, not the parent. Remind them only direct children are items.
+- Reading the placeholder photos as real content. The images are random, so real sites need their own photos and good `alt` text.

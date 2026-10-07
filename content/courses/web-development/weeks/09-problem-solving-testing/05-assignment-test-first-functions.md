@@ -168,3 +168,32 @@ Use the submit form to send:
 - Use `npx jest --coverage` to see which lines of your code are covered by tests, and add tests until coverage is 100%
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can set up a Node and Jest project and publish it on GitHub.
+- Learners can write tests from acceptance criteria before writing the code.
+- Learners can refactor with passing tests.
+
+### Purpose
+This pulls the whole week together on three real functions. It also shows learners how professionals work: tests first, small commits, then tidy up.
+
+### Things to do
+1. **Launch.** Walk through the three functions: `getOrdinalNumber`, `isValidPassword` and `getCardValue`. Make sure every learner has a working `npm test` before they start.
+2. **Demonstrate test-first.** Write one failing test for `getOrdinalNumber` live (numbers ending in 1). Show it red, commit, then make it green.
+3. **Show the tricky parts.** Point at the 11, 12 and 13 exception, and at `n % 100` and `n % 10`. For `getCardValue`, show a test using `expect(() => getCardValue("Z♥")).toThrow()`.
+4. **Explain the README and the written answer.** Point learners to the submit form.
+
+### What good work looks like
+- The repo is public, has `package.json` with Jest as a dev dependency, and has a `.gitignore` containing `node_modules`.
+- You can run `npm install` then `npm test` and everything passes.
+- There are three function files and three `.test.js` files, with at least 5 tests each and at least 2 clearly described edge-case tests each.
+- Tests cover every criterion, including 11 to 13 for ordinals and invalid cards such as `"1♠"`.
+- The commit history shows tests arriving before or with the code, and the README explains how to run the tests.
+
+### Watch for
+- `getCardValue("1♠")` or `"11♦"` wrongly accepted. Check that only 2 to 10 are valid.
+- Tests written after the code, with a single big commit. Ask learners to explain what they would do differently.
+- A committed `node_modules` folder. Help them add `.gitignore` and remove it from the repo.

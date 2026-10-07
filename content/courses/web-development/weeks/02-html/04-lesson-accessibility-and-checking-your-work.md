@@ -167,3 +167,31 @@ Automatic tools find only **some** problems (perhaps a third). They can tell you
 - [MDN: HTML – a good basis for accessibility](https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML)
 - [W3C Markup Validation Service](https://validator.w3.org/)
 - [Chrome DevTools: Lighthouse overview](https://developer.chrome.com/docs/lighthouse/overview)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can explain accessibility and give examples of who it helps
+- choose between `button` and `a` correctly
+- test a page with the keyboard only
+- use the W3C validator, the DevTools Accessibility tab and Lighthouse
+
+### Purpose
+Professionals test accessibility and validate their HTML as a habit. Learners need these checks to finish both assignments this week.
+
+### Things to teach
+1. **Why accessibility.** Use the ramp picture: it helps everyone. Include temporary cases like a broken arm or bright sun. Good semantic HTML does most of the work.
+2. **Button or link?** A link goes somewhere. A button does something. Say a `div` styled as a button is unreachable by Tab.
+3. **Keyboard test.** Press Try it on the Newsletter form. Tab and Shift+Tab, look for the focus outline, Space for the checkbox, Enter on the button. Never remove the focus outline.
+4. **The validator.** Use validator.w3.org with the broken sample: `<h1>` closed with `</h2>`, `<img>` with no `alt`, and a `<p>` directly inside `<ul>`. Fix errors from the top down.
+5. **DevTools and Lighthouse.** In Elements, open the Accessibility tab and check Name and Role. Run Lighthouse. Tools find only some problems.
+
+### Check understanding
+- Ask: "When do you use a `<button>` instead of a link?" A good answer: when clicking does something, such as send a form.
+- Ask: "What does the validator do?" A good answer: it checks the HTML and lists errors with line numbers.
+- Ask: "Why is a high Lighthouse score not enough?" A good answer: it cannot judge if alt text or link text is actually good.
+
+### Watch for
+- Fixing errors from the bottom up. One early error can cause many later ones.
+- Treating the full-boilerplate warning as a real bug when pasting small snippets. That is expected.

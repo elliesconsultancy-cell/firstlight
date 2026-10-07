@@ -119,3 +119,30 @@ We want to bring only the **right few pages**. That is the next lesson: retrieva
 
 - [Claude docs: Messages API](https://platform.claude.com/docs/en/api/messages)
 - [Node.js: fs promises readFile](https://nodejs.org/api/fs.html#fspromisesreadfilepath-options)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Name what a model does not know (private, new and local facts)
+- Put a short `menu.txt` in the system prompt and see answers improve
+- Say when pasting everything stops working
+
+### Purpose
+Most business uses of AI need the model to use the user's own facts. A confident wrong answer, such as about allergies, can hurt someone.
+
+### Things to teach
+1. **The keen intern.** Say: "The intern read thousands of books but never saw Amina's menu. A good intern checks. A bad intern guesses." The model is the bad intern by default.
+2. **See it fail.** Ask the three questions (sourdough price, Saturday closing, gluten-free cake) before adding the menu. Write down what happens.
+3. **Put the menu on the desk.** Show `menu.txt` and the new `prompt.js` that reads it with `readFile`. Ask the same questions again and compare.
+4. **The rule that matters.** "Use only the menu... say you do not know." Test with "Do you sell pizza?" and "Is the brownie vegan?".
+5. **Where it stops.** Desk space, paying for every call, and too much noise. Think of a school with 500 pages of rules.
+
+### Check understanding
+- Ask: "Name two things a model does not know." A good answer: private facts like your menu, and new facts after its learning stopped.
+- Ask: "Why is a wrong allergy answer worse than I do not know?" A good answer: someone may trust it and get hurt.
+- Ask: "Why not paste a huge document each time?" A good answer: it may not fit, costs more every call, and the model can miss the key line.
+
+### Watch for
+- Learners think the model "looks things up" or "learns" from the file. It only reads what is on the desk in that call.
+- Forgetting to restart the server after editing `menu.txt` or `prompt.js`, so the old answers return.

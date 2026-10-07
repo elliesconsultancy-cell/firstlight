@@ -238,3 +238,30 @@ There are **two** flex containers here:
 - [MDN: Basic concepts of flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can turn a parent into a flex container and say which elements become items.
+- Learners can use `flex-direction`, `justify-content`, `align-items`, `gap` and `flex-wrap`.
+- Learners can build a navigation bar with a logo on the left and links on the right.
+
+### Purpose
+Flexbox is the everyday tool for rows of things, such as nav bars and button groups. It is needed for the assignment header.
+
+### Things to teach
+1. **Container and items.** Use the shelf and books example. Only direct children are items.
+2. **Main and cross axis.** Show `flex-direction: row` and `column`. Then show `justify-content` on the main axis and `align-items` on the cross axis.
+3. **Centre anything.** Write `display: flex; justify-content: center; align-items: center;` on a box with some height.
+4. **gap and flex-wrap.** Use `gap` instead of margins. Use `.tags` with `flex-wrap: wrap` to show items moving to a new line.
+5. **The Crumbs Bakery nav bar.** Point out the two flex containers: `.site-header` and `.nav-links`. Use the DevTools flex badge to show the overlay.
+
+### Check understanding
+- Ask: "Which element gets `display: flex`?" A good answer: the parent.
+- Ask: "How do you push the logo left and the links right?" A good answer: `justify-content: space-between` on the shared parent.
+- Ask: "What does `flex-wrap: wrap` do?" A good answer: items move to a new line when there is no room.
+
+### Watch for
+- Putting `display: flex` on the children. Ask "who is the parent?"
+- Confusion when `flex-direction: column` seems to swap `justify-content` and `align-items`. Say that `justify-content` always follows the main axis.

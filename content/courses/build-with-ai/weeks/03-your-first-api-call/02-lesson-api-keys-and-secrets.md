@@ -136,3 +136,31 @@ A deleted key is harmless.
 - [Node.js: command-line options (--env-file)](https://nodejs.org/api/cli.html)
 - [Claude docs: rate limits and spend limits](https://platform.claude.com/docs/en/api/rate-limits)
 - [GitHub Docs: ignoring files](https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain why an API key is like a house key that also opens your wallet
+- Create a `.env` file and list it in `.gitignore`
+- Run a script with `node --env-file=.env` and check the key loads without printing it
+- Say what to do if a key leaks
+
+### Purpose
+One leaked key can mean a real bill. Safe habits on day one protect learners for the rest of the course and their careers.
+
+### Things to teach
+1. **The house key.** Say it out loud: "A key opens the door, and this one also opens your wallet." Anyone with it spends your money.
+2. **Three safe rules.** Never in front-end code, never in Git, never in a chat or screenshot. Ask learners to say them back.
+3. **Set a spend limit first.** Walk through the account steps in the lesson. Tell learners to choose a small limit. Do not quote prices; tell them to read the provider's page.
+4. **`.env` and `.gitignore`.** Create both before the first `git add`. Show the line `ANTHROPIC_API_KEY=` with no quotes or spaces. Run `check-key.js` with and without `--env-file=.env`.
+5. **If a key leaks.** Revoke it in the Console, make a new one, check usage.
+
+### Check understanding
+- Ask: "Why print the key length and not the key?" A good answer: the key would land in terminal history or a screenshot.
+- Ask: "Which file hides the key from Git?" A good answer: `.gitignore` lists `.env`.
+- Ask: "Your key went to GitHub, then you deleted the file. Is it safe?" A good answer: no. Revoke it, because Git remembers.
+
+### Watch for
+- A missing or misnamed `.env` (for example `env.txt` or the wrong folder). Check the file name and the `--env-file=.env` flag.
+- Learners paste a real key into the chat or a screenshot to ask for help. Ask them to hide it, and revoke it if it was shared.

@@ -17,6 +17,7 @@
 	<div class="row meta">
 		<span><Icon name="book-open" size={15} /> {lessons.length} lessons · ~{minutes} min reading</span>
 		<span><Icon name="hammer" size={15} /> {assignments.length} {assignments.length === 1 ? 'assignment' : 'assignments'}</span>
+		<a href="#backlog"><Icon name="list-checks" size={15} /> Backlog</a>
 	</div>
 	{#if first}
 		<a class="btn btn-sun" href="/learn/{data.week.slug}/{first.slug}">
@@ -25,14 +26,22 @@
 	{/if}
 </header>
 
-{#if data.notesHtml}
-	<aside class="notes">
-		<strong><Icon name="lock" size={15} /> Instructor notes</strong> <span class="small muted">(only you can see this)</span>
-		<Prose html={data.notesHtml} />
+{#if data.user.role === 'admin'}
+	<aside class="notes instructor-panel">
+		<div class="spread">
+			<strong><Icon name="graduation-cap" size={17} /> For instructors: day plan and sprint review</strong>
+			<a class="btn btn-sm btn-ghost" href="/admin/curriculum/{data.week.id}/review"><Icon name="users" size={14} /> See who has done what</a>
+		</div>
+		<span class="small muted">Only instructors can see this.</span>
+		{#if data.notesHtml}
+			<Prose html={data.notesHtml} storageKey="fl-review-{data.user.id}-{data.week.id}" />
+		{:else}
+			<p class="small muted">No day plan has been written for this week yet. Add one in Admin, Curriculum, under Instructor notes.</p>
+		{/if}
 	</aside>
 {/if}
 
-<Prose html={data.introHtml} />
+<Prose html={data.introHtml} storageKey="fl-backlog-{data.user.id}-{data.week.id}" />
 
 <div class="row" style="margin-top: 40px; justify-content: space-between">
 	{#if data.prevWeek}<a href="/learn/{data.prevWeek.slug}"><Icon name="arrow-left" size={14} /> Week {data.prevWeek.position}: {data.prevWeek.title}</a>{:else}<span></span>{/if}
@@ -48,10 +57,6 @@
 	.lead { font-size: 1.2rem; color: var(--ink-2); max-width: 60ch; }
 	.meta { color: var(--ink-2); font-size: 0.95rem; margin-bottom: 20px; gap: 20px; }
 	.notes {
-		background: var(--gold-soft);
-		border: 1px dashed var(--gold);
-		border-radius: var(--radius);
-		padding: 16px 20px;
 		margin-bottom: 28px;
 	}
 </style>

@@ -148,3 +148,30 @@ This uses a role, a format limit and a rule that stops it from making things up.
 
 - [Claude docs: Use examples (multishot prompting)](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/multishot-prompting)
 - [Claude docs: Give Claude a role](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/system-prompts)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Use a role, examples, a format and steps in a prompt.
+- Say when each tool helps.
+- Tell the model what to do when it does not know.
+
+### Purpose
+These four moves turn a hopeful question into a reliable instruction. Learners will reuse them when they write system prompts and when their code reads the answers.
+
+### Things to teach
+1. **Role.** Say who it acts as and who the reader is. Compare the answer to "What is sourdough?" with and without the shop assistant role.
+2. **Examples.** When the pattern is hard to describe, show it. Use the QUESTION, ORDER or COMPLAINT sorting prompt. It works because it continues the pattern, as autocomplete does.
+3. **Format.** Say the shape: a numbered list, a word limit, a table. Later, JSON for code to read.
+4. **Steps.** Give the order of work like a recipe. Use the three-step message prompt.
+5. **Add only what is needed.** Find all four tools in the combined Amina's Bakery prompt, then show the vegan bread rewrite that tells the model what to say when facts are missing.
+
+### Check understanding
+- Ask: "When are examples better than a description?" A good answer: when the pattern you want is hard to put into words.
+- Ask: "Why state the output format?" A good answer: you get a shape you can use and read quickly, and later code can read it.
+- Ask: "What is a risk of examples?" A good answer: the model may copy them too closely, so use a few different ones.
+
+### Watch for
+- Learners write long, messy prompts and think more words is better. Say: add a tool only when the answer needs it.
+- Learners forget to say what to do when the information is missing. Point to the vegan bread example.

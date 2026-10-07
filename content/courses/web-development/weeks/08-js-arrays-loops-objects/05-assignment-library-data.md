@@ -148,3 +148,33 @@ Use the submit form on this page. Hand in two things.
 - **Show it on a page:** create an HTML page with an empty `<ul>`, and use JavaScript to add an `<li>` for each available book. Look up `document.querySelector` and `createElement` on MDN.
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can answer questions about an array of objects with functions.
+- Learners can use `for...of` and at least three array methods.
+- Learners can explain why they chose a loop or method.
+
+### Purpose
+This is the capstone for the three JavaScript weeks. It brings together functions, decisions, loops, objects and array methods.
+
+### Things to do
+1. **Launch it.** Learners copy the starter code into `library.js`. Point out the 8 books and the expected answers in the comments.
+2. **Demonstrate Task 1 to 3.** Show a function that takes `books` as a parameter and returns. Do `countBooks` and `countAvailable` with `filter`. Call each at the bottom with a label.
+3. **Demonstrate "find the biggest".** Use the winner pattern for Task 6 or 7: start with `books[0]`, compare, replace.
+4. **Task 10.** Explain that it changes the book in the array. Call it twice to see both messages. The expected output depends on call order.
+
+### What good work looks like
+- Every function has the exact name, takes `books` as a parameter and returns its answer.
+- Results match the comments: 8, 5, average `"4.2"`, longest title `"The Girl with the Louding Voice"`, oldest book `Things Fall Apart`.
+- The file uses a `for...of` loop and at least three of `map`, `filter`, `find`, `forEach` and `reduce`.
+- Results are logged with clear labels, and the file runs with no errors.
+- The reflection explains one choice and the hardest task.
+
+### Watch for
+- Functions that read the global `books` rather than the parameter.
+- Functions that log instead of return.
+- Task 5 giving a long decimal. It needs `.toFixed(1)`.
+- Task 10 changed by a first test and then a wrong second result. Check the order of the calls.

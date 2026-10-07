@@ -197,3 +197,30 @@ boilEgg();
 - [Async/await (javascript.info)](https://javascript.info/async-await)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can explain synchronous and asynchronous code.
+- Learners can name the three states of a promise.
+- Learners can use `async`, `await` and `try...catch`.
+
+### Purpose
+Fetching data takes time. Learners need to understand waiting before `fetch` makes sense. Async code is also a common interview topic.
+
+### Things to teach
+1. **Two cafes.** One cashier stares at the machine and the queue grows. The other gives you a ticket and serves the next person. JavaScript works like the second cafe.
+2. **Order is not write order.** Run the `setTimeout` example ("Order placed", "Serving the next customer", then "Coffee is ready"). The timer does not block the next line.
+3. **Promises.** A promise is the ticket: pending, fulfilled or rejected. Show that `fetch(...)` logs `Promise {<pending>}`.
+4. **`async` and `await`.** Use `visitCafe` and `makeCoffee`. `await` pauses only that function. Remind them that `await` works only inside an `async` function.
+5. **`try...catch`.** Use the "no milk" example with `reject(new Error(...))`. Then switch `false` to `true` to show the happy path.
+
+### Check understanding
+- Ask: "What prints first in the A, B, C, D example?" A good answer: A, D, C, B. Timers run later, even one set to 0.
+- Ask: "What are the three states of a promise?" A good answer: pending, fulfilled, rejected.
+- Ask: "Why use `try...catch` with `await`?" A good answer: if the promise is rejected, the code jumps to `catch` and handles the error.
+
+### Watch for
+- Forgetting `async`, which gives "await is only valid in async functions".
+- Thinking `await` freezes the whole page. Point at the "Meanwhile, the page is still working!" line.

@@ -123,3 +123,30 @@ Write a system prompt for your own helper idea (a gym, a school, a shop) with th
 
 - [Claude docs: System prompts](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/system-prompts)
 - [Claude docs: Prompt engineering overview](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain a system prompt as the job description for the intern.
+- Write a system prompt with who, tone, what it can do and what it must never do.
+- Improve a prompt by changing one thing at a time against a test list.
+
+### Purpose
+Every real AI product has a system prompt, and none is right on the first try. Writing, testing and improving is the daily work of a builder.
+
+### Things to teach
+1. **Job description.** The system prompt is handed over before the first customer arrives. The builder writes it, the customer writes the user messages. Use the comparison table.
+2. **Read the BakeBuddy prompt.** Find who it is, how it sounds, rules, and the "I'm not sure. Please ask Amina." line that fights hallucination.
+3. **The loop.** Write, test, look, change one thing. Like adding a little salt, not a spoonful. One change means you know what helped.
+4. **Test list.** Walk the five messages: price, sneaky "ignore your rules", off-topic capital of France, a normal order. Then show the price fix ("You have no price list yet").
+5. **Prompt notebook.** Keep each version, date, change and results.
+
+### Check understanding
+- Ask: "What is a system prompt, in the intern picture?" A good answer: the job description handed over before the first customer arrives.
+- Ask: "Why change only one thing at a time?" A good answer: so you can tell which change made it better or worse.
+- Ask: "Is a system prompt a strong lock?" A good answer: no, a tricky message can still make the model ignore rules, so do not rely on it alone to protect anything important.
+
+### Watch for
+- Learners change many things at once and cannot say what helped. Ask them to undo and change one.
+- Learners think the system prompt guarantees good behaviour. Say: usually followed, not always.

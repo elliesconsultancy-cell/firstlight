@@ -203,3 +203,32 @@ Press **Try it** on the form above. Click **Join** without filling anything in. 
 - [MDN: Client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can build a form with `form`, `label`, `input` and a submit button
+- connect each label to its input with `for` and `id`
+- choose input types, radio buttons, checkboxes, `select` and `textarea`
+- add `required`, `minlength` and `type="email"` validation
+
+### Purpose
+Forms are how a site listens to people. Labels and names are what make forms work for everyone and for the server.
+
+### Things to teach
+1. **A first form.** Show `label for="name"`, `input id="name" name="name"` and `button type="submit"`. The `for` and `id` must match exactly. Click the label to show the cursor jump into the box.
+2. **Placeholder is not a label.** It disappears when you type. Screen readers may skip it.
+3. **The `name` attribute.** It is the key that is sent, for example `name=Ada`. Without a `name`, the value is not sent.
+4. **Input types and choices.** Use the table: `text`, `email`, `tel`, `number`, `date`, `password`. Radio buttons share one `name`; checkboxes allow many. Group them with `fieldset` and `legend`. Show `select` and `textarea`.
+5. **Validation.** Press Try it on the Join form. Click Join empty, then type `ada` in email. Say it helps users but is not security.
+
+### Check understanding
+- Ask: "How do you link a label to an input?" A good answer: input has an `id`, label has a `for` with the same value.
+- Ask: "Radio or checkbox: pick any number?" A good answer: checkboxes. Radios allow one.
+- Ask: "What happens to a value with no `name`?" A good answer: it is not sent.
+
+### Watch for
+- Using `placeholder` instead of a label. Add a real label.
+- Radio buttons that do not share a `name`, so more than one can be picked.
+- A `for` and `id` that look the same but are spelled slightly differently.

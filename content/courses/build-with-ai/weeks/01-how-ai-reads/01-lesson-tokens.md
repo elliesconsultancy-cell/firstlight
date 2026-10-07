@@ -139,3 +139,30 @@ Estimate the tokens by hand with the rule "4 characters per token", then check w
 
 - [Claude docs: Token counting](https://docs.claude.com/en/docs/build-with-claude/token-counting)
 - [Claude docs: Glossary](https://docs.claude.com/en/docs/about-claude/glossary)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain a token using the Lego picture.
+- Estimate tokens from characters (divide by 4) or from words (times 4/3).
+- Say why size, price and speed are all counted in tokens.
+
+### Purpose
+Every AI bill and every size limit is counted in tokens. A learner who can estimate them can plan a product before building it.
+
+### Things to teach
+1. **Lego bricks of text.** The model reads bricks, not letters. Use the lesson's cut of "Amina bakes unbelievably good bread." Short common words are one brick, long or rare words are cut up.
+2. **Rule of thumb.** About 4 characters per token, or about three quarters of a word (100 words is about 130 tokens). It is an estimate, and other languages and code often use more.
+3. **Run the estimator.** Press Try it on the two small functions. Show that the two methods give close but different answers, and that is fine.
+4. **Why tokens matter.** Size limit, price and speed. Like saying a parcel weighs 2 kilos.
+5. **Tokens in and out.** Input is what you send. Output is what the model writes. Both count, and they are often priced differently.
+
+### Check understanding
+- Ask: "What is a token, in the Lego picture?" A good answer: a small brick of text, like a word, part of a word, a number or a punctuation mark.
+- Ask: "About how many tokens are 100 English words?" A good answer: roughly 130, and it is only an estimate.
+- Ask: "What are input and output tokens?" A good answer: input is what you send in, output is what the model writes back.
+
+### Watch for
+- Learners think one token is one word or one letter. Say: it is a chunk, sometimes a whole word and sometimes a piece.
+- Learners treat the estimate as exact. Say: only the provider's reported count is exact.

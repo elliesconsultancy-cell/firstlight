@@ -114,6 +114,14 @@ Keep it running with `pm2` or systemd, and put Caddy or Nginx in front for HTTPS
 
 Markdown tips: code blocks tagged `html`, `css` or `js` get **Copy** and **Try it** buttons (Try it opens the playground in a new tab). Use `node` for server-side JavaScript, which is highlighted but not runnable. Quotes starting with 💡, ⚠️ or 🧠 become coloured tip, warning and remember callouts with proper icons. `- [ ]` lists become tickable checklists.
 
+**Sprints: prep, backlog, day plan and review.** Each week works like a sprint.
+- **Prep:** the lessons students read.
+- **Backlog:** a tickable checklist at the bottom of each week page with everything the student does that week.
+- **Day plan:** for instructors only. Each week has a day plan (objectives, purpose and an agenda), and every lesson and assignment has an instructor agenda (objectives, purpose, a few key things to teach, questions to ask). No timings or breaks.
+- **End of sprint review:** an instructor checklist on the week page, plus **Sprint review** (Admin, Curriculum, open a week) which shows a live table of which students have read each lesson and had each assignment approved.
+
+In the Markdown, everything after a line containing exactly `<!-- instructor -->` is for instructors. The app never sends it to students. `docs/writing-guide.md` has the exact format and `npm run content:check` checks it.
+
 **Adding a course:** create `content/courses/<name>/course.md` (title, summary, order) and a `weeks/` folder next to it, following the existing courses. Restart the app and the new course is imported with its first two weeks published. Run `npm run content:check` to catch formatting mistakes. `docs/writing-guide.md` explains the writing style.
 
 ## Project structure

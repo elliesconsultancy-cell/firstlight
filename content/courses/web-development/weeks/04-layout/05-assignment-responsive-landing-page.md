@@ -130,3 +130,32 @@ Next week you will publish this page on GitHub Pages and submit a live link.
 - Run your page through [PageSpeed Insights](https://pagespeed.web.dev/) and see what it suggests
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners have built a mobile-first landing page for a fictional business from a wireframe.
+- Learners use Flexbox for the header and Grid for the services section.
+- Learners test the page at several widths and fix what breaks.
+
+### Purpose
+This joins normal flow, Flexbox, Grid and responsive design in one real page. Next week they publish it, so it must be one they are happy to show.
+
+### Things to do
+1. **Launch.** Learners pick a business: Crumbs, Spokes & Sprockets, Green Thumb, Snip & Style, or their own. Walk through the two wireframes, mobile then desktop.
+2. **Demonstrate HTML first.** Write the page with no CSS and show it reads well as a plain document.
+3. **Demonstrate mobile first.** Open the DevTools device toolbar at about 375px. Style the header with `flex-direction: column` and the services as a one-column grid.
+4. **Demonstrate one media query.** Add `@media (min-width: 768px)` and change the header to a row and the services to `repeat(3, 1fr)`.
+
+### What good work looks like
+- One `index.html` and one `styles.css`, no inline styles, viewport meta tag present.
+- Semantic HTML: `header`, `nav`, `main`, `section`, `footer`, and a list for the nav links.
+- Header uses Flexbox, services use Grid (one column on mobile, three on desktop), and at least one `min-width` media query.
+- Images have `max-width: 100%` and useful `alt` text, with no sideways scrolling at 320px.
+- Palette, custom font, and `:hover` and `:focus` on links and the call-to-action.
+
+### Watch for
+- Writing desktop CSS first, then fighting it on mobile. Send them back to the small layout.
+- Flex or grid set on the wrong element. Check the real parent in DevTools.
+- Large image files or placeholder-only content. Learners must also submit two screenshots and a written answer.

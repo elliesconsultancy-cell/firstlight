@@ -235,3 +235,29 @@ Hint: could an array like `["Saturday", "Sunday"]` and the `includes` method hel
 - [Using matchers (Jest docs)](https://jestjs.io/docs/using-matchers)
 - [Expect reference (Jest docs)](https://jestjs.io/docs/expect)
 - [Throwing errors with throw (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can group tests with `describe` and choose between `toBe`, `toEqual` and `toThrow`.
+- Learners can refactor a working function in small steps, running the tests after each step.
+
+### Purpose
+Tests let developers improve code without fear. Refactoring safely is a daily job in real teams.
+
+### Things to teach
+1. **`describe`.** Use the `getGrade` example. It groups tests under one label so reports are easier to read.
+2. **Choosing a matcher.** `toBe` for numbers, strings and booleans. `toEqual` for arrays and objects, because two arrays are different boxes. `toThrow` needs an arrow function, as in `() => divide(1, 0)`.
+3. **What refactoring is.** The code changes but the behaviour does not. Use the kitchen comparison.
+4. **Refactor with the net.** Use `getShippingCost`. Step 1 pulls out `basePrice`. Step 2 uses `Math.max`. Run the tests after each step.
+5. **One thing at a time.** Refactor or add features, never both together.
+
+### Check understanding
+- Ask: "Why does `toThrow` need an arrow function?" A good answer: Jest must call the function itself so it can catch the error.
+- Ask: "What do you do when a test goes red mid-refactor?" A good answer: undo the last change and think again.
+- Ask: "Can tests protect a case nobody tested?" A good answer: no, tests only protect what they check.
+
+### Watch for
+- Learners using `toBe` on arrays. Show the failure, then switch to `toEqual`.
+- Learners making many changes before running the tests. Ask them to do one small change, then run.

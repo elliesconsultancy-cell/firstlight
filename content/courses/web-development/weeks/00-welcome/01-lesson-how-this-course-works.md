@@ -94,3 +94,30 @@ Open a calendar, on paper or on your phone. Write down at least two study sessio
 - [MDN: Learn web development](https://developer.mozilla.org/en-US/docs/Learn)
 - [MDN: Learning and getting help](https://developer.mozilla.org/en-US/docs/Learn/Learning_and_getting_help)
 - [freeCodeCamp: free coding lessons](https://www.freecodecamp.org/learn)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can describe the steps of a normal week, from overview to feedback
+- explain what "changes requested" means
+- say when they will study this week
+
+### Purpose
+Many learners drop out because they do not know what to do next, or they read "changes requested" as failure. A clear picture of the weekly rhythm and of feedback keeps them going.
+
+### Things to teach
+1. **The weekly rhythm.** Walk through the seven steps in the lesson: overview, lessons, mark done, assignment, submit, feedback, changes. Show where the Mark as done button and the submit form are on the platform.
+2. **Type, do not only read.** Use the lesson's `<h1>Hello, Firstlight!</h1>` block. Press Try it, change the words to the learner's own name, and ask what changed on screen.
+3. **Feedback is code review.** Explain Approved and Changes requested. Say clearly that professionals get review every day, so it is practice for a real job.
+4. **Fixed study times.** Use the Try it: each learner says out loud two study sessions for this week. The lesson says most weeks need about 5 to 8 hours.
+5. **Tell us early.** Show learners how to message you if they fall behind, with the example sentence from the lesson.
+
+### Check understanding
+- Ask: "What do you do after you finish a lesson?" A good answer: mark it as done, so learner and instructor can see progress.
+- Ask: "What does changes requested mean?" A good answer: you are close, read the ideas, update your work and submit again. It is not failing.
+- Ask: "Why type the code instead of copying it?" A good answer: you remember it better and you notice small details like brackets and quotes.
+
+### Watch for
+- Learners who plan one huge weekend session. Point to the "little and often" habit.
+- Learners who feel slow or confused in week 0 and think coding is not for them. Say that almost everyone feels this at first.

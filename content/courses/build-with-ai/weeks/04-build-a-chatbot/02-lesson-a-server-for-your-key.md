@@ -181,3 +181,30 @@ What status code and message do you expect for the bad request? Run it with `cur
 - [Express: Hello world](https://expressjs.com/en/starter/hello-world.html)
 - [Express: Routing](https://expressjs.com/en/guide/routing.html)
 - [MDN: Express/Node introduction](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain why the browser must never hold the key
+- Build an Express server with a `POST /api/chat` route
+- Test the route with `curl`, including a bad request that returns `400`
+
+### Purpose
+A real chat product needs a server so the key stays secret. This is the pattern used in almost every AI app.
+
+### Things to teach
+1. **The clerk at the bank counter.** Say: "You never walk into the vault. The server is the clerk who goes for you." Draw the four-step flow: page, server, AI, server, page. This is the house key again: it stays on the server.
+2. **Walk through `server.js`.** Show `express.json()`, `express.static("public")` and the route `app.post("/api/chat", ...)`. Say what `req` and `res` are.
+3. **Never trust the browser.** Show `cleanMessages`: valid roles, no empty or long text, last 9 messages, ends with a user message. The system prompt is added on the server so the browser cannot change it.
+4. **Test with `curl`.** Run the good request, then the bad one (`"messages":"hello"`) with `curl -i` to see `400`.
+5. **Friendly errors.** The real error goes to the terminal with `console.error`. The page gets a short message.
+
+### Check understanding
+- Ask: "Where does the key live?" A good answer: in `.env`, read by the server only.
+- Ask: "Why validate what the browser sends?" A good answer: anyone can send anything, and it protects your server and wallet.
+- Ask: "What does the bad `curl` return and why?" A good answer: `400`, because `messages` is a string, not a list.
+
+### Watch for
+- `req.body` is `undefined` because `express.json()` or the `content-type` header is missing. Also `Cannot find package 'express'` when `npm install express` was skipped or run in the wrong folder.
+- A key copied into `server.js`, or a server shared publicly. Say: for now it runs on your own computer only.

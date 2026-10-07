@@ -172,3 +172,30 @@ Share your plan with your instructor or a classmate. Ask: "Is this the right siz
 - [Array.prototype.filter() (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can choose a project idea that is the right size.
+- Learners can write user stories and split them into MVP and stretch.
+- Learners can design their data and sketch a phone and desktop wireframe.
+
+### Purpose
+Most beginner projects fail because they are too big and have no plan, not because of bad code. A small, planned project that gets finished is worth far more.
+
+### Things to teach
+1. **Small, real and interesting.** Go through the idea list (recipe box, habit tracker, flashcard quiz and so on). A real person with a real need makes a better story than "a to-do app".
+2. **User stories.** Use the format "As a ..., I want ..., so that ...". Use the recipe box examples. If a feature has no "so that", it may not be needed.
+3. **MVP and stretch.** The bicycle comes before the car. If the MVP list has more than four or five items, cut it.
+4. **Data first.** Use the recipes array. "Filter by cooking time" needs a `minutes` property, so check that the data supports each story.
+5. **Wireframe.** A paper sketch for phone and desktop is enough.
+
+### Check understanding
+- Ask: "What is an MVP?" A good answer: the smallest version of the app that is still useful.
+- Ask: "How do you know your data supports a feature?" A good answer: each user story needs a property in the objects to work from.
+- Ask: "Is your idea the right size?" A good answer: the learner can explain the MVP in a few items and it could be done in two to three weeks of evenings.
+
+### Watch for
+- Learners with a huge idea. Help them cut it to a few MVP stories and move the rest to stretch.
+- Ideas that need things not taught, like logins or a database. Steer them to an array of objects.

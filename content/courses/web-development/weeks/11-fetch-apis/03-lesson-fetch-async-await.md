@@ -250,3 +250,30 @@ Bonus: change the latitude and longitude to a place you love. Search the web for
 - [HTTP response status codes (MDN)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can fetch JSON with `fetch`, two `await`s and `response.json()`.
+- Learners can put fetched data on the page.
+- Learners can check `response.ok` and build a URL from user input.
+
+### Purpose
+This is the core skill of the week. Real apps spend a lot of their time asking servers for data and showing it.
+
+### Things to teach
+1. **Two waits.** Use `getDog`. The first `await` gets the response (the pizza box). The second, `response.json()`, opens it. Forgetting the second leaves a pending promise.
+2. **To the page.** Use the "Show me a dog" button. Set `image.src` from `data.message`. An async function works as a click listener.
+3. **Read the response first.** Open the API in the browser and decide the path. The joke API gives `data.setup` and `data.punchline`.
+4. **URL from input.** Use the GitHub username form with a template literal. Try a name that does not exist. The page shows "undefined has undefined public repositories".
+5. **`response.ok`.** `fetch` rejects only when the request cannot happen at all, such as being offline. A 404 does not throw, so check `response.ok` and throw your own error.
+
+### Check understanding
+- Ask: "Why two `await`s?" A good answer: one waits for the response to arrive and one waits for the body to be read as JSON.
+- Ask: "Does `fetch` throw on a 404?" A good answer: no. You must check `response.ok`.
+- Ask: "Why does `countries[0]` appear in the countries example?" A good answer: the API returns an array, even for one country.
+
+### Watch for
+- Skipping the data inspection step, then guessing property names. Send them back to the browser tab.
+- Hitting the GitHub limit of about 60 requests an hour from one computer. Wait, or switch to another API.

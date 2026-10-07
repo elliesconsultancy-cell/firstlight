@@ -60,3 +60,34 @@ Use the submit form on this page:
 - Add a number input for "How many people in your household?" with `min="1"` and `max="20"`.
 - Group related fields (like contact details) inside their own `<fieldset>` with a `<legend>`.
 - Add a required checkbox: "I agree to the club rules". Make sure the form cannot be sent without it.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can build a form with every required control and connected labels
+- use `name`, `required` and `minlength` correctly
+- complete the form using the keyboard only
+- explain why the `name` attribute matters
+
+### Purpose
+This tests the forms lesson in full. It also shows the learner that data leaves a form through its `name` attributes.
+
+### Things to do
+1. Show how to start: `join.html` next to the recipe page, with boilerplate and `header`, `main` and `footer` first, then the form.
+2. Demonstrate adding one field at a time and testing in the browser, using the three-part pattern: `label for`, `input id`, `name`.
+3. Show how to test validation (empty submit, an email without `@`) and a keyboard run through using Tab, Space and the arrow keys.
+4. Show what happens on submit: the page reloads and the address bar shows `?fullname=Ada&email=...`. Say this means it worked.
+
+### What good work looks like
+- Name, email and phone use `text`, `email` and `tel`, with `required` and `minlength="2"` on name.
+- Radios share one `name` inside a `fieldset` with a `legend`, and at least two checkboxes are in another `fieldset`.
+- There is a `select`, a `textarea` and a submit button.
+- Every input has a `label` with matching `for` and `id`, plus a `name`, and required fields say "(required)".
+- It works with the keyboard alone and the validator shows no errors.
+
+### Watch for
+- Mismatched `for` and `id`. Click the label to test.
+- Radios with different names, so more than one can be chosen.
+- Learners who think a reload with empty boxes means failure. It is success.
+- A written answer that does not mention the address bar.

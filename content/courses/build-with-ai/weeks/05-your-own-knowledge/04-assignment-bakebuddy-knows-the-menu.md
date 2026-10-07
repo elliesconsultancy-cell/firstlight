@@ -55,3 +55,31 @@ Upload your project to GitHub without `.env`, and paste the link to the reposito
 - Add a toy "synonyms" list, like `"gluten-free": ["wheat-free", "no wheat"]`, and expand the question before searching.
 - Give a bonus point to a chunk when two or more question words appear together.
 - Show the found lines in the chat page in a small "Sources" box, so customers can check the answer.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Build a keyword retrieval that finds lines from a facts file
+- Make BakeBuddy answer from found lines and admit when it does not know
+- Test with a written list of questions
+
+### Purpose
+Learners finish a small but real retrieval app and learn to measure it, not just hope. This is the base of most work with company documents.
+
+### Things to do
+1. **Launch.** Learners write `menu.txt` (at least 12 lines), copy `knowledge.js`, update `prompt.js` and `server.js` as in the lesson. Test `retrieve("How much is a croissant?")` in a small file first.
+2. **Demonstrate debugging.** Add `console.log("Found:", ...)` in the server, ask a question and read what was found. Fix a miss by adding a word like "Wheat-free" to a line.
+3. **Check the key is safe.** Open the repository on GitHub. `.env` must not be in the file list, and `.gitignore` must list it. Search the files for `sk-ant`. Check that `menu.txt` has no private customer data.
+4. **Check the test table.** Open the README and read the six or more questions, including one the menu cannot answer and one with different words from the menu.
+
+### What good work looks like
+- `menu.txt` has 12 or more lines with one fact per line, opening hours and an allergy note.
+- `knowledge.js` has `words` (lowercase, no punctuation, stop words ignored) and `retrieve` (top three).
+- `server.js` searches with the last two user messages, and the prompt says to use only the notes or say "I do not know".
+- A README table has six or more questions with expected answers, and says which failed and why.
+- `.env` is not in the repository.
+
+### Watch for
+- Answers that sound right but are not on the menu. Strengthen the prompt rule and check what `found` contains.
+- Learners who hide the failures. A test that shows a miss, like "without wheat", is good work.

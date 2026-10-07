@@ -210,3 +210,30 @@ Open `http://localhost:3000` in your browser. Ask: "Hi, I'm Tolu. Do you sell br
 - [MDN: Node.textContent](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)
 - [MDN: FormData and form submit event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event)
 - [MDN: Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Build a chat page from `index.html`, `style.css` and `script.js`
+- Send the whole `history` to `/api/chat` and show the reply
+- Handle waiting and errors, and use `textContent` instead of `innerHTML`
+
+### Purpose
+The page is what real users see. It must be clear while waiting and must never run text that a user or the AI wrote.
+
+### Things to teach
+1. **The order slip and table.** Say: "The page is the table with paper and a pen. The kitchen is the server." It keeps the notebook (`history`) and sends all of it.
+2. **The five-step flow.** Type, add to screen and `history`, `POST` to `/api/chat`, get `{ reply }`, add the reply.
+3. **Read `script.js`.** Point at `preventDefault`, the "BakeBuddy is thinking..." placeholder, `button.disabled`, and `finally`. Note `history.pop()` in `catch`.
+4. **`textContent` not `innerHTML`.** Explain that `innerHTML` could run harmful HTML. `textContent` shows it as plain text.
+5. **See the notebook travel.** In DevTools, Network, then Payload: learners see the `messages` list grow.
+
+### Check understanding
+- Ask: "Why does the page keep `history`?" A good answer: the AI has no memory, so the page sends the whole list each time.
+- Ask: "Why `textContent`?" A good answer: it shows text as text and does not run HTML.
+- Ask: "What happens if the server is stopped?" A good answer: the `catch` removes the waiting text, shows a red error and pops the failed message.
+
+### Watch for
+- Opening `index.html` as a file, or in the playground, and expecting replies. It works only at `http://localhost:3000` with the server running.
+- Forgetting `event.preventDefault()` so the page reloads and the history is lost, or a file in the wrong folder (it must be in `public`).

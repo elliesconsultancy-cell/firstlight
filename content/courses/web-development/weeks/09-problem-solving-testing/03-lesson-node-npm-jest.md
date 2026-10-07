@@ -234,3 +234,29 @@ module.exports = isEven;
 - [About npm (npm docs)](https://docs.npmjs.com/about-npm)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can install Node.js and check it with `node --version` and `npm --version`.
+- Learners can set up a project with `npm init -y` and install Jest.
+- Learners can run `npm test` and read PASS, FAIL, Expected and Received.
+
+### Purpose
+Almost every professional JavaScript project uses Node, npm and a test runner. This is learners' first real developer setup, so it is worth getting everyone working.
+
+### Things to teach
+1. **Three tools, one job.** Node runs JavaScript outside the browser. npm installs tools. Jest runs tests. Use the factory comparison from the lesson.
+2. **Setting up.** Demonstrate `npm init -y`, `npm install --save-dev jest`, and changing the `"test"` script to `"jest"`. Explain `package.json` and `node_modules`. Show a `.gitignore` containing `node_modules`.
+3. **Writing a test.** Use `sum.js` and `sum.test.js`. Show `module.exports`, `require`, `test` and `expect(...).toBe(...)`. The file must end in `.test.js`.
+4. **Seeing red.** Change `a + b` to `a - b` on purpose. Show Expected: 3 and Received: -1. Then fix it and go green.
+
+### Check understanding
+- Ask: "How does Jest find your tests?" A good answer: it looks for files ending in `.test.js`.
+- Ask: "What do Expected and Received mean?" A good answer: Expected is what the test wanted. Received is what the code returned.
+- Ask: "Why ignore `node_modules`?" A good answer: it is huge and `npm install` recreates it.
+
+### Watch for
+- Install problems. "command not found" usually means VS Code needs closing and reopening, or a restart. Fix these before moving on.
+- Running the terminal in the wrong folder. Check that `package.json` is in the folder the terminal is in.

@@ -53,3 +53,31 @@ Put your project on GitHub, without `.env`, and paste the link to the repository
 - Print `stop_reason` and warn if it is `max_tokens`.
 - Read the system prompt from a separate file called `system-prompt.txt` using `readFile` from `node:fs/promises`.
 - Add the cost estimate you made in week 1, using the token counts printed by your script.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Build a Node script that calls the Messages API with a system prompt
+- Take the customer message from the terminal
+- Keep the key out of the uploaded repository
+
+### Purpose
+Learners prove they can make one safe, working API call. It is the base for the chatbot next week.
+
+### Things to do
+1. **Launch.** Ask learners to reuse the lesson folder and check `node --env-file=.env hello.js` still works. Then they copy it to `bakebuddy.js`.
+2. **Demonstrate the input.** Show `process.argv[2]` and run `node --env-file=.env bakebuddy.js "Do you sell bread?"`. Show the friendly message when no question is given.
+3. **Check the key is safe.** Open the learner's GitHub repository in the browser. Look at the file list: `.env` must NOT be there. Open `.gitignore` and check it lists `.env` and `node_modules`. Search the code for `sk-ant`.
+4. **Fail it on purpose.** Use a wrong key and look for a clear error, not a crash. Ask what BakeBuddy said to a question it cannot know, such as today's special.
+
+### What good work looks like
+- `package.json` has `"type": "module"`, and `.gitignore` lists `.env` and `node_modules`.
+- `bakebuddy.js` calls the Messages API with `fetch`, a small `max_tokens` (300 or less) and a `system` prompt with a name, a job and a tone.
+- The question comes from the terminal, and the script prints the reply plus `input_tokens` and `output_tokens`.
+- The script checks `response.ok` and prints a clear error message.
+- The README has the run command and two or three lines about a question BakeBuddy could not know.
+
+### Watch for
+- A key in the repository or in a commit. Ask them to revoke it in the Console and make a new one, even if the file was deleted later.
+- A hard-coded question or key in the code, or a missing `await`.

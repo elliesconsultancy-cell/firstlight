@@ -83,3 +83,30 @@ Write the three things down. For each one, ask: what examples could it have lear
 
 - [Anthropic: Claude documentation](https://docs.claude.com)
 - [Google: Machine Learning Crash Course](https://developers.google.com/machine-learning/crash-course)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain the difference between normal programming and machine learning in one sentence.
+- Place AI, machine learning and language model as three boxes, one inside the other.
+- Say two things a language model is not.
+
+### Purpose
+Learners will meet AI at work as a tool, a rumour and a sales pitch. If they hold the right picture from day one, they will trust it the right amount.
+
+### Things to teach
+1. **Rules versus examples.** Use the cat and dog photos. Writing rules never ends. Showing a million marked photos lets the computer find the rules itself. That is machine learning.
+2. **Three boxes.** Draw them: AI is the biggest, machine learning is inside it, language model is inside that. Use the lesson's examples: chess program, spam filter, chat assistant.
+3. **Not a person.** It writes human-sounding text because it learned from human text. It has no feelings and does not know the learner.
+4. **Not a search engine.** A search engine finds pages that exist. A language model writes new text each time. Ask: what happens if Amina asks it her closing time? It has nothing to base the answer on.
+5. **Say it out loud.** "Treat it like a very fast helper that is often right and sometimes wrong."
+
+### Check understanding
+- Ask: "What is the difference between normal programming and machine learning?" A good answer: in programming a person writes the rules; in machine learning the computer finds them from examples.
+- Ask: "Which box is biggest?" A good answer: AI. Machine learning sits inside it, and language models sit inside that.
+- Ask: "Why can the model not know when Amina's bakery closes?" A good answer: that fact was never in its general text, so it can only guess.
+
+### Watch for
+- Learners treat the AI as a search engine or a person who "knows" them. Say: it writes new text from patterns, it does not look things up unless the app adds that.
+- Learners use "AI", "machine learning" and "LLM" as the same word. Go back to the three boxes.

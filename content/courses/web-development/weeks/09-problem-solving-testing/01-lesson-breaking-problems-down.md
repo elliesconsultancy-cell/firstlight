@@ -182,3 +182,30 @@ When it works, ask yourself: what happens if there are two spaces between the wo
 - [String methods like split and toUpperCase (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can explain decomposition and name the three questions to ask before coding.
+- Learners can write pseudocode for a small function and turn it into JavaScript.
+- Learners can spot a gap in a plan, such as capital letters.
+
+### Purpose
+Beginners often freeze when a task feels too big. A method for starting is the most useful habit they can build. It is how real developers begin every task.
+
+### Things to teach
+1. **Decomposition.** Use the jollof rice example. Split the job into small steps, then split any hard step again.
+2. **The three questions.** What goes in, what comes out, what happens in between. Ask them for `countVowels("banana")`.
+3. **Pseudocode first.** Write the `countVowels` plan in plain words. Show how each pseudocode line becomes one or two lines of JavaScript.
+4. **Finding gaps.** Run `countVowels("APPLE")`. It returns 0 because of capitals. Show how the plan is updated with `toLowerCase()`.
+5. **When stuck.** Do a tiny example by hand. Talk it through out loud.
+
+### Check understanding
+- Ask: "What goes in and what comes out of `getInitials`?" A good answer: a full name string goes in, and a string of capital letters like `"AL"` comes out.
+- Ask: "Why write pseudocode before code?" A good answer: you can think about the steps without worrying about syntax.
+- Ask: "You are stuck. What do you try first?" A good answer: do it by hand with a tiny example and write down your steps.
+
+### Watch for
+- Learners who skip the plan and start typing. Ask them to say the steps out loud first.
+- Learners who write pseudocode that is really JavaScript. That is fine, but check they can say it in plain words.

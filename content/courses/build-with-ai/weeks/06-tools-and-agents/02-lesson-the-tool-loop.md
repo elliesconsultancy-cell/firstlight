@@ -182,3 +182,30 @@ For the first question you see one call, with `item: "sourdough loaf"`. For the 
 
 - [Claude docs: Handle tool calls](https://platform.claude.com/docs/en/agents-and-tools/tool-use/handle-tool-calls)
 - [Claude docs: How tool use works](https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- List the five steps of the tool loop in order.
+- Send back the full assistant reply and a matching `tool_result`.
+- Explain why `MAX_LOOPS` is needed.
+
+### Purpose
+Most tool bugs are loop bugs. Once learners can follow one full round trip, they can debug any tool-using product.
+
+### Things to teach
+1. **Ask, call, answer.** Compare it to a bank call: "Please hold, I will check." Walk through the five steps on the board using the croissant question.
+2. **Three messages go back.** The question, the model's whole reply with its `tool_use` block, then a `user` message with the `tool_result`. Stress that the `tool_use_id` must match, like a ticket number.
+3. **The phone book.** In `agent.js`, `toolFunctions` maps a name to a real function. If the name is not in the book, nothing runs. This is the safety point.
+4. **The fence.** `MAX_LOOPS = 5` and `is_error: true`. Without the cap, a confused model can loop and cost money.
+5. **Plugging into `server.js`.** Only the import and one line in `/api/chat` change. Show the two-croissant-and-cake question making two tool calls.
+
+### Check understanding
+- Ask: "Why keep the `tool_use` block in the history?" A good answer: the model must see its own request next to the result.
+- Ask: "What if the tool crashes?" A good answer: catch it and send `is_error: true`.
+- Ask: "What does `MAX_LOOPS` protect you from?" A good answer: endless rounds that cost money.
+
+### Watch for
+- Saving only the model's text in the history. The API will reject it.
+- Several tool results sent as separate messages. They must go back together in one `user` message.

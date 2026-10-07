@@ -158,3 +158,32 @@ Use the submit form to send:
 - For Open-Meteo, turn the `weathercode` number into a word and an emoji (look up the codes in the Open-Meteo documentation)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can build an app that fetches live data from a public API.
+- Learners can show loading and friendly error states, and validate empty input.
+- Learners can render fetched data and publish the app.
+
+### Purpose
+This combines the DOM skills from last week with `fetch`. It also gives learners a real project with live data for their portfolios.
+
+### Things to do
+1. **Launch.** Learners choose one API from the table (Dog CEO, GitHub users, REST Countries, Open-Meteo or Official Joke API). Anything else needs your approval.
+2. **Demonstrate exploring first.** Open the chosen URL in the browser and write down the path to each value, for example `data[0].capital[0]`. Look at a bad input and the status code in the Network tab.
+3. **Walk through the starter code.** Point at `fetchData`, `render`, the loading message, `catch` and `finally`. Note `role="status"` on the message paragraph.
+4. **Test unhappy paths together.** Empty input, a misspelled name, Slow 4G and Offline.
+
+### What good work looks like
+- The user chooses or types something that changes what is fetched, and the code uses `fetch`, `async` and `await`, and checks `response.ok`.
+- A loading message appears while waiting, and friendly errors appear for bad input and for network problems. Empty input is stopped before any request.
+- The data is shown on the page with DOM methods, with at least three pieces of information.
+- Files are `index.html`, `style.css` and `script.js` (with `defer`), labels on form fields, and a phone-sized layout that works.
+- It is live on GitHub Pages, the repo is public, and the README names the API used.
+
+### Watch for
+- Data that is only logged to the console.
+- Apps that ignore `response.ok`, so a 404 shows "undefined".
+- Testing only the happy path. Ask them to show you the error state.

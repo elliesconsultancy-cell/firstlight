@@ -122,3 +122,30 @@ The request is a `POST` to one URL. The body is JSON. This is what the body look
 - [MDN: Using the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 - [MDN: HTTP response status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
 - [Claude docs: Messages API](https://platform.claude.com/docs/en/api/messages)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain an API using the waiter picture
+- Name the four parts of a request (URL, method, headers, body) and read a status code
+- Run a `fetch` call in the playground and read `response.json()`
+
+### Purpose
+Every AI product is built by sending requests to someone else's server. If learners can read a request and a status code, they can debug most early problems.
+
+### Things to teach
+1. **The waiter.** Say it out loud: "You never walk into the kitchen. The API is the waiter who carries your order and brings the food back." Use the table in the lesson (client, API, server, request, response).
+2. **Strict waiter.** Unlike a real waiter, an API does not guess. A wrong field name gives an error, not a best guess.
+3. **The four parts and status codes.** URL, method (`GET` or `POST`), headers, body. Then `200`, `401`, `429`, `500`. Ask learners to say what each means.
+4. **Run the GitHub examples.** Run the `api.github.com/zen` and `octocat` examples in the playground. Point at `await` ("wait for the food") and `response.json()`. Let them try `data.banana` and see `undefined`.
+5. **The AI request body.** Show `model`, `max_tokens` and `messages`. Stress that the AI request is NOT run in the browser, because it needs a secret key.
+
+### Check understanding
+- Ask: "In the restaurant picture, who is the kitchen?" A good answer: the server that runs the model.
+- Ask: "You get a `401`. What do you check?" A good answer: the key is missing or wrong.
+- Ask: "What does `max_tokens` do?" A good answer: it caps the length of the answer, and so the cost.
+
+### Watch for
+- Learners forget `await` and print a `Promise` instead of data. Say: "Wait for the food before you read it."
+- Learners try the AI request in the browser playground. Remind them the key must never be in browser code.

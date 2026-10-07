@@ -199,3 +199,30 @@ Then open `https://restcountries.com/v3.1/name/nigeria` in your browser. Look at
 - [Introduction to web APIs (MDN)](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Client-side_APIs/Introduction)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can explain what an API, an endpoint and a query parameter are.
+- Learners can read JSON, including nested data.
+- Learners can use `JSON.parse` and `JSON.stringify`.
+
+### Purpose
+Almost every real app gets data from an API. Reading JSON confidently is the first step before learners write any `fetch` code.
+
+### Things to teach
+1. **The restaurant picture.** The page is the client, the other computer is the server, the API is the waiter and the documentation is the menu. You must order exactly as the menu says.
+2. **Endpoints in the browser.** Open `https://dog.ceo/api/breeds/image/random` and refresh it for a new dog. Then change `octocat` to a learner's GitHub username in the GitHub URL.
+3. **Query parameters.** Show the Open-Meteo URL: `?latitude=...&longitude=...&current_weather=true`. Each is a `name=value` pair, joined with `&`.
+4. **JSON rules.** It is only text, with double quotes everywhere and no trailing commas. `JSON.parse` unpacks text into an object. `JSON.stringify` packs an object into text.
+5. **Nested data.** Use the weather example: `weather.current_weather.temperature`. Follow the path like directions.
+
+### Check understanding
+- Ask: "What is JSON, in your own words?" A good answer: text in a set format that looks like a JavaScript object.
+- Ask: "What does `JSON.parse` do?" A good answer: it turns JSON text into a real JavaScript value.
+- Ask: "How do you get the capital from the Nigeria response?" A good answer: it is an array, so take the first item and then its `capital`, such as `data[0].capital[0]`.
+
+### Watch for
+- Learners who think JSON is already an object. Show `typeof` before and after `JSON.parse`.
+- Single quotes or a trailing comma in JSON text, which makes `JSON.parse` fail with "Unexpected token".

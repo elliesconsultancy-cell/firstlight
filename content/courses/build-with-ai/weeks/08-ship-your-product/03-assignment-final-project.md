@@ -57,3 +57,38 @@ If the form takes one link, paste the GitHub link and put the live link on the f
 
 - Add a tool, as in week 6, that checks live data.
 - Ask three real people to use your product and write down what they asked. Add their best question to your tests.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Build and deploy their own small AI product.
+- Show that the key, limits and tests are in place.
+- Explain the product with words from this course.
+
+### Purpose
+This is the proof of the whole course. Each learner leaves with a live product and a story they can tell to an employer or a friend.
+
+### Things to do
+1. **Launch.** Ask learners to open their plan from "Plan your product". Remind them the idea, prompt and data must be their own, but BakeBuddy code may be reused.
+2. **Demonstrate the safety pass.** Walk through the list: validation, `max_tokens`, `trimHistory`, `rateLimit`, tags. Then the deploy steps from "Put it online".
+3. **Demonstrate the live check.** Open a deployed site, ask a question, try an injection test, view page source for the key.
+4. **Run a showcase.** Each learner shows the live link, asks it one question, explains how it works, shares one thing that went wrong and one next step. Others watch and note one thing they liked. The instructor goes last with feedback. Keep it friendly, and let someone else drive if a learner is nervous.
+
+### What good work looks like
+- The `.vercel.app` link works when signed out, and the key is not in the page source, code or history.
+- `.env` is in `.gitignore`, and a spending limit is set.
+- The system prompt has a role, what it answers, what it must not do and what to say when it does not know.
+- Friendly errors for empty, long, failed and too many requests, plus `max_tokens`, a trimmed history and a rate limit.
+- `tests.js` has five or more tests with one injection, `npm test` runs, and the README has the sentence, the user, how to run it and the results.
+
+### Giving feedback
+- Start with one real strength, then give one or two changes. Be specific: "your system prompt says what to do when it does not know" works better than "good".
+- Ask a question when you can: "What happens if someone pastes a very long message?"
+- Frame problems as next steps. Never ask a learner to fix everything at once.
+- Safety problems come first, in private, and a leaked key means a new key at once.
+
+### Watch for
+- Projects too big to finish. Help cut to the main feature.
+- A key in a screenshot or README.
+- A demo that skips the problem and fix. Ask for it, it is often the best part.

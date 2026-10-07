@@ -100,3 +100,30 @@ Because the model continues text, **the words you give it shape the words it giv
 
 - [Anthropic: Claude documentation](https://docs.claude.com)
 - [Wikipedia: Large language model](https://en.wikipedia.org/wiki/Large_language_model)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Describe how a model writes an answer: one piece at a time, using all the text before it.
+- Explain training in one or two sentences.
+- Say why a model may not know recent news or private files.
+
+### Purpose
+Everything later in the course (prompts, context, temperature, hallucination) grows from this one idea. A learner who gets the autocomplete picture will understand most AI behaviour.
+
+### Things to teach
+1. **The autocomplete.** Start from the phone keyboard. The model is the same idea, but it has read a giant library. It is not a person and not a search engine.
+2. **Next-word chances.** Do the lesson's sentence together: "The baker opened the oven and smelled fresh ...". Bread is likely, cake and cookies less, tyres almost never. The model picks one, adds it, and guesses again.
+3. **Training.** The computer covers up the next word, guesses, and adjusts when wrong, a huge number of times. Two results: its knowledge has a date, and it has not read private files.
+4. **New text is possible.** It can write a poem about a bakery cat because it learned patterns, like a musician playing a new song in a known style. It does not keep a copy of the library.
+5. **Your words shape its words.** A vague question gets a general answer. This leads into Week 2.
+
+### Check understanding
+- Ask: "How does a model write a long answer?" A good answer: it guesses one piece, adds it to the text, guesses the next, and each guess looks at everything before it.
+- Ask: "What is training?" A good answer: reading lots of text, guessing the next word, and adjusting when wrong.
+- Ask: "Does it search the internet for each answer?" A good answer: no. Search is a separate feature an app may add.
+
+### Watch for
+- Learners think the model keeps a copy of the library and looks things up. Say: it keeps patterns, not pages.
+- Learners think "only guessing the next word" means it is weak. Say: it is a good guesser, which is why it is useful, and also why it can be wrong.

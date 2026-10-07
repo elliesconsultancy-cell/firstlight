@@ -206,3 +206,30 @@ console.log(playlist.join(" | "));
 - [javascript.info: Arrays](https://javascript.info/array)
 - [MDN: Arrays (learn)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Arrays)
 - [MDN: Array reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can create an array and read an item by index.
+- Learners can use `length`, `push` and `pop`.
+- Learners can search with `includes` and `indexOf`.
+
+### Purpose
+Real programs handle lists of things. Arrays are the starting point for all the data work in this week and later.
+
+### Things to teach
+1. **Arrays and index from 0.** Use `shoppingList` and draw the numbered slots. Show `shoppingList[9]` gives `undefined`.
+2. **Last item.** Use `shoppingList[shoppingList.length - 1]`. Say why it is `length - 1`.
+3. **Change an array.** Replace with `shoppingList[1] = "oat milk"`. Show `push` and `pop` with the `queue` example. Ask why this works when the array is a `const`: the variable points to the same array, but the contents can change.
+4. **Search.** Use `guestList.includes(visitor)` in an `if`. Show `indexOf` giving `-1` for `"purple"`. Say that `"Milk"` and `"milk"` differ.
+5. **Arrays with functions.** Show `getFirstAndLast(runners)`. Then run the `playlist` Try it.
+
+### Check understanding
+- Ask: "For `["cat", "dog", "fish"]`, what is index 1, and what is the length?" A good answer: `"dog"` and 3.
+- Ask: "What does `pop()` do and give back?" A good answer: it removes the last item and gives it back.
+- Ask: "Why can you `push` to a `const` array?" A good answer: `const` stops a different array being assigned, not changes to the contents.
+
+### Watch for
+- Off-by-one mistakes, such as using index 1 for the first item.
+- Thinking `const` makes an array fixed. Use the locker unit picture.

@@ -139,3 +139,30 @@ Free resources that are worth your time:
 - [Learn web development (MDN)](https://developer.mozilla.org/en-US/docs/Learn_web_development)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can present their project with a clear five-part structure.
+- Learners can answer questions honestly, including "I do not know yet".
+- Learners can choose their next steps for learning and for a portfolio.
+
+### Purpose
+Explaining a project is a job skill, because interviewers often say "tell me about a project you built". This lesson also helps learners leave with a direction.
+
+### Things to teach
+1. **The five parts.** Problem, live demo, under the hood, challenges and learning, what is next. Use the recipe box examples. Tell it as a story.
+2. **Prepare.** Practise out loud, use the live site, zoom in and close other tabs. Have good example data and a backup such as screenshots or a recording.
+3. **When something goes wrong.** Stay calm and say what happened. Use the lesson's "that is a bug I have not seen before" example.
+4. **Questions.** Keep answers short. "Good question, I would find out with MDN or the console" is a good, honest answer.
+5. **What is next.** Portfolio with three polished projects, then React, Node or testing. Keep your GitHub active and learn in public.
+
+### Check understanding
+- Ask: "What goes in 'under the hood'?" A good answer: one piece of code you are proud of, explained in plain words.
+- Ask: "A question stumps you. What do you say?" A good answer: be honest, and say how you would find out.
+- Ask: "Why use the live site in a demo?" A good answer: it shows the real published app, not local files.
+
+### Watch for
+- Learners who explain every button. Remind them to follow one user's journey.
+- Learners who read from the screen. Ask them to practise with a friend first.

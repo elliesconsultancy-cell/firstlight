@@ -208,3 +208,30 @@ git log --oneline
 - [freeCodeCamp: Git and GitHub for beginners](https://www.freecodecamp.org/news/git-and-github-for-beginners/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can say what version control is and why it helps.
+- Learners can run `git init`, `git status`, `git add`, `git commit` and `git log --oneline`.
+- Learners can write a clear commit message.
+
+### Purpose
+Git is the standard way developers save and share work. The edit, add, commit loop is the habit learners will repeat in every project.
+
+### Things to teach
+1. **Save points.** Use the video game and `essay-final-v2.docx` ideas. Note that old save points stay in the history.
+2. **Set up once.** Check `git --version`. Set `user.name`, `user.email` and `init.defaultBranch` with the three `git config` commands.
+3. **The cycle.** Use the `git-practice` folder. Run `git init`, make `index.html`, then `git add` and `git commit -m`. Draw the working folder, staging area and history picture.
+4. **Status is your friend.** Run `git status` before and after each step. Say to run it whenever unsure.
+5. **Good messages and the log.** Compare `stuff` with `Add contact section with opening hours`. Show `git log --oneline` and `git diff`.
+
+### Check understanding
+- Ask: "What is the difference between `git add` and `git commit`?" A good answer: add stages the changes, commit saves them as a snapshot.
+- Ask: "Which command shows what changed?" A good answer: `git status`, and `git diff` for the lines.
+- Ask: "Write a good message for adding an About us section." A good answer: for example `Add About us section with team photo`.
+
+### Watch for
+- Running `git init` in the home folder or the wrong folder. Check with `pwd` before `git init`.
+- Vague messages like `fixed it`. Ask "what would you want to read in six months?"

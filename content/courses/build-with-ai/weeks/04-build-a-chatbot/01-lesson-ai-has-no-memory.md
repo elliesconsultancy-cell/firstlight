@@ -174,3 +174,30 @@ This keeps the last 9 messages. Because the list always ends with a customer mes
 
 - [Claude docs: Messages API (multi-turn conversations)](https://platform.claude.com/docs/en/api/messages)
 - [Node.js: readline promises API](https://nodejs.org/api/readline.html)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain why a model forgets between calls
+- Keep a conversation as a list of `user` and `assistant` messages
+- Say why long chats cost more and how `slice(-9)` trims them
+
+### Purpose
+Memory is the thing learners most often get wrong about chatbots. Knowing it is just a list their app sends makes every later bug easier to find.
+
+### Things to teach
+1. **The notebook.** Say it out loud: "The AI forgets you each time. Your app keeps a notebook and shows the whole notebook every time." Tie it to the desk from week 1.
+2. **Prove the forgetting.** Run `memory.js` with its two separate calls. Ask learners to predict the second reply first.
+3. **The history list.** Show the three-message `history` array with `user` and `assistant`. The model did not remember; it read the notebook.
+4. **The chat loop in `chat.js`.** Four steps: add the user message, send, add the reply, show it. Point at `history.pop()` in the error case.
+5. **Cost and trimming.** Each call sends the whole notebook, so cost grows. `slice(-9)` is a simple fix, and the price is forgetting old messages.
+
+### Check understanding
+- Ask: "Why can't the model remember Tolu's name?" A good answer: each call stands alone and only sees what is sent.
+- Ask: "Why does the 20th message cost more than the 2nd?" A good answer: the whole notebook is sent again, so more input tokens.
+- Ask: "What do we lose by keeping only the last 9 messages?" A good answer: the start of a long chat.
+
+### Watch for
+- Learners think the AI "learned" their name. Repeat: it read the notebook.
+- Forgetting `await` or the `--env-file=.env` flag in `chat.js`, or pushing the reply to `history` before the call succeeds.

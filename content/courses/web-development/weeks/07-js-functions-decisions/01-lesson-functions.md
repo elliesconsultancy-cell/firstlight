@@ -209,3 +209,30 @@ console.log(`Total: ${kitchen + bedroom} square metres`);
 - [javascript.info: Functions](https://javascript.info/function-basics)
 - [javascript.info: Arrow functions, the basics](https://javascript.info/arrow-functions-basics)
 - [MDN: Functions — reusable blocks of code](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can declare a function and call it.
+- Learners can tell a parameter from an argument.
+- Learners can write a function that returns a value, including a short arrow function.
+
+### Purpose
+Functions let developers write code once and reuse it. Almost all real code is organised into functions.
+
+### Things to teach
+1. **Declare is not call.** Write `sayHello` and show that nothing prints until `sayHello();` runs. Use the recipe card idea.
+2. **Parameter and argument.** Use `greet(name)` with `"Ama"` and `"Bilal"`. The parameter is the blank on the form. The argument is what you write in it.
+3. **Order matters.** Show `describePet("Biscuit", "dog")` against the swapped call. Show `greet()` giving `Hello, undefined!`.
+4. **Return.** Use `addVat(50)` giving 60. Say that a call is an expression that becomes a value, so you can store it or add two calls together.
+5. **Arrow functions.** Show `double = (number) => number * 2`. Say they do the same job here.
+
+### Check understanding
+- Ask: "In `square(4)` with `function square(n)`, which is the argument?" A good answer: 4. `n` is the parameter.
+- Ask: "What happens with fewer arguments than parameters?" A good answer: the missing ones are `undefined`.
+- Ask: "What does `addVat(50)` evaluate to?" A good answer: 60.
+
+### Watch for
+- Forgetting the brackets when calling, so nothing runs.
+- Swapping the order of arguments. Remind them it goes by position, not by name.

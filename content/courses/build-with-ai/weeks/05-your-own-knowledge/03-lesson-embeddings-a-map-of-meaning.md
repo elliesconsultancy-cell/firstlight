@@ -130,3 +130,30 @@ Anthropic, the company behind Claude, does not offer its own embedding model. Ot
 
 - [Claude docs: Embeddings](https://platform.claude.com/docs/en/build-with-claude/embeddings)
 - [MDN: Math.sqrt](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sqrt)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain an embedding as a place on a map of meaning
+- Run the toy two-number map and read the nearest results
+- Compare keyword search with embeddings
+
+### Purpose
+Embeddings are behind most modern search and AI features. Learners only need the idea, not the maths, to talk about them with confidence.
+
+### Things to teach
+1. **The map of meaning.** Say: "Every text gets a place on a map. Similar meanings sit close. "Gluten-free" and "no wheat" are neighbours." Use the library shelves.
+2. **Run the toy map.** Items have `[sweet, drink]` points. `nearest` measures distance and sorts. Nothing compares words, only positions.
+3. **Try the exercises.** Add the "Iced tea" item at `[5, 9]`. Ask why one number is not enough to tell a brownie from hot chocolate.
+4. **How real search works.** Embed each chunk once and store it, embed the question, find the nearest, then do the same open-book step as before. Only the find step changes.
+5. **Where the picture stops.** No single number has a readable meaning, and the nearest chunk may still not answer. Keep the "say you do not know" rule.
+
+### Check understanding
+- Ask: "What is an embedding in one sentence?" A good answer: numbers that stand for meaning, so similar texts get nearby numbers.
+- Ask: "Why does embedding search find "no wheat" for "gluten-free"?" A good answer: they mean the same, so they sit close together.
+- Ask: "When is keyword search still better?" A good answer: exact names, codes and numbers.
+
+### Watch for
+- Learners think we call an embedding service in this course. We do not; the toy map is only for understanding.
+- Thinking the nearest result is always right. It is only the most similar.

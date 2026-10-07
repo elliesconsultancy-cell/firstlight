@@ -82,3 +82,32 @@ Push your project to GitHub and submit the link to the repository. The README sh
 - Add a daily cap to the whole app, as in the cost lesson.
 - Log `usage.input_tokens` and `usage.output_tokens` for every reply and print the total at the end of the test run.
 - Add a `mustIncludeAny` option that passes when at least one of several keywords appears.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Add input checks, a rate limit, tags and small limits to BakeBuddy.
+- Write at least eight tests and run them with `npm test`.
+- Explain one failure and what they did about it.
+
+### Purpose
+This is the habit that separates a toy from a product. Learners finish with proof that their safety work does something.
+
+### Things to do
+1. **Launch.** Ask learners to open their week 6 project. Go through the finished `/api/chat` route in the steps so they see where `rateLimit`, `validateMessage` and `wrapCustomerMessage` go.
+2. **Do the spending limit together.** Ask everyone to open their provider's billing or limits page and set a small limit. They write "done" in the README, never a screenshot of a key.
+3. **Demonstrate the test run.** Run `npm test` live. Read one failure aloud and decide: wrong answer or too strict a keyword.
+4. **Demonstrate a change.** Edit the system prompt, run again, and show what changed.
+
+### What good work looks like
+- The system prompt treats customer text as information, and the message is wrapped in tags.
+- `validateMessage` rejects empty and over 500 characters, `max_tokens` is 500 or less, and history is 10 messages or fewer.
+- The chat route has a rate limit, and the chat page shows the friendly error.
+- `tests.js` has at least eight tests, with two injection attempts and one off-topic question, and `npm test` prints PASS or FAIL and a total.
+- The README has "Test results" with one failure explained, and no key or private data anywhere.
+
+### Watch for
+- All tests passing first time. The tests are probably too gentle. Ask for one they are afraid of.
+- The very long message test. The route returns an error, not a reply, so the script needs adjusting or a hand test.
+- Running the tests in a loop. Every test is a paid call.

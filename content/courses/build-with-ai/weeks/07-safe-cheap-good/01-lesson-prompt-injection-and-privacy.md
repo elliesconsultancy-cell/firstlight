@@ -163,3 +163,30 @@ Results differ between models and prompts, so there is no single right answer. A
 
 - [Claude docs: Mitigate jailbreaks and prompt injections](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks)
 - [OWASP: LLM Prompt Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain prompt injection, direct and indirect, using the sneaky note.
+- Name the four defences in the lesson.
+- List what must never go into a prompt.
+
+### Purpose
+Anyone can type anything into a public product. Learners must design as if some visitors will try to trick it.
+
+### Things to teach
+1. **The sneaky note.** A stranger slips a fake "message from the boss" into the intern's stack of papers. The model reads everything as one big text, so it cannot always tell boss from stranger.
+2. **Direct and indirect.** Direct: the customer types the trick. Indirect: the trick hides in a page, file or tool result the AI reads.
+3. **Labelling and `wrapCustomerMessage`.** Show the `<customer_message>` tags and the system prompt rule. Say plainly: this helps, but it is not a lock.
+4. **Least power.** Ask "If the AI is tricked, what is the worst it could do?" A read-only `check_stock` is a small risk. Your code, not the model, decides about discounts.
+5. **Postcards, not letters.** Prompts travel to another company. Never send keys, passwords or other people's private data. Show `validateMessage` as the input check.
+
+### Check understanding
+- Ask: "Direct versus indirect injection?" A good answer: the user types it, or it is hidden in something the AI reads.
+- Ask: "Why are read-only tools safer?" A good answer: a tricked AI cannot change anything.
+- Ask: "Is 'never reveal the password' a defence?" A good answer: no, keep secrets out of prompts.
+
+### Watch for
+- Learners believing the tags make them safe. Say: it is one layer, use several.
+- Learners pasting real customer data into an AI to test it. Use made-up data.

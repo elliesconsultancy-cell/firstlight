@@ -297,11 +297,12 @@ async function syncWith(d, { publishFirst = 0, onlyMissing = false } = {}) {
 			// New weeks start published only for the first few; existing weeks keep their published setting.
 			await d
 				.prepare(
-					`INSERT INTO weeks (course_id, slug, position, title, summary, intro_md, published) VALUES (?, ?, ?, ?, ?, ?, ?)
+					`INSERT INTO weeks (course_id, slug, position, title, summary, intro_md, instructor_notes, published) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 					 ON CONFLICT (slug) DO UPDATE SET course_id = excluded.course_id, position = excluded.position,
-						title = excluded.title, summary = excluded.summary, intro_md = excluded.intro_md`
+						title = excluded.title, summary = excluded.summary, intro_md = excluded.intro_md,
+						instructor_notes = CASE WHEN excluded.instructor_notes <> '' THEN excluded.instructor_notes ELSE weeks.instructor_notes END`
 				)
-				.run(courseId, w.slug, w.position, w.title, w.summary, w.intro_md, w.position < publishFirst ? 1 : 0);
+				.run(courseId, w.slug, w.position, w.title, w.summary, w.intro_md, w.instructor_md ?? '', w.position < publishFirst ? 1 : 0);
 			const weekId = (await d.prepare('SELECT id FROM weeks WHERE slug = ?').get(w.slug)).id;
 			weeks++;
 

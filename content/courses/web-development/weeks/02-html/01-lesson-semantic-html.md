@@ -177,3 +177,30 @@ Visit a large website you use, like a news site or an online shop. Open the Elem
 - [MDN: HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can explain what semantic HTML means and who benefits
+- choose between `header`, `nav`, `main`, `section`, `article`, `aside` and `footer`
+- order headings correctly with one `<h1>` and no skipped levels
+
+### Purpose
+Semantic HTML makes pages usable with a screen reader and easier to maintain. Real teams review this in every page.
+
+### Things to teach
+1. **Meaning, not looks.** Compare the two versions of My Recipe Blog: `<div>` and `<h1>` plus `<p>`. They look the same but only one has meaning. Name who benefits: screen readers, search engines, developers, browsers.
+2. **The page skeleton.** Walk through Ada's Kitchen: `header`, `nav`, `main` (only one per page), `section`, `article`, `footer`. Press Try it and click the `#recipes` and `#about` links.
+3. **Section or article?** Ask: would it make sense copied alone onto another site? Yes means `article`. `div` is the last choice, not a bad one.
+4. **Heading order.** One `<h1>`, no skipped levels, choose by meaning not size. Fix the My Holiday example together: the second `<h1>` becomes `<h2>`, `<h4>` becomes `<h3>`.
+5. **See it in DevTools.** Open a news site, press F12, and find `header`, `nav`, `main` and `footer` in Elements.
+
+### Check understanding
+- Ask: "How many `<main>` elements should a page have?" A good answer: one.
+- Ask: "When do you use `article`?" A good answer: when the content makes sense on its own, like a recipe or blog post.
+- Ask: "Why not jump from `<h2>` to `<h4>`?" A good answer: it breaks the outline for people who move by headings.
+
+### Watch for
+- Using headings to make text big. Say that size is for CSS later.
+- Using `div` for everything, or putting `section` everywhere. Ask what the content is.

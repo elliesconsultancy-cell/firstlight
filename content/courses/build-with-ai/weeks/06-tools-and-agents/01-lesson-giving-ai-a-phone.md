@@ -169,3 +169,29 @@ Change the question to "Do you sell pizza?" and run the script again. What do yo
 - [Claude docs: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
 - [Claude docs: Define tools](https://platform.claude.com/docs/en/agents-and-tools/tool-use/define-tools)
 - [JSON Schema: Understanding JSON Schema](https://json-schema.org/understanding-json-schema)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Say in their own words that the AI asks for a tool and their code runs it.
+- Write a tool description with `name`, `description` and `input_schema`.
+- Read a `tool_use` reply and point to the tool name and its input.
+
+### Purpose
+Real products need live facts, such as what is on the shelf right now. Tools are how an AI product gets them without guessing.
+
+### Things to teach
+1. **The phone the AI asks you to call.** Use the bakery story. The intern cannot see the back shelf, so the intern asks someone to phone the kitchen. Say it out loud: the AI never runs your code, it only writes a note.
+2. **The tool is normal code.** Show `checkStock` in `stock.js` first, with no AI in it. Point out the unknown-item message instead of an error.
+3. **The description is the real instruction.** The AI reads the `description` to decide when to call. Show the "does not give prices or opening hours" sentence and why it is there.
+4. **Reading `stop_reason: "tool_use"`.** Run `try-tool.js` and show the sticky note: `name`, `input`, and `id`. The `id` is a ticket number for next lesson.
+
+### Check understanding
+- Ask: "Who runs `checkStock`?" A good answer: our code. The AI only asks.
+- Ask: "What does `stop_reason: "tool_use"` mean?" A good answer: the AI is not finished and wants us to run a tool.
+- Ask: "Why can the AI write a wrong note?" A good answer: it can name an item that does not exist, so our code must check it.
+
+### Watch for
+- Learners who think the AI "has" the function. Say: it only sees the description, never the code.
+- Vague descriptions such as "stock tool". Ask them to say when to use it and when not to.

@@ -109,3 +109,30 @@ Compare the two answers. Which one would you use? Why?
 
 - [Claude docs: Prompt engineering overview](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview)
 - [Claude docs: Be clear and direct](https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/be-clear-and-direct)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain a prompt using the intern picture.
+- Rewrite a vague prompt into a clear one.
+- Name the five parts of a good prompt: task, context, audience, format, tone.
+
+### Purpose
+Prompting is the cheapest way to get better results. In real work, most poor AI answers come from poor instructions, not a poor model.
+
+### Things to teach
+1. **The new intern.** Keen, has read everything, knows nothing about your business. A real intern can ask questions, but the AI usually guesses.
+2. **Vague in, vague out.** Show Prompt A ("Write something for customers") next to Prompt B (the window notice with facts and tone). Ask learners what is missing in A.
+3. **Five parts.** Task, context, audience, format, tone. When an answer is poor, ask which part is missing.
+4. **The rule.** "If a new person could not do the job from your prompt, the AI cannot either."
+5. **Postcard rule.** Never put passwords, keys or other people's private data in a prompt.
+
+### Check understanding
+- Ask: "What is a prompt?" A good answer: the text you give a model to start from, such as a question, instructions, examples or a document.
+- Ask: "Why does a vague prompt give a vague answer?" A good answer: the model has nothing specific to hold on to, so it guesses.
+- Ask: "What does the intern picture say about what the AI knows?" A good answer: it has read a lot in general but knows nothing about your business unless you tell it.
+
+### Watch for
+- Learners assume the AI already knows their shop or situation. Say: put the facts in the prompt.
+- Learners ask five things at once. Say: ask one thing, then the next.

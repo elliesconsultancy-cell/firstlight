@@ -206,3 +206,30 @@ Start from the reading list above:
 - [Forms: event and method submit (javascript.info)](https://javascript.info/forms-submit)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can store app data as an array of objects (the state).
+- Learners can write a `render()` function that draws the page from that array.
+- Learners can follow the rule: change the state, then call `render()`.
+
+### Purpose
+This pattern keeps bigger apps tidy, and it is the idea behind tools like React. It is also exactly what this week's assignment needs.
+
+### Things to teach
+1. **The problem.** Changing the page bit by bit gets messy when a count, a list and buttons must all agree.
+2. **State.** Use the `books` array (Things Fall Apart, Small Island, Half of a Yellow Sun). Call it the single source of truth.
+3. **Render.** Walk through it: clear with `list.textContent = ""`, loop and draw each book, then work out the "to read" count with `filter`. Do not keep a separate count variable.
+4. **Change state, then render.** Use the "Mark read" button: `book.done = !book.done`, then `render()`. Listeners never touch the page directly.
+5. **Adding.** The form pushes `{ title, author, done: false }` into the array, then calls `render()`.
+
+### Check understanding
+- Ask: "What is the state in the reading list?" A good answer: the `books` array.
+- Ask: "What is the one rule for listeners?" A good answer: update the state, then call `render()`.
+- Ask: "The page looks wrong. What do you check first?" A good answer: `console.log(books)`. If the state is wrong, fix the listener. If the state is right, fix `render`.
+
+### Watch for
+- Forgetting `list.textContent = ""`, so every render doubles the list.
+- Changing the page in a listener and forgetting the state. The page and the data then disagree.

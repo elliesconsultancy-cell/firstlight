@@ -67,3 +67,32 @@ Later in this course you will learn Git and GitHub. After that you can also shar
 - Validate your CSS with the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners have restyled their week 1 About Me page with an external `styles.css`.
+- Learners use a custom property palette, a custom font, the box model and `rem` units.
+- Learners check their work against the requirements list before submitting.
+
+### Purpose
+This brings the whole week together on a page the learner already owns. It is the first piece of work that looks like their own design.
+
+### Things to do
+1. **Launch.** Check each learner still has their week 1 folder. Tell them to copy it first so the original is safe.
+2. **Demonstrate the pink test.** Create `styles.css`, add the `<link>`, set `body { background-color: pink; }`, confirm it works, then remove it.
+3. **Demonstrate the palette.** Put four colours in `:root` and use `var(...)` in `body`. Then show the Google Fonts `<link>` above the stylesheet link.
+4. **Remind them of the submit form.** They upload `index.html`, `styles.css`, any images, and a few sentences about what they are proud of and what was tricky.
+
+### What good work looks like
+- All CSS is in `styles.css`, with no `style="..."` attributes and no `<style>` element in the HTML.
+- `:root` holds 3 to 4 colours and the CSS uses `var(...)`.
+- At least one custom font with a fallback, and font sizes in `rem`.
+- Links have `:hover` and `:focus` styles, and the file starts with the `box-sizing: border-box` rule.
+- Padding, margin and border are all used, plus a class selector and a descendant selector.
+
+### Watch for
+- Styles not showing because of a wrong `href` or unsaved file.
+- Pale text with low contrast. Ask them to check it with the DevTools colour picker.
+- Learners who change the page content instead of the look. Remind them this week is only about styling.

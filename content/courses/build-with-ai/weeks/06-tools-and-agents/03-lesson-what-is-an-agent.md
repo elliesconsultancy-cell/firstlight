@@ -132,3 +132,29 @@ Give `search_notes` and `read_note` first. They are read-only. `delete_note` and
 
 - [Anthropic: Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)
 - [Claude docs: Tool use overview](https://platform.claude.com/docs/en/agents-and-tools/tool-use/overview)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Describe an agent as an intern with a to-do list that loops until done or stopped.
+- Name the four fences: loop cap, small `max_tokens`, time limit, safe tools.
+- Tell a read-only tool from an action tool.
+
+### Purpose
+Agents are popular, and also easy to get wrong. Learners should leave knowing that the model decides the number of rounds, so they must build the limits.
+
+### Things to teach
+1. **The intern with a clipboard.** Use the Saturday order: 6 croissants, 2 sourdough loaves, 1 chocolate cake. Think, act, check, repeat. The difference from last lesson is who decides how many rounds: the model.
+2. **Where the picture breaks.** The intern has common sense and the model may not. It can repeat a call, pick the wrong tool or trust a wrong result.
+3. **Four fences.** Show `withinTime` and `logToolCall` in `agent.js`. Say that logging is the first place to look when something goes wrong.
+4. **Read-only or action?** `check_stock` is read-only. `reserveItem` only prepares an order, and a Confirm button run by a human places it.
+
+### Check understanding
+- Ask: "What is an agent in one sentence?" A good answer: an AI that loops, using tools, until its goal is done or it is stopped.
+- Ask: "Which of `search_notes`, `delete_note`, `send_email_to_teacher` come first?" A good answer: `search_notes`, because it is read-only.
+- Ask: "Why log every tool call?" A good answer: so we can see what happened.
+
+### Watch for
+- Learners thinking agents are magic or always right. Remind them the model can be wrong and, next week, tricked.
+- Giving action tools "just to try". Say: a human must say yes first.

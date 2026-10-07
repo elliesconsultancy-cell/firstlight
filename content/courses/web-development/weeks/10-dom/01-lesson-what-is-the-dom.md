@@ -185,3 +185,29 @@ Then break it on purpose. Change `.special` to `.speshal`. What error do you see
 - [Searching: getElement*, querySelector* (javascript.info)](https://javascript.info/searching-elements-dom)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can explain the DOM as a tree the browser builds from HTML.
+- Learners can select elements with `querySelector`, `querySelectorAll` and `getElementById`.
+- Learners can explain why `defer` matters and what a `null` error means.
+
+### Purpose
+Every interactive page starts with finding an element. The "Cannot read properties of null" error is the most common one learners will meet, so they should be able to read it calmly.
+
+### Things to teach
+1. **The family tree.** Use the "My recipes" example (`main`, `h1`, `ul`, `li`). Name parent, child and sibling. The HTML is the recipe and the DOM is the cake.
+2. **DevTools.** Open the Elements panel, double-click some text and change it. Say that JavaScript will do the same thing.
+3. **Finding elements.** Use the lesson's recipes page. Show `querySelector("#title")`, `querySelector(".intro")` and `querySelectorAll("li")`. Note there is no `#` in `getElementById`.
+4. **`defer` and null.** Without `defer`, the script runs before the page exists. Misspell a selector on purpose (`.speshal`) and read the error together.
+
+### Check understanding
+- Ask: "What is the difference between `querySelector` and `querySelectorAll`?" A good answer: the first returns one element (the first match). The second returns a list of all matches.
+- Ask: "What does `Cannot read properties of null` usually mean?" A good answer: the selector found nothing. Check the spelling, the `#` or `.`, and `defer`.
+- Ask: "Does JavaScript change your HTML file?" A good answer: no, it changes the page in the browser, and a refresh brings the original back.
+
+### Watch for
+- `querySelector("intro")` without the dot. That looks for an `<intro>` tag. Show the difference from `.intro`.
+- Learners who think `querySelectorAll` gives a single element. Ask them to log `.length`.

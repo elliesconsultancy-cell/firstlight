@@ -178,3 +178,30 @@ To add a screenshot, take one and save it as `screenshot.png` in your project fo
 - [About issues (GitHub Docs)](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues)
 - [Basic writing and formatting syntax (GitHub Docs)](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
 - [How to write a good README (freeCodeCamp)](https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can split a user story into small tasks and track them as GitHub issues.
+- Learners can build in small steps, commit often with clear messages and deploy early.
+- Learners can ask for and respond to a code review, and write a good README.
+
+### Purpose
+This is how real teams work: tasks, small commits, reviews and a README. These habits matter as much as the code when someone looks at a learner's GitHub.
+
+### Things to teach
+1. **Story to tasks.** Use "search recipes by name". Show it split into small tasks that each end with something visible.
+2. **GitHub issues.** Demonstrate New issue, a clear title, the story and a checklist. Add an `mvp` label. `Closes #3` in a commit message closes issue 3.
+3. **Build order.** Skeleton, data and render, interaction, style, polish, stretch. Deploy to GitHub Pages on day one.
+4. **Commits and review.** Good commit messages say what changed. Show the review request template: links, what to look at and what is unfinished. Feedback is about the code, not the person.
+5. **README.** It answers what, can I see it, how does it work and who made it. Show the Recipe Box README.
+
+### Check understanding
+- Ask: "Why deploy on day one?" A good answer: you always have a live link, and you notice problems quickly.
+- Ask: "What makes a good commit message?" A good answer: it says what changed, for example "Add search input and filter recipes by name".
+- Ask: "How do you help a reviewer?" A good answer: share the repo and live links, say what you want feedback on and say what is unfinished.
+
+### Watch for
+- Messages like "update" or "stuff", and one huge commit at the end.
+- Learners who only start the README at the end. Ask them to make a short one on day one.

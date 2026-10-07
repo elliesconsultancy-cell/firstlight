@@ -31,6 +31,12 @@ import coffee from 'lucide-static/icons/coffee.svg?raw';
 import cloudOff from 'lucide-static/icons/cloud-off.svg?raw';
 import bot from 'lucide-static/icons/bot.svg?raw';
 import code from 'lucide-static/icons/code-xml.svg?raw';
+import clock from 'lucide-static/icons/clock.svg?raw';
+import circle from 'lucide-static/icons/circle.svg?raw';
+import clipboardList from 'lucide-static/icons/clipboard-list.svg?raw';
+import graduationCap from 'lucide-static/icons/graduation-cap.svg?raw';
+import users from 'lucide-static/icons/users.svg?raw';
+import listChecks from 'lucide-static/icons/list-checks.svg?raw';
 
 // Remove the licence comment so the markup is just the <svg>.
 const clean = (svg) => svg.replace(/<!--[\s\S]*?-->/g, '').trim();
@@ -67,6 +73,12 @@ export const icons = Object.fromEntries(
 		coffee,
 		'cloud-off': cloudOff,
 		bot,
-		code
+		code,
+		clock,
+		circle,
+		'clipboard-list': clipboardList,
+		'graduation-cap': graduationCap,
+		users,
+		'list-checks': listChecks
 	}).map(([k, v]) => [k, clean(v)])
 );

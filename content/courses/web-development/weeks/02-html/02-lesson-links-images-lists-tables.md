@@ -196,3 +196,32 @@ Build a small table in the playground. It shows a weekly study plan with three c
 - [web.dev: Learn HTML – Lists](https://web.dev/learn/html/lists)
 - [MDN: HTML table basics](https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Basics)
 - [MDN: Creating hyperlinks](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can write link text that makes sense on its own
+- write good alt text, and use `alt=""` for decoration
+- nest lists correctly inside an `<li>`
+- build a table with `caption`, `th` and `td`
+
+### Purpose
+Links, images and tables appear on nearly every page. Doing them well is the easiest accessibility gain for a beginner.
+
+### Things to teach
+1. **Link text.** Compare "click here" with "our full menu". Screen reader users hear a list of links alone. Also show `mailto:`, `tel:` and `target="_blank"` with `rel="noopener"`.
+2. **Alt text.** Imagine describing the picture on the phone. Do the three Try it cases: chef with soup, decorative leaf (`alt=""`), and the logo link (`Ada's Kitchen home`). Never leave `alt` out.
+3. **Figure and caption.** Show `figure` and `figcaption` with the strawberries example. Add `width` and `height`.
+4. **Lists a second time.** Show the description list `dl` for Prep time, Cook time and Serves, and the nested Vegetables list. Only `<li>` can sit directly inside `<ul>`.
+5. **Tables.** Build the Nutrition per serving table. Show `caption`, `thead`, `tbody`, `th scope`, and `td`. Use tables for data, never layout. Then do the study plan Try it.
+
+### Check understanding
+- Ask: "Why is "click here" bad link text?" A good answer: it says nothing about where the link goes when heard alone.
+- Ask: "When should alt be empty?" A good answer: when the image is only decoration.
+- Ask: "What can be a direct child of `<ul>`?" A good answer: only `<li>`.
+
+### Watch for
+- Alt text that starts with "image of" or is just "photo".
+- A nested `<ul>` placed straight inside another `<ul>`, not inside an `<li>`.
+- Rows with different numbers of cells in a table.

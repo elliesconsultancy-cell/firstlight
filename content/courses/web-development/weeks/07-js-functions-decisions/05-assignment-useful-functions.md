@@ -134,3 +134,32 @@ Use the submit form on this page. Hand in two things.
 - Make `formatTime` handle invalid input (e.g. hours of 25) by returning `"Invalid time"`.
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can write functions that return values, with `if / else if / else`.
+- Learners can test edge cases with a `check` helper.
+- Learners can use `===` and template literals in real code.
+
+### Purpose
+This turns the week's ideas into small useful tools. The `check` helper also shows a simple way to test code.
+
+### Things to do
+1. **Launch it.** Learners copy the starter code into `functions.js`. Explain the `check` helper: it prints PASS or FAIL for each call.
+2. **Demonstrate getGrade.** Check for invalid scores first. Ask what happens to 95 if `score >= 60` comes first.
+3. **Demonstrate edge cases.** For `formatTime`, try 0, 12 and 23 first. Show `String(5).padStart(2, "0")`.
+4. **Explain Step 4.** They choose their own function and add at least four checks.
+
+### What good work looks like
+- `getGrade`, `isLeapYear` and `formatTime` use the exact names and return values, with no `console.log` inside.
+- `getGrade` passes the boundaries (70, 69) and gives `"Invalid score"` below 0 or above 100.
+- `isLeapYear` gives true or false for 2024, 2023, 1900 and 2000.
+- `formatTime` gives strings like `"9:05 am"` and `"12:30 am"`.
+- Each function has at least 4 inputs checked, `===` is used, and the file runs with no errors. The written answer includes the PASS/FAIL output.
+
+### Watch for
+- Functions that log instead of return. The check then shows FAIL with `undefined`.
+- `isLeapYear` mistakes with 1900, and `formatTime` mistakes for hour 0 and 12.
+- Wrong order in the `getGrade` chain.

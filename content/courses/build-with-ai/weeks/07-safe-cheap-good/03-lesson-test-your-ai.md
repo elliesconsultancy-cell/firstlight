@@ -184,3 +184,29 @@ It depends on your tests, but the "off topic" or the injection test is the most 
 ## Go deeper
 
 - [Claude docs: Create strong empirical evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Say what a taste test is and when to run it.
+- Write tests with `mustInclude` and `mustNotInclude`.
+- Run `npm test` and read a failure sensibly.
+
+### Purpose
+Every change to a prompt or tool can quietly stop something working. A small test list catches it before visitors do.
+
+### Things to teach
+1. **Amina tastes the loaf.** A taste test is a list of questions with expected words, run by a script before and after every change.
+2. **Writing `tests.js`.** Use the examples: croissants available, sourdough sold out, pizza unknown, the "free food" injection, the football poem. Cover the happy path, an unknown item, a tricky question and an injection.
+3. **The script finds suspects.** `taste-test.js` only matches words. It cannot taste. So a good answer can fail, and a bad one can pass. Learners read the failures.
+4. **Reading a failure.** Is the answer wrong, or is the keyword too strict? A test that fails every time is a real bug, so keep it. Each test is a paid call, so keep the list short.
+
+### Check understanding
+- Ask: "When do you run it?" A good answer: before and after every change.
+- Ask: "Why short keywords?" A good answer: the wording changes each time, keywords still match.
+- Ask: "A test fails once, then passes. What now?" A good answer: run it again, then loosen the test or fix the prompt.
+
+### Watch for
+- Learners trusting a PASS without reading the answer.
+- Keywords that are too exact, so good answers fail. Shorten them.

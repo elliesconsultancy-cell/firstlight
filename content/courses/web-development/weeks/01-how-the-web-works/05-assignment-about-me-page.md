@@ -61,3 +61,33 @@ In the written answer box, write one or two sentences: what was the most comfort
 - Add an HTML comment (`<!-- like this -->`) above each section to explain it.
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can build a complete HTML page from the boilerplate
+- use headings, paragraphs, a list, an image and a link
+- organise files in a folder and use a correct image path
+- submit a file or a CodePen link
+
+### Purpose
+This is the first page learners build alone. It puts the week's lessons together and shows you who struggles with tags, paths or file saving.
+
+### Things to do
+1. Show the folder setup: `firstlight/week-01/about-me/` with `index.html` and an `images` folder. Tie it back to the paths lesson.
+2. Demonstrate planning in plain words first, then adding tags. Build the boilerplate with `!` and Tab.
+3. Show both image options: a file in `images/` or an online URL. Remind learners to share only what they are happy to share.
+4. Show the submit form. Upload `index.html` and any image file, or paste a CodePen link, and fill in the one or two sentences.
+
+### What good work looks like
+- The file is `index.html` inside a folder called `about-me`, with the full boilerplate and `lang="en"`.
+- The `<title>` has the learner's name, and there is one `<h1>`.
+- There are at least two paragraphs and one list with three or more items.
+- There is an `<img>` with a helpful `alt`, and a link to another site that works.
+- Every element is closed, and the code is indented.
+
+### Watch for
+- An image path that is wrong, or an image the learner did not upload. Check the `src`.
+- Learners who share too much personal information. Gently remind them.
+- CodePen: only the content inside `<body>` should be pasted, not the whole file.

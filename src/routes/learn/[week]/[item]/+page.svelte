@@ -44,6 +44,14 @@
 		{/if}
 	</header>
 
+	{#if data.item.instructorHtml}
+		<details class="instructor-panel" open>
+			<summary><Icon name="graduation-cap" size={17} /> For instructors: agenda for this {data.item.kind}</summary>
+			<span class="small muted">Only instructors can see this.</span>
+			<Prose html={data.item.instructorHtml} />
+		</details>
+	{/if}
+
 	<Prose html={data.item.html} storageKey="fl-check-{data.user.id}-{data.item.id}" />
 
 	{#if data.item.kind === 'lesson'}

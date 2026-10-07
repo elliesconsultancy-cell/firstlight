@@ -208,3 +208,29 @@ In the JS pane, use only JavaScript to do these things:
 - [Modifying the document (javascript.info)](https://javascript.info/modifying-document)
 - [Element.classList (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList)
 - [DOM scripting introduction (MDN)](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/DOM_scripting)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can change text, attributes, classes and styles of an element.
+- Learners can create an element, fill it in and attach it to the page.
+- Learners can remove an element and empty a container.
+
+### Purpose
+These are the building blocks of every interactive page. Next lesson they react to clicks. The lesson after, they draw whole lists from data.
+
+### Things to teach
+1. **`textContent`.** Change the "greeting" heading. Say why we avoid `innerHTML`: it reads text as HTML, which can be unsafe if a user typed it.
+2. **Classes over styles.** Use the "highlight" note. Show `classList.add`, `remove`, `toggle` and `contains`. CSS holds the look, JavaScript flips the switch. `style.backgroundColor` is the camelCase form.
+3. **Create, fill, attach.** Use the shopping list example: `createElement("li")`, set `textContent`, then `list.append`. Show the same inside a loop with the foods array.
+4. **Removing.** `element.remove()` removes one item. `list.textContent = ""` empties a container. Say that this trick comes back in the state and render lesson.
+
+### Check understanding
+- Ask: "What does toggling a class twice do?" A good answer: it adds it, then removes it, so the element ends up as it started.
+- Ask: "What are the three steps to add a new element?" A good answer: create it, fill it in, attach it to a parent.
+- Ask: "Why prefer `classList` to `style`?" A good answer: styles stay in CSS where they are easy to find and change.
+
+### Watch for
+- Creating an element but never attaching it. Nothing shows, so ask "have you carried the chair into the shop?"
+- Using `background-color` in JavaScript. It must be `backgroundColor`.

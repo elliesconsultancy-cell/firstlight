@@ -53,3 +53,32 @@ Push your project to GitHub and submit the link to the repository. Make sure:
 - Add a second read-only tool, such as `get_opening_hours`, and test a question that needs both tools.
 - Add `reserve_item` that only prepares an order and needs a Confirm button.
 - Add the time limit helper from the agent lesson.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Build a working `check_stock` tool and plug it into the chat route.
+- Run the tool loop with a cap, correct history and `is_error` handling.
+- Test and record results for four questions in the README.
+
+### Purpose
+This turns three lessons of ideas into one working feature. It also gives each learner a project they can extend in the final week.
+
+### Things to do
+1. **Launch.** Ask learners to open last week's BakeBuddy project. Remind them they may swap in their own idea, for example `check_class_spaces` for a gym.
+2. **Demonstrate the test method.** Ask "Do you sell pizza?" live and read the terminal log together. Show where the `tool_use` line appears.
+3. **Demonstrate breaking it.** Make `checkStock` throw once and show the page staying up. Then set `MAX_LOOPS = 1` and show the "Sorry, I could not finish" message.
+4. **Remind them of cost.** Spending limit first, `max_tokens` small, few test runs.
+
+### What good work looks like
+- `stock.js` has `checkStock` that returns a clear message for an unknown item.
+- The tool has a `name`, a description of at least three sentences, and an `input_schema` with `required`.
+- The loop has `MAX_LOOPS` of 5 or less, and the history holds the whole assistant reply with a matching `tool_use_id`.
+- Tools are found in an object (the phone book), failures send `is_error: true`, and each call is logged.
+- `.env` is in `.gitignore`, and the README lists four test questions with what BakeBuddy answered.
+
+### Watch for
+- The tool never gets called. Fix the description first, not the code.
+- Only the text of the reply is saved in the history.
+- A key left in the repository. Check the history, not just the files.

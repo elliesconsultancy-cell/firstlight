@@ -265,3 +265,31 @@ Now experiment:
 - [web.dev: Sizing units](https://web.dev/learn/css/sizing)
 - [web.dev: Typography](https://web.dev/learn/css/typography)
 - [MDN: Using CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can set text and background colours using names, hex codes or `rgb()`.
+- Learners can store a palette in `:root` custom properties and use `var(...)`.
+- Learners can choose between `px`, `rem`, `%` and `vw`.
+- Learners can set a `font-family` list with a fallback.
+
+### Purpose
+Colour, size and type make a page feel designed and readable. The palette and `rem` habits are needed for this week's assignment.
+
+### Things to teach
+1. **Colour formats.** Show `tomato`, `#fdf6ec` and `rgb(0 0 0 / 0.5)`. Learners do not need to work out hex by hand.
+2. **A palette with custom properties.** Use the `--bg`, `--text`, `--main`, `--accent` example. Change `--main` and show every use update.
+3. **Units.** Use the table. Explain `rem` as a multiple of the base size, usually 16px, so 2.5rem is 40px.
+4. **Resize test.** In the Spokes & Sprockets example, compare `6vw` and `3rem` while resizing the window.
+5. **Fonts.** Show a `font-family` list ending in `sans-serif`, and the Google Fonts `<link>` placed before `styles.css`.
+
+### Check understanding
+- Ask: "How big is `1.5rem` if the base is 16px?" A good answer: 24px.
+- Ask: "Why end a font list with `sans-serif`?" A good answer: it is a fallback if the other fonts are missing.
+- Ask: "Why use custom properties?" A good answer: write each colour once, change it in one place.
+
+### Watch for
+- Pale text on a pale background. Show the contrast score in DevTools.
+- Google Fonts link placed after the stylesheet link. Tell them it goes before.

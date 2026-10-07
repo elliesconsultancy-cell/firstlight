@@ -237,3 +237,30 @@ console.log(`Starts with A? ${niceName.startsWith("A")}`);
 - [javascript.info: Strings](https://javascript.info/string)
 - [MDN: Handling text — strings in JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Strings)
 - [MDN: Useful string methods](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Useful_string_methods)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can use arithmetic operators, including `%`, and predict the order of operations.
+- Learners can build text with `+` and with template literals.
+- Learners can use `length`, `trim`, `toUpperCase`, `toLowerCase`, `includes` and `slice`.
+
+### Purpose
+Almost every site builds or cleans text, and many need simple maths. These tools are used in the assignment straight away.
+
+### Things to teach
+1. **Expressions and `%`.** Show that JavaScript works out an expression to one value first. Use the minutes example: `Math.floor(135 / 60)` gives 2 and `135 % 60` gives 15.
+2. **String plus number.** Run `"5" + 3` (gives `"53"`) and `5 + 3`. Then show `0.1 + 0.2` and `.toFixed(2)`, which gives a string.
+3. **Template literals.** Rewrite the `Femi` example with backticks and `${ }`. Show `£${price * quantity}`. Check everyone finds the backtick key.
+4. **Indexes and slice.** Draw the `JavaScript` letters with numbers from 0. Show `slice(0, 4)` gives `"Java"` (the end is not included).
+5. **Methods return new strings.** Show `original` stays `"hello"` after `toUpperCase()`. Run the `rawName` Try it.
+
+### Check understanding
+- Ask: "What does `10 % 3` give?" A good answer: 1, the remainder.
+- Ask: "What does `"2" + 2` print?" A good answer: `"22"`, because `+` joins when one side is a string.
+- Ask: "After `s.toUpperCase()`, what is `s`?" A good answer: unchanged.
+
+### Watch for
+- Using normal quotes with `${ }`. It prints as written, so tell them to use backticks.
+- Forgetting the index starts at 0, and expecting `slice` to include the end.

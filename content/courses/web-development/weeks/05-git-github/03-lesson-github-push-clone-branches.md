@@ -188,3 +188,31 @@ You will use pull requests more when you work in teams later in the course. For 
 - [Learn Git Branching (interactive)](https://learngitbranching.js.org/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can say how Git and GitHub differ.
+- Learners can create a GitHub repository, connect it with `git remote add origin` and push.
+- Learners can clone a repository and pull new commits.
+- Learners can describe a branch and a pull request in plain words.
+
+### Purpose
+GitHub backs up their work, lets them share it, and is where the site gets published. Pushing is the step most learners find hardest, so plan help for it.
+
+### Things to teach
+1. **Git versus GitHub.** Use the phone camera and cloud photo album. Local is on the laptop, remote is on GitHub.
+2. **Create and push.** Create an empty public repository with no README. Run `git remote add origin ...` and `git push -u origin main`. After that, `git push` alone is enough.
+3. **Sign in problems.** Explain that a normal password will not work. Show `gh auth login` with HTTPS. Do this with each learner who gets stuck.
+4. **Clone and pull.** Clone into `git-practice-copy`, then show `git pull` for new commits.
+5. **Branches and pull requests.** Use the photocopy idea. Show `git switch -c new-footer`, then the pull request steps on GitHub. For small solo projects, committing to `main` is fine.
+
+### Check understanding
+- Ask: "What is the difference between Git and GitHub?" A good answer: Git is the tool on your computer, GitHub is the website that stores copies.
+- Ask: "What do `git push` and `git pull` do?" A good answer: push uploads commits, pull downloads them.
+- Ask: "Why make a branch?" A good answer: to try a change safely away from `main`.
+
+### Watch for
+- Ticking "Add a README" on GitHub, which makes the first push fail. Make a fresh empty repository.
+- The first push failing on sign in. Treat it as expected and help calmly.

@@ -232,3 +232,30 @@ You can also write `debugger;` on its own line in your code. When DevTools is op
 - [javascript.info: Debugging in the browser](https://javascript.info/debugging-chrome)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can read an error message: type, message and line.
+- Learners can tell a SyntaxError, ReferenceError and TypeError apart.
+- Learners can debug with `console.log` and a Chrome breakpoint.
+
+### Purpose
+Code breaks every day for every developer. A calm routine for errors is the most useful skill in this course.
+
+### Things to teach
+1. **Read the error in three parts.** Use the `totl is not defined` example. Show the type, the message and `script.js:4:15`. Show that the file name in Chrome is a clickable link.
+2. **The three error types.** Show a missing quote or bracket (SyntaxError, nothing runs), `username` against `userName` (ReferenceError), and `price.toUpperCase()` (TypeError). The SyntaxError examples are broken on purpose.
+3. **The routine.** Read, go to the line, guess, test, change one thing at a time. Say it is fine to ask for help with a clear question.
+4. **console.log with labels.** Use `getAverage("4", 5, 6)` giving `456 string`. Then let learners try the `applyDiscount` Try it, which is broken on purpose (the percent is not divided by 100).
+5. **Breakpoints.** Demonstrate `debug.html` and `debug.js`: Sources tab, click the line number, refresh, step with `F10`, resume with `F8`.
+
+### Check understanding
+- Ask: "What error do you get from `console.log(colour)` if it was never created?" A good answer: ReferenceError.
+- Ask: "Why does a SyntaxError stop the whole file?" A good answer: JavaScript reads the file first and cannot understand it.
+- Ask: "What does 'cannot read properties of undefined' usually mean?" A good answer: something you expected to have a value is empty.
+
+### Watch for
+- Learners who skim the red text. Make them read it aloud.
+- Changing many things at once. Ask for one change per run.

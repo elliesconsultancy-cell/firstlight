@@ -223,3 +223,30 @@ for (const recipe of recipes) {
 - [javascript.info: Objects](https://javascript.info/object)
 - [MDN: JavaScript object basics](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics)
 - [MDN: Working with objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can create an object and read, change, add and delete properties.
+- Learners can use dot and bracket notation.
+- Learners can read data from nested objects and arrays of objects.
+
+### Purpose
+Most real data is a list of records. Arrays of objects are what the assignment, and later projects, use.
+
+### Things to teach
+1. **Object against array.** Use the `contact` card and `contact.email`. An array is found by position, an object by name. Use an array for many similar things, an object for details of one thing.
+2. **Dot and bracket notation.** Use `book.author` and `book[detailWanted]`. Show that `book.detailWanted` gives `undefined`.
+3. **Change, add, delete.** Run the `pet` example. A `const` object can still change.
+4. **Nesting.** Use `student.address.town` and `student.skills[0]`. Read it left to right like directions.
+5. **Array of objects.** Use `books[1].author`, then a `for...of` loop with `if (book.year > 2003)`. Then let learners do the `recipes` Try it.
+
+### Check understanding
+- Ask: "When do you use an object instead of an array?" A good answer: for several labelled details about one thing.
+- Ask: "Why does `car[key]` work but `car.key` not, when `key` is `"year"`?" A good answer: brackets use the value in the variable. The dot looks for a property called `key`.
+- Ask: "How do you get `"Bea"` from `[{ name: "Ali" }, { name: "Bea" }]`?" A good answer: `people[1].name`.
+
+### Watch for
+- Using a dot with a variable key.
+- Mixing up `[ ]` and `{ }`. Say which is the list and which is the record.

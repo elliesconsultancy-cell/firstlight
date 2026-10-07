@@ -167,3 +167,31 @@ Using `fetch` shows you what really travels over the wire. Later you can use the
 - [Claude docs: Messages API reference](https://platform.claude.com/docs/en/api/messages)
 - [Claude docs: errors](https://platform.claude.com/docs/en/api/errors)
 - [Node.js: global fetch](https://nodejs.org/api/globals.html#fetch)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Write `hello.js` that calls the Messages API with `fetch`
+- Read `content[0].text`, `stop_reason` and `usage` from the reply
+- Use the status table to react to 400, 401, 429 and 500 errors
+- Add a `system` prompt as a top-level field
+
+### Purpose
+This one call is the heart of every AI product in the course. Later weeks only wrap it in more code.
+
+### Things to teach
+1. **The order slip.** Say: "You know the waiter and you have the membership card. Now you write the order." Walk through the headers (`x-api-key`, `anthropic-version`, `content-type`) and `JSON.stringify`.
+2. **Check `response.ok` first.** The order may not arrive. Show the error JSON and the status table, then use a wrong key on purpose to see `401`.
+3. **Read the reply.** `content[0].text` is the answer. `stop_reason` of `max_tokens` means it was cut off. `usage` shows tokens in and out, which decide cost.
+4. **Answers change.** Run it three times. The words differ because the model picks words with some chance.
+5. **System prompt.** Show `system` sitting next to `messages`, not inside. Link it to last week's intern job description.
+
+### Check understanding
+- Ask: "Where is the answer text?" A good answer: `data.content[0].text`.
+- Ask: "Why check `response.ok`?" A good answer: the server may send an error, and the script would print nonsense.
+- Ask: "What does a tiny `max_tokens` do?" A good answer: the reply stops mid-sentence and `stop_reason` says `max_tokens`.
+
+### Watch for
+- Forgotten `await` on `fetch` or `response.json()`, so `data` is a Promise. Show the error and fix.
+- Running `node hello.js` without `--env-file=.env`, which gives a `401`. Also a `.env` in the wrong folder.

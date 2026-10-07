@@ -2,6 +2,7 @@ import { error, fail } from '@sveltejs/kit';
 import db from '$lib/server/db.js';
 import { renderMarkdown, renderPlain } from '$lib/server/markdown.js';
 import { filesFor } from '$lib/server/queries.js';
+import { splitInstructor } from '$lib/instructor.js';
 import { saveFiles, validateFiles } from '$lib/server/uploads.js';
 
 // The source credit at the bottom of adapted lessons (and links to that source) is shown to instructors only.
@@ -55,7 +56,12 @@ export async function load({ params, parent, locals }) {
 			title: item.title,
 			minutes: item.minutes,
 			submission_type: item.submission_type,
-			html: renderMarkdown(forViewer(item.body_md, locals.user))
+			html: renderMarkdown(forViewer(splitInstructor(item.body_md).student, locals.user)),
+			// The instructor agenda is only sent to instructors.
+			instructorHtml:
+				locals.user.role === 'admin' && splitInstructor(item.body_md).instructor
+					? renderMarkdown(splitInstructor(item.body_md).instructor)
+					: ''
 		},
 		completed: !!progress,
 		submissions,

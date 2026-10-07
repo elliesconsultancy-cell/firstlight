@@ -230,3 +230,30 @@ This is where `undefined` usually comes from. Do you see `undefined` when you ex
 - [javascript.info: Variables](https://javascript.info/variables)
 - [javascript.info: Data types](https://javascript.info/types)
 - [MDN: Storing the information you need — Variables](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can name the type of a value: string, number, boolean, `undefined` or `null`.
+- Learners can create variables with `let` and `const` and choose between them.
+- Learners can give a variable a clear camelCase name.
+
+### Purpose
+Variables are how every program remembers things. Clear names and the `const` habit make code easier to read and safer to change.
+
+### Things to teach
+1. **Types.** Use the types table and `typeof`. Stress that `"42"` with quotes is a string. Mention `typeof null` is `"object"` as a known oddity only.
+2. **The box with a label.** Use `const name = "Amara"`. Read it aloud: `=` means "gets", not "equals".
+3. **let and const.** Use the `score` example (0, then 10, then `score = score + 5`). Read it right to left. Then show the `birthYear` TypeError and say the error is helpful.
+4. **Naming.** Compare `x` and `y` with `numberOfCoffees` and `pricePerCoffee`. Cover the rules (no leading number, no spaces, case-sensitive).
+5. **undefined.** Show `let favouriteColour;` and ask "did I forget to put something in this box?"
+
+### Check understanding
+- Ask: "What is the type of `"12"`?" A good answer: string, because of the quotes.
+- Ask: "After `let a = 5; a = a * 2;` what is in `a`?" A good answer: 10.
+- Ask: "Which is a valid name: `2ndName`, `total price`, `userAge`?" A good answer: only `userAge`.
+
+### Watch for
+- Writing `let` again when changing a value. Say `let` is only for the first time.
+- Reading `=` as "equals". Keep saying "gets" until it sticks.

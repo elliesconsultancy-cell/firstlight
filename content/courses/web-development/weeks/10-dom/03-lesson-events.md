@@ -234,3 +234,30 @@ In the JS pane:
 - [Introduction to events (MDN)](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can attach a listener with `addEventListener` for `click`, `input` and `submit`.
+- Learners can use the event object, including `event.target.value`.
+- Learners can stop a form reloading the page and validate its input.
+
+### Purpose
+Events are how a page responds to people. Forms are in nearly every real site, and the reload surprise catches everyone once.
+
+### Things to teach
+1. **Listeners.** Use the "Say hello" button. Pass the function name, `sayHello`, not `sayHello()`. Show what happens with the brackets.
+2. **Variables remember.** Use the click counter. The `count` variable lives outside the listener, so it keeps its value between clicks.
+3. **The event object.** Use the name preview. `input` fires on every key press, and `event.target.value` holds what was typed.
+4. **Forms.** Use the todo form. Listen for `submit` on the form. Call `event.preventDefault()`, use `.trim()` and show an error if the box is empty. Then create the `li` and clear the input.
+5. **Buttons in a loop.** Use the fruits list and delete buttons. The listener is added when each button is created.
+
+### Check understanding
+- Ask: "Why `sayHello` and not `sayHello()`?" A good answer: brackets run it straight away. We want the browser to run it later, on a click.
+- Ask: "Your form submits and your page vanishes. Why?" A good answer: the form reloaded the page. You forgot `event.preventDefault()`.
+- Ask: "Where is the typed text in an input?" A good answer: `event.target.value`, not `textContent`.
+
+### Watch for
+- Listening for `click` on the submit button instead of `submit` on the form. Enter then does not work.
+- Forgetting `.trim()`, so a box of spaces counts as a task.

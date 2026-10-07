@@ -43,3 +43,32 @@ Paste your numbers sheet into the text box on this page. Include your texts, you
 - Estimate the cost if the chat has 20 messages instead of 5. How does the cost grow?
 - Show how cost changes if the reply is limited to half as long.
 - Write one sentence on how summarising old messages could save money.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Estimate tokens for instructions, a message and a reply.
+- Add up the input tokens in a 5-message chat, with earlier messages resent each time.
+- Estimate cost for one conversation and a month, using clearly labelled example prices.
+
+### Purpose
+Estimating size and cost is a normal first step before building any AI product. It also proves the learner understands tokens, the desk and output pricing together.
+
+### Things to do
+1. Launch it: tell learners this is a numbers sheet and no account is needed. They may swap the bakery for their own idea.
+2. Demonstrate the chat sum on a board: message 1 sends instructions plus message 1; message 2 sends instructions, message 1, reply 1 and message 2. Add one line at a time.
+3. Show how to use the estimator and cost calculator from the lessons, and show a small 3-column table.
+4. Remind them to round numbers and to label prices as examples or as copied with a date.
+
+### What good work looks like
+- Instruction text (3 to 5 lines), one customer message and one reply each have a token estimate with the sum shown.
+- The 5-message chat total counts earlier messages again each time, not just once.
+- Prices are written down and labelled as made-up or copied with a date.
+- Cost of one conversation and a monthly cost are both calculated.
+- Temperature is chosen for opening hours and for naming a cake, each with a reason, plus two cost-saving ideas.
+
+### Watch for
+- Learners add each message only once and miss the resending. Point back to the desk picture.
+- Learners mix up input and output tokens. Output is the replies only.
+- Learners state prices as facts with no date or label.

@@ -140,3 +140,30 @@ You do not need to memorise these. Save and Undo are the most important.
 - [MDN: What are browser developer tools?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools)
 - [Chrome DevTools overview](https://developer.chrome.com/docs/devtools/overview)
 - [VS Code documentation](https://code.visualstudio.com/docs)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can open Chrome DevTools in at least two ways and find the Elements tab
+- create the firstlight/week-00 folders and open firstlight in VS Code
+- create, save and open hello.html in Chrome and repeat the edit, save, refresh loop
+
+### Purpose
+Every later week depends on a working browser, editor and folder. Learners who finish setup now will not lose time later.
+
+### Things to teach
+1. **DevTools as a mechanic's tool.** Use the bonnet picture. Have everyone open a news site, press F12, click Elements, and use the arrow icon to click a heading. Stress that changes in DevTools only affect their own copy and vanish on refresh.
+2. **Folders and naming.** Show the `firstlight/week-00` structure from the lesson. Say lowercase letters and dashes, no spaces: `about-me.html`, not `About Me.html`.
+3. **Open the folder, not just a file.** Show File, Open Folder in VS Code and the Explorer, editor and tabs. Say yes to the trust question.
+4. **Edit, save, refresh.** Create `hello.html` with the lesson's two lines. Show the white dot for unsaved changes. Change the text, save, refresh. Say they will do this thousands of times.
+
+### Check understanding
+- Ask: "Name two ways to open DevTools." A good answer: right-click and Inspect, F12, or Ctrl+Shift+I (Cmd+Option+I on Mac).
+- Ask: "You changed your file but the browser looks the same. What two things do you do?" A good answer: save in VS Code, then refresh the browser.
+- Ask: "Why no spaces in file names?" A good answer: spaces and capitals can cause problems in web addresses and links.
+
+### Watch for
+- Learners who forget to save. Look for the white dot on the tab.
+- Learners who open the file from a different place than the one they edit, for example a download copy. Check the file path in the address bar.
+- Hidden file extensions, which can give a file such as `hello.html.txt`. Ask them to turn extensions on in the file manager.

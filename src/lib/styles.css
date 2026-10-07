@@ -519,14 +519,14 @@ tr:last-child td {
 }
 .prose li:has(> input[type='checkbox']) {
 	list-style: none;
+	position: relative;
 	margin-left: -1.4em;
-	display: flex;
-	gap: 10px;
-	align-items: baseline;
+	padding-left: 1.9em;
 }
 .prose li > input[type='checkbox'] {
-	flex: none;
-	transform: translateY(3px);
+	position: absolute;
+	left: 0.1em;
+	top: 0.42em;
 	cursor: pointer;
 }
 .prose :not(pre) > code {
@@ -776,4 +776,36 @@ tr:last-child td {
 	border: 0;
 	border-top: 1px solid var(--line);
 	margin: 24px 0;
+}
+
+/* ---------- Instructor panel (day plan, agenda, sprint review) ---------- */
+.instructor-panel {
+	background: var(--paper-2);
+	border: 1px solid var(--line);
+	border-left: 4px solid var(--violet);
+	border-radius: var(--radius);
+	padding: 14px 20px 8px;
+	margin: 0 0 28px;
+}
+.instructor-panel > summary {
+	cursor: pointer;
+	font-weight: 700;
+	list-style-position: inside;
+	margin-bottom: 4px;
+}
+.instructor-panel > summary .icon,
+.instructor-panel strong .icon {
+	color: var(--violet);
+}
+.instructor-panel .prose {
+	max-width: none;
+	font-size: 0.97rem;
+}
+.instructor-panel .prose h2 {
+	font-size: 1.15rem;
+	border: 0;
+	margin-top: 1.2em;
+}
+.instructor-panel .prose h3 {
+	font-size: 1rem;
 }

@@ -134,3 +134,30 @@ If you see a question from another learner and you know the answer, reply. When 
 - [MDN Web Docs home](https://developer.mozilla.org/en-US/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can follow the four steps: rubber duck, read the error, search, ask
+- do the basic checks: saved, refreshed, same file
+- write a good question with four parts
+
+### Purpose
+Every developer gets stuck daily. A routine for getting unstuck is the skill that lets learners keep going when you are not there.
+
+### Things to teach
+1. **The four-step routine.** Write the steps on a board: rubber duck, read the error, search well, ask with context. Say it is the same order every time.
+2. **Rubber duck demo.** Use the lesson's `<a href=...>Learn more</p>` example. Read it out loud line by line until someone spots the wrong closing tag. Also point out the unclosed first `<p>`.
+3. **The basic checks.** Did I save? Did I refresh? Am I editing the same file the browser shows? Say many problems end here.
+4. **Search well.** Name the technology, use the error text, add "mdn". Do the lesson's Try it: search "mdn a element" and find what `href` does.
+5. **Good question, bad question.** Compare "My code doesn't work. Help?" with the four-part version about the cat photo. Each learner writes one real question this way.
+
+### Check understanding
+- Ask: "What are the four parts of a good question?" A good answer: what I am trying to do, what I expected, what happens, what I tried.
+- Ask: "What two things does an error message tell you?" A good answer: what went wrong, and where (file and line number).
+- Ask: "How long should you try before asking?" A good answer: a real try at steps 1 to 3 first, as the lesson says, and not days of waiting.
+
+### Watch for
+- Learners who skip the error message or panic. Ask them to read it aloud word by word.
+- Learners who send only a screenshot. Ask for the code pasted as text too.

@@ -17,3 +17,51 @@ At the end, BakeBuddy is a real chat on a web page. Use Amina's bakery, or your 
 - Build an Express server with a `POST /api/chat` route that holds your key
 - Validate what the browser sends and handle errors in the server
 - Build a chat page that sends messages to your own server and shows the replies
+
+## Backlog
+
+Tick each one as you finish it.
+
+**Prep (read these first)**
+- [ ] Read: AI has no memory
+- [ ] Read: A server for your key
+- [ ] Read: The chat page
+
+**Do**
+- [ ] Make `claude.js` and `prompt.js`, then run `memory.js` and `chat.js`
+- [ ] Run `npm install express` and start `server.js` with `node --env-file=.env server.js`
+- [ ] Test the route with `curl`, then open `http://localhost:3000`
+- [ ] Finish the assignment: BakeBuddy chat
+
+**Share**
+- [ ] Submit your work and read your instructor's feedback
+
+<!-- instructor -->
+## Day plan
+
+### Learning objectives
+- Explain why an AI has no memory, and how a list of messages gives it one
+- Build an Express route that holds the key and checks input
+- Build a chat page that sends the history and shows replies and errors
+- Test the memory and the error paths
+
+### Purpose
+Week 3 sent one question from a script. This week turns that into a chat on a web page, and keeps the key on the server. Week 5 adds the menu knowledge, so the server and page must work first.
+
+### Agenda
+1. **AI has no memory.** Teach the notebook trick and run `memory.js`, then `chat.js`. Talk about the growing cost and `slice(-9)`.
+2. **A server for your key.** Teach the bank clerk and the house key staying on the server. Learners build `server.js` and test it with `curl`, including a `400`.
+3. **The chat page.** Teach the table with paper and pen, the `history` list, waiting and errors, and `textContent`. Learners run the whole product.
+4. **BakeBuddy chat.** Launch it, run the memory and error tests, and check that no key is in the repository or in `script.js`.
+
+## End of sprint review
+
+Tick each one when you have seen it.
+
+- [ ] Every learner has run `chat.js` and seen BakeBuddy remember a name.
+- [ ] Every learner's server starts and `curl` returns a reply, and `400` for a bad request.
+- [ ] Every learner's page works at `http://localhost:3000` and shows a friendly error when the server is stopped.
+- [ ] No key appears in `script.js` or in the repository, and `.gitignore` lists `.env`.
+- [ ] Every page uses `textContent` for messages.
+- [ ] Every learner can explain the notebook and the bank clerk in their own words.
+- [ ] Every learner has had feedback on the assignment.

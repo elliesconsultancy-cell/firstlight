@@ -83,3 +83,33 @@ Use the submit form on this page:
 - Run Lighthouse (Accessibility only) in DevTools and aim for a score of 100. Tell us your score in your submission.
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can structure a page with `header`, `nav`, `main`, `article` and `footer`
+- use headings, lists, an image with good alt and a captioned table
+- make a page pass the W3C validator
+- describe an error they found and fixed
+
+### Purpose
+This is the semantic HTML lesson put to work on a real topic. It also gets learners into the habit of validating.
+
+### Things to do
+1. Show the file location `firstlight/week-02/recipe/index.html`. Remind them to write the recipe in plain text first.
+2. Walk through the skeleton in the hints: header, nav with `#id` links, main, article, sections, footer. Say it is a starting point.
+3. Demonstrate the validator with File Upload on a half-finished page. Show reading the first error and fixing from the top.
+4. Show the submit form: upload `index.html` and any image, or a CodePen link. The written answer says if it passed and one error fixed.
+
+### What good work looks like
+- There is the full boilerplate, with `lang` and a meaningful `<title>`.
+- There is a `header` with an `<h1>`, a `nav` with two or more working links, a `main` with an `article`, and a `footer`.
+- Ingredients are in a `<ul>`, method steps are in an `<ol>`, with short steps.
+- The image has specific `alt` text, and the table has a `caption` and `th` cells.
+- There is one `<h1>` and no skipped heading levels, and the validator shows no errors.
+
+### Watch for
+- A second `<h1>` or skipped levels, such as `<h2>` to `<h4>`.
+- Nav links where the `href` does not match an `id`.
+- Learners who say it passed but did not run the validator. Ask for the result.

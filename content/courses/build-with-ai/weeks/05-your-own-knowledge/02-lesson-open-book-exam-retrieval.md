@@ -221,3 +221,30 @@ In an exam, you understand the question. Our search only counts shared words. "G
 
 - [Claude docs: Messages API (system prompt)](https://platform.claude.com/docs/en/api/messages)
 - [MDN: Array.prototype.sort](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Describe retrieval as find, stuff, answer
+- Explain how keyword scoring finds chunks, and why stop words are ignored
+- Add `retrieve` and `buildSystemPrompt` to the server
+
+### Purpose
+Retrieval is how real products answer from large documents. Seeing the plain-code version removes the mystery.
+
+### Things to teach
+1. **The open-book exam.** Say: "You do not read the whole textbook. You find the right pages, read them and answer." Three steps: find, stuff, answer.
+2. **Your code searches, not the AI.** The model only reads what the code puts on the desk. Say this twice.
+3. **Run the playground search.** Show `words`, `score` and `retrieve`. Run the three questions and change them. Note the noise from the word "free".
+4. **Wire it in.** Show `knowledge.js`, the small `prompt.js`, and the server change using the last two user messages.
+5. **Where the picture stops.** Keyword search counts words, not meaning. "Without wheat" misses "No wheat".
+
+### Check understanding
+- Ask: "Who does the searching?" A good answer: our code, not the AI.
+- Ask: "Why use the last two user messages?" A good answer: a follow-up like "And how much is it?" has no product name.
+- Ask: "A wrong answer. What do you check first?" A good answer: what was retrieved, using `console.log(found)`.
+
+### Watch for
+- Forgetting to remove the old `askClaude` lines in the route, or an `import` typo for `knowledge.js`. Check the server terminal for errors.
+- Blaming the AI when the right line was never found. Print `found` first.

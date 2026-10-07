@@ -161,3 +161,32 @@ Use the submit form to send:
 - For the quote app: add a "New quote" button that features a different random quote
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can build a small app using state and `render()`.
+- Learners can add items with a validated form and toggle them.
+- Learners can publish the app on GitHub Pages.
+
+### Purpose
+This is the first time learners build a working interactive app from nothing. It brings together selecting, creating, events and the state and render pattern.
+
+### Things to do
+1. **Launch.** Let learners choose the reading list or the quote app. Both have the same shape. Ask each learner to write the plan in pseudocode first (what one item looks like, what `render` draws).
+2. **Demonstrate the order.** Show the build steps from the task: render the array, show the count, add the toggle, add the form, add validation, then style. Say to commit after each step.
+3. **Show a debugging move.** Use DevTools to look for console errors, and use the device toolbar to check a phone-sized screen.
+4. **Publishing.** Remind them how to turn on GitHub Pages, then test the live link.
+
+### What good work looks like
+- Three files (`index.html`, `style.css`, `script.js`) with the script linked using `defer`, and a starting array of at least 3 objects.
+- `render()` draws the list from the array, and the listeners only change the state and call `render()`.
+- The form uses `submit` and `event.preventDefault()`. Empty or spaces-only input shows an error on the page and adds nothing.
+- Each item has a toggle button and changes look through a CSS class. The count stays correct after every change.
+- Every input has a `<label>`, it works on a phone-sized screen, and the live GitHub Pages link works.
+
+### Watch for
+- Listeners that change the page directly. Ask "where is this change stored in the array?"
+- A live page that works locally but not online. Check file name case, for example `Script.js` and `script.js`.
+- A separate count variable that drifts out of date. Ask them to work it out inside `render`.

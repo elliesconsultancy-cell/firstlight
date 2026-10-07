@@ -102,3 +102,30 @@ What does it do? Does it say it does not know that book, or does it describe it?
 
 - [Anthropic: reduce hallucinations (Claude docs)](https://docs.claude.com/en/docs/test-and-evaluate/strengthen-guardrails/reduce-hallucinations)
 - [Wikipedia: Hallucination (artificial intelligence)](https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence))
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Name three jobs AI does well and three it does badly.
+- Explain a hallucination using the confident guesser picture.
+- Use at least two habits to check an AI answer.
+
+### Purpose
+At work, people will trust AI too much or not at all. Both cost them. This lesson gives learners a fair view and a checking habit they will use all course.
+
+### Things to teach
+1. **The confident guesser.** Retell the football match story: a friend who has read everything but hates to say "I don't know". It sounds right and is wrong.
+2. **Good at words.** Walk the strengths table: drafts, rewriting, summaries, translation, sorting, brainstorming. Ask learners which one they would use in their own life.
+3. **Weak spots.** Facts it was not taught, very recent events, exact counting and maths, private information, knowing when it is wrong. Link to autocomplete: it predicts text, it does not calculate.
+4. **Hallucination.** Show the invented sourdough price at Amina's Bakery. A made-up fact fits the pattern perfectly well, and there is no inner alarm.
+5. **Checking habits.** Open the links, check a second source, give it the real facts, and test it on things you already know.
+
+### Check understanding
+- Ask: "Why can it get simple counting wrong?" A good answer: it predicts likely text, it does not calculate like a calculator.
+- Ask: "What is a hallucination?" A good answer: an answer that sounds sure and right but is made up.
+- Ask: "Give two ways to check an answer." A good answer: check a trusted source, open any link it gives, ask a person, or test with questions you already know the answer to.
+
+### Watch for
+- Learners think smooth, confident writing means a correct answer. Say: a made-up answer usually looks the same as a true one.
+- Learners swing to fear and refuse to use it. Say: use it for drafts and ideas you will check, and not alone for costly things like medicine, money or law.

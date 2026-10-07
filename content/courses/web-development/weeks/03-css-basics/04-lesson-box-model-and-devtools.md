@@ -243,3 +243,31 @@ Now:
 - [MDN: What are browser developer tools?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/What_are_browser_developer_tools)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can name the four box layers from inside to outside.
+- Learners can set padding, border and margin, including the four-value shorthand.
+- Learners can centre a box with `max-width` and `margin: 0 auto`.
+- Learners can open DevTools and find which rule applies and which is struck out.
+
+### Purpose
+Spacing is the most common layout puzzle for beginners. The box model and DevTools give them a way to see and fix it themselves.
+
+### Things to teach
+1. **The four layers.** Draw the box with content, padding, border, margin. Use the framed photo comparison. Margin is always transparent.
+2. **Shorthand order.** Teach top, right, bottom, left ("TRouBLe") with `margin: 10px 20px 30px 40px`.
+3. **box-sizing.** Show the 300px box with 20px padding and 5px border that is really 350px. Then add the `border-box` rule and say every stylesheet starts with it.
+4. **Centring.** Show `.page` with `max-width: 700px; margin: 0 auto;`.
+5. **DevTools live.** Open the Opening hours cards. Inspect one, read the box diagram, edit padding, untick a rule. Say changes vanish on refresh.
+
+### Check understanding
+- Ask: "Padding or margin: which is inside the border?" A good answer: padding.
+- Ask: "What does `margin: 5px 10px 15px 20px` do?" A good answer: top 5, right 10, bottom 15, left 20.
+- Ask: "How do you see an overridden rule in DevTools?" A good answer: it has a line through it.
+
+### Watch for
+- Learners who edit in DevTools, refresh and lose the work. Remind them to copy it into `styles.css`.
+- Confusing padding and margin. Ask which one the background colour fills.

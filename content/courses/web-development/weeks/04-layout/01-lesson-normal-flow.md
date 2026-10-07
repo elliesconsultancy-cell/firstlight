@@ -181,3 +181,30 @@ Now experiment. Guess what will happen before each change.
 - [web.dev: Layout](https://web.dev/learn/css/layout)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can tell block from inline elements and give examples of each.
+- Learners can change behaviour with `display`, including `inline-block` and `none`.
+- Learners can keep text readable with `max-width` and `margin: 0 auto`.
+
+### Purpose
+Before learners move boxes around, they need to know what the browser does by default. Most layout bugs come from not knowing this.
+
+### Things to teach
+1. **Normal flow.** Use the lined paper idea. Block boxes stack down the page, inline boxes sit along a line of text.
+2. **Block versus inline.** Use the paragraph with a link and bold words. Say that inline elements ignore `width` and `height`.
+3. **The display property.** Use the `a.button` example with `inline-block`. Show that vertical padding then takes real space.
+4. **Too wide.** Show `main { max-width: 70ch; margin: 0 auto; }` and explain `ch` as about one character.
+5. **Check the type in DevTools.** Select an element, open Computed and search for `display`.
+
+### Check understanding
+- Ask: "Name two block and two inline elements." A good answer: for example `p` and `div`, `a` and `span`.
+- Ask: "Why does `width: 200px` do nothing on a `span`?" A good answer: a span is inline, and inline elements ignore width.
+- Ask: "Why use `max-width` rather than `width` for main content?" A good answer: it can still shrink on a phone.
+
+### Watch for
+- Choosing HTML elements for how they look. Remind them to pick for meaning, then change `display` in CSS.
+- Learners who try to set `width` on inline elements and think CSS is broken. Point them to the `.tag` example.

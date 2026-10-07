@@ -3,6 +3,8 @@
 // hosts without a persistent filesystem. It receives a map of
 // { 'weeks/<folder>/<file>.md': rawText }.
 
+import { splitInstructor } from '../instructor.js';
+
 /** Parse a markdown file with a simple `key: value` frontmatter block. */
 export function parseFrontmatter(raw) {
 	const text = raw.replace(/\r\n/g, '\n');
@@ -86,13 +88,15 @@ function buildWeeks(folderMap) {
 				};
 			});
 
+		const { student, instructor } = splitInstructor(week.body);
 		return {
 			slug,
 			number: Number(folder.match(/^(\d+)/)?.[1] ?? index),
 			position: index,
 			title: week.data.title || slug,
 			summary: week.data.summary || '',
-			intro_md: week.body,
+			intro_md: student,
+			instructor_md: instructor,
 			items
 		};
 	});

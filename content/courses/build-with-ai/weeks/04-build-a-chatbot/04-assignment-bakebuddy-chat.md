@@ -52,3 +52,31 @@ Upload your project to GitHub (without `.env`) and paste the link to the reposit
 - Show a small line under each reply with the token counts. (Send them from the server in the JSON.)
 - Save the history in `localStorage`, so a page reload does not erase the notebook.
 - Add a short "Try asking" list of three example questions that fill the input when clicked.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Build a chat page that talks to an Express server
+- Keep the key on the server and out of the repository
+- Make the app handle memory, waiting, and errors
+
+### Purpose
+Learners finish a real working product: a chat page anyone can use. It is the base for giving BakeBuddy knowledge in week 5.
+
+### Things to do
+1. **Launch.** Learners start from their lesson files, run `node --env-file=.env server.js` and open `http://localhost:3000`. Remind them to test with `curl` first.
+2. **Demonstrate the memory test.** Say your name, ask two other things, then ask "What is my name?". Then stop the server and send a message to see the error.
+3. **Check the key is safe.** Open the repository on GitHub. `.env` must not be in the file list, and `.gitignore` must list it. In the repo, search for `sk-ant`. Open `script.js` and check it has no key and no system prompt.
+4. **Try a bad request.** Send `{"messages":"hello"}` with `curl` and check for `400`. Try a message over 1000 characters.
+
+### What good work looks like
+- `server.js` serves `public`, has `POST /api/chat`, returns `400` for bad input, trims messages and uses a small `max_tokens`.
+- The key comes from `process.env.ANTHROPIC_API_KEY`, and the system prompt lives on the server.
+- The page shows user and reply in different styles, a waiting message, a disabled button and a friendly error.
+- Messages are added with `textContent`, not `innerHTML`.
+- BakeBuddy answers "What did I say first?" correctly after three or more messages, and the README has the three run commands.
+
+### Watch for
+- A welcome message pushed into `history`, which then starts with an assistant message and may be rejected. It should only be shown on the page.
+- Learners share the running server publicly, or commit `.env`. Check spend limits too.

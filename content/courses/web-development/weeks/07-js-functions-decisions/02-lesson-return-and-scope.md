@@ -190,3 +190,30 @@ console.log(advice); // Wear sunglasses
 - [javascript.info: Variable scope](https://javascript.info/closure)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can explain the difference between `return` and `console.log`.
+- Learners can say what a function gives back when it has no `return`.
+- Learners can explain global and local scope.
+
+### Purpose
+This is the classic beginner trap: the right number shows in the console but the variable is `undefined`. Fixing it now saves a lot of confusion later.
+
+### Things to teach
+1. **Shout or hand over.** Use the restaurant bill idea. `console.log` shows a value to a human. `return` gives it to the code.
+2. **addLogged and addReturned.** Run both and ask what `first` and `second` will be before you reveal `undefined` and `5`. Say a function with no `return` gives back `undefined`.
+3. **Chaining.** Show `formatPrice(addVat(15))` giving `£18.00`. It only works because both functions return.
+4. **Fix the broken functions.** The Try it has three deliberately broken functions (`double`, `getInitial`, `halve`). Let learners find the fixes. Point out `return;` on its own line in `halve`.
+5. **Scope.** Use the living room and bedroom picture and the `siteName` and `message` example. A `ReferenceError` on `message` is expected. Show `let advice;` declared before the `if` block.
+
+### Check understanding
+- Ask: "What is stored in `x` after `const x = f();` if `f` only logs 10?" A good answer: `undefined`.
+- Ask: "What happens to code after a `return`?" A good answer: it never runs.
+- Ask: "Why can't you use `secret` outside the function?" A good answer: it is local, so add `return secret;` and store the result.
+
+### Watch for
+- Learners who think the console output means the function returned it.
+- Putting `console.log` inside every function. Say to return, and log outside.

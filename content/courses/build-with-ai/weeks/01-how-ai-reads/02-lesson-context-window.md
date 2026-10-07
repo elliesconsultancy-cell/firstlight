@@ -126,3 +126,30 @@ A real desk lets you glance at any paper equally. A model does not always pay eq
 
 - [Claude docs: Context windows](https://docs.claude.com/en/docs/build-with-claude/context-windows)
 - [Claude docs: Models overview](https://docs.claude.com/en/docs/about-claude/models/overview)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Explain the context window using the desk picture.
+- Name what shares the desk.
+- Say why a long chat costs more with each message and what an app can do when the desk is full.
+
+### Purpose
+Many real AI problems, like a chatbot forgetting an allergy, are really desk problems. This lesson prepares learners for memory in Week 4 and retrieval in Week 5.
+
+### Things to teach
+1. **The desk.** The model only knows what is on the desk right now. Instructions, chat history, documents and its own answer all share it.
+2. **Tolu's long chat.** Use the lesson's cake chat. Each new message resends the whole conversation, so the desk grows. Point at the message 1, 5 and 40 lines.
+3. **A full desk.** The request may fail, the oldest messages may be cut, or old messages may be summarised. Use the nut allergy example: cut the start and the model forgets it.
+4. **Bigger is not always better.** More tokens cost more, take longer, and details can get lost in a crowded desk. A tidy desk wins.
+5. **Run Will it fit?** Change DESK_SIZE to 30 and see Fits? turn false. The size there is a made-up number.
+
+### Check understanding
+- Ask: "What is the context window?" A good answer: the most text the model can look at in one go, counted in tokens.
+- Ask: "Name three things on the desk." A good answer: instructions, chat history, documents, or the answer being written.
+- Ask: "Why does each message in a long chat cost more?" A good answer: the whole conversation is sent again each time, so more input tokens go in.
+
+### Watch for
+- Learners think the model remembers earlier chats by itself. Say: the app resends the history each time. Week 4 covers this.
+- Learners quote desk sizes as facts. Say: sizes change, so check the provider's docs. The lesson's number is made up.

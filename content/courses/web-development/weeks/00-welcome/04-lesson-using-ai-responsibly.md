@@ -96,3 +96,31 @@ Honesty helps your instructor see where you are. Then they can give better feedb
 - [Free curriculum resources and study guidance](https://curriculum.codeyourfuture.io/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can describe good and bad uses of AI while learning
+- apply the delete test to code they submit
+- ask AI for understanding and hints, not answers
+- say honestly in a submission when AI helped
+
+### Purpose
+Learners will use AI whether or not we allow it. If they learn to use it as a tutor, they build real skill. If it writes their work, they leave the course unable to code.
+
+### Things to teach
+1. **The gym picture.** If a friend lifts the weights, your muscles do not grow. The brain is the muscle. Ask learners what happens on day one at a job.
+2. **Good uses and bad uses.** Read the two lists together. Good: explain an idea, an error, or code you wrote. Bad: write the assignment, fix my code before you tried, code you cannot explain.
+3. **The delete test.** If you deleted it and had to write it again alone, could you? If not, you have not learned it yet.
+4. **Ask for understanding.** Use the lesson's table. Have learners rewrite "Write an About Me page in HTML" into a better question. Show the tip: ask for hints and questions, not full answers.
+5. **Be honest.** Show the example sentence about asking AI to explain `alt` text. Say that honesty lets you give better feedback, and mistakes help you know what to teach.
+
+### Check understanding
+- Ask: "What is the delete test?" A good answer: could I rewrite this alone from scratch? If not, I have not learned it.
+- Ask: "Why check AI answers on MDN?" A good answer: AI can sound sure and still be wrong or out of date.
+- Ask: "Give a good prompt and a bad one." A good answer: "What tags suit a page with a list?" is good; "Write my page" is bad.
+
+### Watch for
+- Learners who feel judged and hide their AI use. Say clearly that honest use is welcome.
+- Learners who use AI for the introduction in this week's assignment. Remind them we want their own voice.

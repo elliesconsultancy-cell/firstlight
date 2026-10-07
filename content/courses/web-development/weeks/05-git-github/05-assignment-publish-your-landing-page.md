@@ -100,3 +100,32 @@ Before you submit, open both links in a private or incognito browser window. Mak
 - Clone your repository onto another computer (or another folder), make a change, push it, then `git pull` in your original folder
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners have their week 4 landing page in a Git repository with at least 5 meaningful commits.
+- Learners have pushed it to a public GitHub repository and published it with GitHub Pages.
+- Learners can share a live link and a repository link.
+
+### Purpose
+This gives learners their first portfolio pieces: a code link and a live link. It also shows that Git is used on real work.
+
+### Things to do
+1. **Launch.** Check each learner has their week 4 folder. Explain the two ways to reach 5 commits: Option A (commit improvements in small steps) or Option B (rebuild in stages).
+2. **Demonstrate Option A.** Run `git init`, `git add .` and the first commit. Then make one small change, such as adding alt text, and commit it with a clear message.
+3. **Demonstrate the push.** Create an empty public repository. Run `git remote add origin ...` and `git push -u origin main`. Then show Settings, Pages.
+4. **Demonstrate the check.** Open the live link in a private window and on a phone. Then point out the submit form: the live link goes in Link, and the repository link goes in the written answer.
+
+### What good work looks like
+- The repository is public with a clear name, and `git log --oneline` shows at least 5 commits with specific messages.
+- `index.html` is at the top level, and CSS and image paths are relative.
+- The live site opens with styles and images, and works on a phone.
+- The live link is in the repository's About section.
+- No real home address or personal phone number appears.
+
+### Watch for
+- Commit messages like `update` or `changes`. Ask for the change they made.
+- Missing styles or images online, usually caused by capital letters or paths.
+- A README added on GitHub before the first push. Start again with an empty repository.

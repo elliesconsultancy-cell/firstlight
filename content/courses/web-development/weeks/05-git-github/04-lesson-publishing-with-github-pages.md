@@ -141,3 +141,30 @@ Publish your `git-practice` repository from the last lesson:
 - [MDN: Upload files to a web server](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Tools_and_setup/Upload_files_to_a_web_server)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can say what hosting and a static site are.
+- Learners can turn on GitHub Pages from the `main` branch and open the live link.
+- Learners can update the live site by pushing, and fix missing files.
+
+### Purpose
+This is the moment learners get a real web address. It turns practice work into something they can show people.
+
+### Things to teach
+1. **Hosting.** Use the shop idea: the repository is the stockroom, Pages opens the front door. Say that Pages hosts static sites.
+2. **Check the files first.** `index.html` must be lowercase and at the top level, and paths must be relative. Show the `my-landing-page` folder picture.
+3. **Turn on Pages.** Show Settings, Pages, Deploy from a branch, `main`, `/ (root)`, Save. Wait for the green tick in Actions.
+4. **Updating.** Every push to `main` rebuilds the site. Show a hard refresh with `Ctrl + Shift + R` or `Cmd + Shift + R`.
+5. **Troubleshooting.** Use the table of 404, no styles, missing images. Explain that `Hero.jpg` and `hero.jpg` are different on GitHub Pages.
+
+### Check understanding
+- Ask: "What must the homepage be called and where?" A good answer: `index.html`, at the top level.
+- Ask: "Where do you turn on Pages?" A good answer: repository Settings, then Pages.
+- Ask: "Images work on your laptop but not online. What do you check?" A good answer: capital letters, relative paths, and that files were committed and pushed.
+
+### Watch for
+- Expecting the site instantly. It can take a minute or two, so wait for the green tick.
+- Personal details on a public site. Remind them the site is public and to use made-up details.

@@ -180,3 +180,30 @@ console.log("Tests finished");
 - [Automated testing (javascript.info)](https://javascript.info/testing-mocha)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can turn acceptance criteria into test cases.
+- Learners can name edge cases, such as boundaries, empty values and capital letters.
+- Learners can check a function with `console.assert`.
+
+### Purpose
+"It looked fine when I tried it" is not proof. Tests say exactly what "working" means, and they catch bugs before users do.
+
+### Things to teach
+1. **Acceptance criteria and test cases.** Use the `formatPrice` examples (250, 5 and 1000). Each criterion becomes one input and one expected output.
+2. **Edge cases.** For `formatPrice`, add 0 and 123456. For a rule like "18 or older", test 17, 18 and 19.
+3. **`console.assert`.** It is silent when true and prints an error when false. Run the "A", "B", "C" example. Remind learners that output may be in the browser console (F12).
+4. **Tests find real bugs.** The first `formatPrice` prints `"£2.5"`. The tests show why, and `toFixed(2)` fixes it.
+5. **Red, green, tidy.** Explain test-driven development as a rhythm: failing test, then code, then clean up.
+
+### Check understanding
+- Ask: "What is the difference between acceptance criteria and a test case?" A good answer: criteria say generally what a feature must do. A test case is one concrete input and expected output.
+- Ask: "Which ages would you test for `canVote` at 18?" A good answer: 17, 18 and 19.
+- Ask: "What does `console.assert` print when the condition is true?" A good answer: nothing.
+
+### Watch for
+- Learners who think silence means nothing ran. Show a deliberately false assertion so they see the error.
+- Learners who write only the easy cases. Ask "what is the strangest input you can think of?"

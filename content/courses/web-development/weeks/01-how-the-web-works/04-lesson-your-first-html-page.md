@@ -210,3 +210,32 @@ Does something not look as you expected? Check your closing tags first. A missin
 - [MDN: HTML basics](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics)
 - [web.dev: Learn HTML – Overview](https://web.dev/learn/html/overview)
 - [freeCodeCamp: Responsive Web Design (HTML practice)](https://www.freecodecamp.org/learn/2022/responsive-web-design/)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can name a tag, an element, content and an attribute in one line of HTML
+- nest elements and close them in the right order
+- write a list with `<ul>`, `<ol>` and `<li>`
+- write the HTML boilerplate and explain each line
+- open their page in Chrome and find it in DevTools
+
+### Purpose
+This is the first page learners build. A clear grasp of tags, attributes and the boilerplate is the base for every week after.
+
+### Things to teach
+1. **Tags, elements, content.** Use `<p>I am learning HTML.</p>`. The tags are the bread, the content is the filling, the whole sandwich is the element. HTML says what things are, not how they look.
+2. **Nesting.** Show `<p>I <strong>really</strong> love coding.</p>` and the crossed-tags wrong example. Close in the opposite order you opened.
+3. **Attributes.** Use `<a href=...>` and `<img src alt width>`. Attributes go in the opening tag as `name="value"`. Always add `alt`.
+4. **Lists.** `<ul>` is bullets, `<ol>` is numbers, `<li>` always sits inside one of them.
+5. **The boilerplate.** Go through the page line by line: doctype, `html lang`, `head`, `meta charset`, viewport, `title`, `body`. Show the `!` then Tab shortcut after they understand it.
+
+### Check understanding
+- Ask: "What is the difference between a tag and an element?" A good answer: a tag is the marker; the element is opening tag, content and closing tag together.
+- Ask: "Where do attributes go?" A good answer: in the opening tag, as `name="value"`.
+- Ask: "Which part holds what you see on the page?" A good answer: the `<body>`.
+
+### Watch for
+- A missing or misspelled closing tag, the most common mistake. Use the Elements panel to see how the browser read it.
+- A file saved as `.txt` or `.html.txt`, so the tags show as plain text. Check the extension.

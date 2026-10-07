@@ -248,3 +248,30 @@ console.log(getWeatherAdvice(15, false)); // Bring a light jacket
 - [javascript.info: Logical operators](https://javascript.info/logical-operators)
 - [MDN: Making decisions in your code — conditionals](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals)
 - [MDN: Equality comparisons and sameness](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can compare values with `===`, `!==`, `<`, `>`, `<=` and `>=`.
+- Learners can write `if`, `else if` and `else`.
+- Learners can combine conditions with `&&`, `||` and `!`.
+
+### Purpose
+Every program that reacts to the user or to data needs decisions. This is how sites show "Welcome back" or "Please log in".
+
+### Things to teach
+1. **Comparisons and `===`.** Run `5 == "5"` against `5 === "5"`. Say to always use `===`. One `=` stores. Three `===` ask a question.
+2. **if and else.** Use the `temperature` example and the `hasTicket` fork. Exactly one block runs.
+3. **else if order.** Use the `hour` example. Show why the most specific check goes first. Use the line of guards picture.
+4. **Functions with decisions.** Use `getTicketPrice(age)`. Show that `isEven` can just `return number % 2 === 0;`.
+5. **AND, OR, NOT.** Use the driving, free entry and `!isRaining` examples. Show that `score >= 0 && score <= 100` is the way to test a range. Mention falsy values only briefly.
+
+### Check understanding
+- Ask: "What is `10 === "10"`?" A good answer: `false`, since the types differ.
+- Ask: "How many blocks of an `if / else if / else` can run?" A good answer: exactly one.
+- Ask: "Write a test for age 13 to 19 inclusive." A good answer: `age >= 13 && age <= 19`.
+
+### Watch for
+- Using `=` instead of `===` in a condition.
+- Wrong order in `else if` chains. Ask them to trace with a value like 9. In `getWeatherAdvice`, check rain first.

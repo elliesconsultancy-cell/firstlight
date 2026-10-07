@@ -130,3 +130,30 @@ You have a few days for the project. A good order:
 
 - [Claude docs: Prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview)
 - [Claude docs: Create strong empirical evaluations](https://platform.claude.com/docs/en/test-and-evaluate/develop-tests)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Write a product in one sentence with a user and one main feature.
+- Draft a short system prompt and five test questions.
+- Say what to leave out of version 1.
+
+### Purpose
+Most unfinished projects fail because they are too big. A small plan makes the final project achievable.
+
+### Things to teach
+1. **The one-sentence pattern.** Show "For [who], who [problem], [name] is an AI helper that [does this], so that [benefit]." Read the BakeBuddy, MathWords and GymPal examples. If a learner cannot write it, the idea is too big or too vague.
+2. **One real user.** Ask each learner to name one person and three questions in that person's words, like Kemi in "Try it".
+3. **One feature.** Use the table to cut the list: login, voice and images are "later". Fewer features mean fewer ways to be tricked.
+4. **What the AI needs.** Knowledge, tools (skip if not needed), personality, limits. Show the GymPal draft prompt.
+5. **Tests first.** Five questions: three normal, one "I do not know", one injection attempt.
+
+### Check understanding
+- Ask: "Why is a helper for everyone weak?" A good answer: you cannot design for everyone, one user makes choices clear.
+- Ask: "What is the single most important feature?" A good answer: the one that makes the product useful if it works.
+- Ask: "Why write test questions first?" A good answer: they define what done means.
+
+### Watch for
+- Big ideas with accounts, payments and many features. Help the learner cut to one.
+- Ideas that need private data or give medical or legal advice. Steer to safer ideas.

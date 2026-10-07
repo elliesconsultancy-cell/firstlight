@@ -204,3 +204,30 @@ console.log(`${passed} students passed`);
 - [javascript.info: Loops, while and for](https://javascript.info/while-for)
 - [MDN: Looping code](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Looping_code)
 - [MDN: for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can loop over an array with `for...of`.
+- Learners can build a total with an accumulator.
+- Learners can write a counting `for` loop and a `while` loop, and say when to use each.
+
+### Purpose
+Loops let a few lines of code handle any amount of data. Accumulators are the idea behind totals, counts and "find the biggest".
+
+### Things to teach
+1. **for...of.** Use the `guests` example. Read it aloud: "for each guest of guests". Name the loop variable as the singular of the array.
+2. **Accumulator.** Use `prices` and `total`. Trace the table together. Start the variable before the loop and update it inside.
+3. **Loop with if.** Use the `temperatures` and `hotDays` example. Ask what changes if 20 becomes 10.
+4. **Classic for.** Explain the three parts of `for (let i = 0; i < 5; i++)`. Use the `podium` example. Show why `<=` gives `undefined` (off by one).
+5. **while.** Use the `savings` example. Warn about infinite loops and say to close the tab if it freezes.
+
+### Check understanding
+- Ask: "How many times does `for (let i = 0; i < 3; i++)` run, and what is `i`?" A good answer: 3 times, with 0, 1 and 2.
+- Ask: "What is an accumulator?" A good answer: a variable made before the loop and updated on each pass to build a result.
+- Ask: "When would you use `while`?" A good answer: when you do not know how many times in advance.
+
+### Watch for
+- `<=` with `length`. Link it to the off-by-one example.
+- Making the accumulator inside the loop, so it resets each time. Say it goes before.

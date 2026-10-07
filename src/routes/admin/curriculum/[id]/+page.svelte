@@ -11,7 +11,8 @@
 	<a class="small" href="/admin/curriculum"><Icon name="arrow-left" size={13} /> Curriculum</a>
 	<div class="spread" style="margin: 10px 0 20px">
 		<h1 style="margin: 0">Week {data.week.position}: {data.week.title}</h1>
-		<a class="btn btn-sm btn-ghost" href="/learn/{data.week.slug}">Preview as student</a>
+		<span class="row"><a class="btn btn-sm btn-ghost" href="/admin/curriculum/{data.week.id}/review"><Icon name="users" size={14} /> Sprint review</a>
+			<a class="btn btn-sm btn-ghost" href="/learn/{data.week.slug}">Preview as student</a></span>
 	</div>
 	{#if form?.error}<p class="alert alert-error">{form.error}</p>{/if}
 	{#if form?.saved}<p class="alert alert-ok">Saved.</p>{/if}

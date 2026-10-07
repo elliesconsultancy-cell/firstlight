@@ -187,3 +187,30 @@ console.log(label.length);
 - [JS1 module: more practice with playing computer](https://curriculum.codeyourfuture.io/js1/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can trace a short program line by line with a trace table.
+- Learners can predict output before running code.
+- Learners can explain that a variable keeps a copy and later changes do not alter earlier results.
+
+### Purpose
+Reading code slowly is how developers understand and debug code. This habit makes the bugs in next week's work much easier to find.
+
+### Things to teach
+1. **Two things to track.** Which line you are on, and what is in memory right now. Draw a trace table on a whiteboard or paper.
+2. **The apples and pears example.** Ask for a guess first (it logs 15). Fill the table together. Point out line 4 changes `pears` after line 3 used it.
+3. **Right side first.** Use `count = count * 2 + 1`. Work out the right, then store.
+4. **Copies and finished strings.** Use the `kemi` and `shout` example: `message` stays `"Hello KEMI"`. Then let learners do the `a`, `b`, `c` Try it on paper first.
+5. **Predict, run, explain.** Show Python Tutor as a way to check, not to replace thinking.
+
+### Check understanding
+- Ask: "After `let x = 2; let y = x; x = 7;` what is `y`?" A good answer: 2, because it got a copy.
+- Ask: "What does the computer do first with `total = total + 1`?" A good answer: works out the right side using the current value.
+- Ask: "What happens to lines after an error?" A good answer: they do not run.
+
+### Watch for
+- Learners who skip the paper and go straight to Python Tutor. Ask them to predict first.
+- Thinking an earlier line updates when a variable changes later.

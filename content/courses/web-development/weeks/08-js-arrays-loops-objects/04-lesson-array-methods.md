@@ -247,3 +247,30 @@ const basket = [
 - [MDN: Array.prototype.map()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 - [MDN: Array.prototype.filter()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 - [MDN: Array.prototype.reduce()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can use `forEach`, `map`, `filter`, `find` and `reduce` on an array of objects.
+- Learners can explain what a callback is.
+- Learners can choose the right method for a job.
+
+### Purpose
+These methods are how developers answer questions about data every day. They are also the tools needed for the Library data assignment.
+
+### Things to teach
+1. **Callbacks.** A callback is a function given to a method. Show that `(item) => item.price` is just a short function. Keep the `basket` data on screen.
+2. **map and filter.** Use `basket.map((item) => item.name)` and `basket.filter((item) => item.category === "fruit")`. Show the chain: filter cheap items, then map to names.
+3. **find against filter.** `find` gives one object or `undefined`. `filter` always gives an array. Use `rice.price` and the `Bread` example.
+4. **reduce.** Show the `for...of` accumulator first, then the `reduce` version giving `15.70`. Walk through the step table. Stress the starting value `0`. A loop is fine if reduce feels hard.
+5. **Choosing.** Use the "I want to..." table. Let learners try the `basket` Try it. The total count should be 11.
+
+### Check understanding
+- Ask: "What is the difference between `map` and `forEach`?" A good answer: `map` returns a new array. `forEach` returns nothing.
+- Ask: "What do `filter` and `find` return when nothing matches?" A good answer: `[]` and `undefined`.
+- Ask: "In `reduce((sum, n) => sum + n, 0)`, what is `0`?" A good answer: the starting value.
+
+### Watch for
+- Forgetting `return` when an arrow function has curly braces, so `map` gives `undefined` items.
+- Using `.price` on the result of `filter`. It is an array, so use `find` or an index.

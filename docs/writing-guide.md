@@ -77,3 +77,110 @@ Opening paragraphs here (no heading needed). Start with the story or the picture
 - Do not use "simply", "just", "obviously", "easy", "trivial". They make learners feel bad when it is not easy.
 - Do not use emoji except the three callout markers.
 - Do not paste long walls of theory. If a section is longer than about 150 words, split it or add an example.
+
+## Instructor sections (every lesson, assignment and week)
+
+Each sprint (week) has four parts: **Prep** (the lessons learners read), **Backlog**
+(everything learners must do this week, as a checklist), **Day plan** (the instructor's agenda) and
+**End of sprint review** (a checklist of what must be done). Students see Prep and Backlog.
+Only instructors see the Day plan, the agendas and the review checklist.
+
+Instructor content goes AFTER a line that contains exactly `<!-- instructor -->`. The app removes
+everything after that line for students, so never put anything a student needs after it.
+
+No timings, no breaks, no "10 minutes". Instructors run the session their own way. Give them what to
+teach, in plain words, as notes for a volunteer who may not be an expert.
+
+### In every lesson file
+
+Add at the very END of the file (after "Go deeper" and after any source-credit line):
+
+```
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can ... (2 to 4 bullets, specific and checkable)
+
+### Purpose
+One or two sentences: why this matters in real work.
+
+### Things to teach
+1. **Short name of the idea.** What to explain or show, in 2 to 3 sentences. Name the example from the lesson to use.
+2. **Another idea.** ...
+(3 to 5 items. A few key things, NOT the whole lesson. Learners read the rest themselves.)
+
+### Check understanding
+- Ask: "A question." A good answer: ...
+(2 to 3 questions)
+
+### Watch for
+- One or two common mistakes or misunderstandings, and what to say.
+```
+
+### In every assignment file
+
+Same place, same marker, with these sections instead:
+
+```
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+### Purpose
+### Things to do
+1. How to launch the task and what to demonstrate (2 to 4 items).
+
+### What good work looks like
+- 3 to 5 checkable signs, matching the requirements checklist.
+
+### Watch for
+```
+
+### In every week.md
+
+The student part (before the marker) ends with a backlog. Put it after "By the end of this week you will be able to":
+
+```
+## Backlog
+
+Tick each one as you finish it.
+
+**Prep (read these first)**
+- [ ] Read: <exact lesson title>
+- [ ] Read: <exact lesson title>
+
+**Do**
+- [ ] <a concrete task, for example "Create a folder called about-me and add index.html">
+- [ ] Finish the assignment: <exact assignment title>
+
+**Share**
+- [ ] Submit your work and read your instructor's feedback
+```
+
+(Use `- [ ]` checklists only. 6 to 12 items. Name every lesson and assignment of the week, in order, using the exact titles. Add 1 to 4 concrete practical tasks.)
+
+Then the instructor part:
+
+```
+<!-- instructor -->
+## Day plan
+
+### Learning objectives
+- (3 to 5 bullets for the whole week)
+
+### Purpose
+Why this week matters and how it connects to the weeks before and after.
+
+### Agenda
+1. **<Lesson title>.** The key things to teach from this lesson (2 sentences) and what learners should try.
+2. ... (one item per lesson, in order)
+3. **<Assignment title>.** How to launch it and what to look at.
+
+## End of sprint review
+
+Tick each one when you have seen it.
+
+- [ ] (5 to 8 concrete checks specific to this week, for example "Every learner's page opens in a browser")
+- [ ] Every learner has had feedback on the assignment.
+```

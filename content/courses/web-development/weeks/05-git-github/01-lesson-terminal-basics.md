@@ -191,3 +191,30 @@ The last `pwd` shows your home folder, for example `/Users/amina`. The first `cd
 - [The Odin Project: Command line basics](https://www.theodinproject.com/lessons/foundations-command-line-basics)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can open a terminal (Terminal, Git Bash or VS Code).
+- Learners can use `pwd`, `ls`, `cd` and `mkdir` to move around and make folders.
+- Learners can tell an absolute path from a relative path.
+
+### Purpose
+Git is used from the terminal, so learners must feel safe there first. Fear of the terminal is the main barrier this week.
+
+### Things to teach
+1. **What the terminal is.** Say it is just typing instead of clicking. Learners open their own (Git Bash on Windows). Say that the commands in this lesson only look around and make folders.
+2. **Where am I and what is here.** Run `pwd` and `ls` from the home folder. Explain that `~` means home.
+3. **Moving.** Use `cd Documents`, `cd ..` and `cd ~`. Show the Tab key finishing names.
+4. **Making folders.** Run `mkdir firstlight-practice`. Explain why we use dashes, not spaces.
+5. **Paths.** Compare an absolute path with a relative one such as `../Downloads`. Do the Try it sequence and ask learners to guess the last `pwd`.
+
+### Check understanding
+- Ask: "Which command shows what folder you are in?" A good answer: `pwd`.
+- Ask: "What does `cd ..` do?" A good answer: moves up to the parent folder.
+- Ask: "Why avoid spaces in folder names?" A good answer: a space separates parts of a command.
+
+### Watch for
+- Typing the `$` or the `#` comment text. Tell them to type only the command.
+- Being lost in the wrong folder. Tell them to run `pwd` first, and `cd ~` to start again.

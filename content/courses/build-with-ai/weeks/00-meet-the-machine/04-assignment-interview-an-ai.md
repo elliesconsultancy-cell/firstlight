@@ -60,3 +60,32 @@ How I will check answers:
 - Ask the same question three times in separate chats. Compare the answers. Why might they differ? (A hint: Week 1 explains this.)
 - Ask the AI: "How sure are you about that answer, from 1 to 10?" Does the number match what you found?
 - Try the same five tests on a second AI and compare.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Run five small tests on a real AI and record the results.
+- Judge the answers honestly, including checking facts and counts themselves.
+- Write down a personal habit for checking AI answers.
+
+### Purpose
+Learners see the strengths and weak spots first-hand, which lasts longer than reading about them. The report also becomes the start of their own AI notes.
+
+### Things to do
+1. Launch it: ask learners to open any AI chat they like, in a new conversation. Remind them to use made-up examples only. No passwords, no private details.
+2. Demonstrate one test live, ideally test 4: count the letter e in "excellence" yourself first, then ask the AI and compare. Show that you write the question, a short copy of the answer, and one sentence of opinion.
+3. Show the submission shape from the page, so learners know the report layout before they start.
+4. Point out that there are no wrong results. If the AI got everything right, they should make a test harder.
+
+### What good work looks like
+- The AI name and date are at the top.
+- All five tests are there (writing, known fact, invented thing, counting or maths, private fact), each with the question, a short answer and one opinion sentence.
+- Test 4 shows that the learner counted themselves and compared.
+- There are two good things and two bad things listed, and they match what the tests showed.
+- There is one sentence on how they will check answers in future.
+
+### Watch for
+- Learners copy the whole long answer instead of a short part. Ask for short copies.
+- Learners accept the answer to test 3 without checking the invented thing really does not exist. Ask: how do you know?
+- Someone types real private details for test 5. Remind them to use made-up or harmless examples.

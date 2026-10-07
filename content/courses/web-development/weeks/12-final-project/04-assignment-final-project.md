@@ -182,3 +182,33 @@ Use the submit form to send:
 - Add your project to a personal portfolio page
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- Learners can plan, build, publish and document a project of their own.
+- Learners can use an array of objects with state and `render()`.
+- Learners can request and respond to code review, and present their work.
+
+### Purpose
+The final project is the learner's proof of what they can do. It becomes the first item in their portfolio and the story they tell in interviews.
+
+### Things to do
+1. **Launch.** Approve each idea before building starts. Check the size against the MVP list. Learners follow the "Try it" in the planning lesson, then share their plan with you.
+2. **Demonstrate set-up.** Show a new repo with a basic `index.html` and README, GitHub Pages turned on, and issues with checklists.
+3. **Show the starter structure.** Point out the state, elements, `render` and events sections, and the empty-state message.
+4. **Run the showcase.** Give each learner the same short slot, set by you. They use the five-part structure from the presenting lesson, on the live site. Say the order beforehand. After each demo, invite one question and one thing the audience liked. Keep the tone friendly. Collect the repo links so you can give feedback afterwards.
+
+### What good work looks like
+- A plan exists: at least five user stories split into MVP and stretch, a phone and desktop wireframe, and issues with task checklists.
+- Separate `index.html`, `style.css` and `script.js` files, semantic HTML, labels, `alt` text and a responsive layout.
+- An array of objects is drawn by a `render` function, with at least one interaction and friendly empty and error states.
+- It is live on GitHub Pages with no console errors.
+- The repo has at least 10 clear commits over several days, a full README with a screenshot and live link, and a code review that was answered.
+
+### Watch for
+- Learners adding features instead of finishing. Remind them to stop adding features before the end.
+- A README with no screenshot or live link.
+- Everything committed in one go. Ask them to talk about how the project grew.
+- Nervous presenters. Let them go later in the order if they ask, and reassure them that the audience is friendly.

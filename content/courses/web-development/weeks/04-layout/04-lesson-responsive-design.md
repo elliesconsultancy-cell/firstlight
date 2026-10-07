@@ -239,3 +239,30 @@ Things to check:
 - [MDN: Using media queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can add the viewport meta tag and the flexible image rule.
+- Learners can write a mobile-first media query with `min-width`.
+- Learners can test a page at different sizes with the DevTools device toolbar.
+
+### Purpose
+Most visits are on phones, so every page must work on small screens. The assignment is judged on exactly this.
+
+### Things to teach
+1. **Viewport meta tag.** Show the tag and explain that phones otherwise pretend to be about 980px wide. It goes in every `<head>`.
+2. **Images that fit.** Show the `img` rule with `max-width: 100%`, `height: auto` and `display: block`.
+3. **Mobile first.** Write the small-screen CSS first. Then add `@media (min-width: 700px)` for more room. Use the packing a suitcase idea.
+4. **The Spokes & Sprockets example.** Show header and features stacking on a phone and becoming a row and three columns on a wide screen.
+5. **Test with the device toolbar.** Drag from 320px to 1200px. Look for sideways scrolling, readable text and tap-sized links.
+
+### Check understanding
+- Ask: "What does the viewport meta tag do?" A good answer: it makes phones use their real width.
+- Ask: "Why `min-width` in a mobile-first stylesheet?" A good answer: you start small and add styles as the screen grows.
+- Ask: "Name two things to check on a small screen." A good answer: no sideways scrolling, readable text.
+
+### Watch for
+- Missing viewport tag, so the page looks tiny on a phone.
+- Sideways scrolling. Use DevTools to find the element that sticks out, often an image or a fixed `px` width.

@@ -266,3 +266,30 @@ Now explore:
 - [CSS Diner, a selector game](https://flukeout.github.io/)
 
 _Adapted in part from the CodeYourFuture curriculum (CC BY-NC-SA 4.0)._
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can write element, class, id, descendant and `:hover` selectors.
+- Learners can predict which of two rules wins and say why.
+- Learners can say why `:focus` should go with `:hover`.
+
+### Purpose
+Real pages have many rules that overlap. Knowing why a style does or does not appear saves hours of guessing.
+
+### Things to teach
+1. **Pick the right selector.** Use the `.highlight` paragraphs and the `#site-header` example. Say that classes are the everyday choice.
+2. **Descendant selectors.** Use `nav a`. Explain that only links inside the nav change.
+3. **The later rule wins.** Show the two `p` rules, blue then green. The paragraph is green.
+4. **Specificity beats order.** Use the `.intro` purple and `p` orange example. Ask them to guess first, then show purple. Use the strength table.
+5. **Hover and focus.** Show `a:hover, a:focus` and explain keyboard users.
+
+### Check understanding
+- Ask: "What does `footer p` select?" A good answer: every paragraph inside a footer.
+- Ask: "A `.note` rule says blue, a later `p` rule says red. What colour is `<p class="note">`?" A good answer: blue, because a class is more specific than an element.
+- Ask: "Why add `:focus` when you add `:hover`?" A good answer: keyboard and touch users do not hover.
+
+### Watch for
+- Learners who think the last rule always wins. Go back to the `.intro` example.
+- Using ids for styling, then being unable to override them. Steer them to classes.

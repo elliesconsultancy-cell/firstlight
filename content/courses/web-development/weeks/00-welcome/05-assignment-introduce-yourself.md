@@ -48,3 +48,31 @@ Your instructor reads your introduction and replies with feedback or approval.
 - Install the **Live Server** extension in VS Code (search for it in the Extensions panel). It refreshes your browser when you save. Tell us in your submission if it worked.
 - Change the VS Code colour theme to one you like (**File → Preferences → Theme → Color Theme**, or **Code → Settings → Theme** on Mac).
 - Open DevTools on your `hello.html` page. Find your `<h1>` in the Elements panel and double-click the text to change it. Take a second screenshot.
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can describe themselves and their goals in their own words
+- show a working VS Code setup in a screenshot
+- submit written text and a file together
+
+### Purpose
+This is a low-pressure first submission. It tests the tools and the submit form, and it tells you who each learner is and what they need.
+
+### Things to do
+1. Open the assignment page and read the requirements together. Stress that it is not a coding task and that English need not be perfect.
+2. Show the screenshot steps for Windows, Mac and Linux, and what the shot must include: the `firstlight` folder in Explorer and `hello.html` open in the editor.
+3. Demonstrate the submit form: introduction in the written answer box, screenshot uploaded as a file.
+4. Tell learners with setup problems to submit anyway, with the error message or a screenshot.
+
+### What good work looks like
+- The introduction is about 100 to 250 words and sounds like the learner, not like AI.
+- It says why they want to learn coding, one or two goals, and their weekly hours and days.
+- The screenshot shows VS Code with the `firstlight` folder open and a file such as `hello.html` open.
+- If setup failed, the submission explains what went wrong and includes the error.
+
+### Watch for
+- Text that reads like generated writing. Ask kindly for a rewrite in their own words.
+- Screenshots of the browser instead of VS Code, or with no folder visible.
+- Learners who hold back because setup failed. Praise them for asking for help.

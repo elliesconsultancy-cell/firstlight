@@ -130,3 +130,30 @@ It looks long and scary. That is normal. In a few weeks, much of it will look fa
 - [MDN: How does the internet work?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/How_does_the_Internet_work)
 - [MDN: How the web works](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/How_the_Web_works)
 - [MDN: What is a web server?](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_web_server)
+
+<!-- instructor -->
+## Instructor agenda
+
+### Learning objectives
+- By the end, learners can explain the difference between the internet and the web
+- name the client and the server in a web visit
+- say what HTML, CSS and JavaScript each do
+- use View page source to see a page's HTML
+
+### Purpose
+Before writing pages, learners need a simple picture of where a page lives and who asks for it. It makes later topics like URLs, paths and hosting make sense.
+
+### Things to teach
+1. **Roads and traffic.** The internet is the roads. The web is one kind of traffic on them. Use the lesson's contrast: WhatsApp uses the internet but not the web.
+2. **Client and server.** Use the restaurant picture: you ask, the kitchen makes it, the waiter carries it. The client is the browser. The server stores sites and sends them. Say where the picture breaks: one server serves thousands at once.
+3. **Three languages, three jobs.** Use the house table: HTML is walls, CSS is paint, JavaScript is electricity. This week and next are only HTML.
+4. **View page source.** Have everyone open a small site and a big news site, and press Ctrl+U or Cmd+Option+U. Say it looks scary now and will look familiar in a few weeks.
+
+### Check understanding
+- Ask: "Is an online game app on your phone the internet, the web, or both?" A good answer: the internet only, because there is no browser or web page.
+- Ask: "When you open a web page, which is the client?" A good answer: your browser, on your laptop or phone.
+- Ask: "Which language gives a page its structure?" A good answer: HTML.
+
+### Watch for
+- Learners who think the internet and the web are the same. Use the WhatsApp example.
+- Learners who think the server is their own laptop, or that the client is a person. The client is the browser.
